@@ -1,0 +1,67 @@
+import type { Experience } from '@/types';
+
+export const experiences: Experience[] = [
+  {
+    id: 'android-intern',
+    role: 'Android Developer Intern',
+    company: 'TechNova Solutions',
+    companyUrl: '#',
+    location: 'Remote, India',
+    startDate: 'Jun 2025',
+    endDate: 'Present',
+    description:
+      'Building production-grade Android applications using Kotlin and Jetpack Compose within a fast-paced startup environment, collaborating closely with designers and backend engineers to ship features on a bi-weekly release cadence.',
+    responsibilities: [
+      'Develop and maintain feature modules using Jetpack Compose with Material Design 3, delivering pixel-perfect UIs that match Figma mockups.',
+      'Architect app layers following MVVM and Clean Architecture principles, ensuring testability and separation of concerns across the codebase.',
+      'Integrate RESTful APIs via Retrofit and manage local persistence with Room Database for seamless offline-first experiences.',
+      'Implement CameraX-based features including real-time barcode scanning and document capture workflows.',
+      'Write unit and instrumentation tests with JUnit, Mockito, and Espresso to maintain > 80 % code coverage on critical paths.',
+      'Participate in code reviews, sprint planning, and retrospectives within an Agile / Scrum workflow.',
+    ],
+    technologies: [
+      'Kotlin',
+      'Jetpack Compose',
+      'MVVM',
+      'Room',
+      'Retrofit',
+      'CameraX',
+      'Firebase',
+      'Material Design 3',
+      'Hilt',
+      'Coroutines',
+    ],
+    icon: 'HiOutlineBriefcase',
+  },
+  {
+    id: 'freelance-dev',
+    role: 'Freelance Developer',
+    company: 'Self-Employed',
+    location: 'India',
+    startDate: 'Jan 2024',
+    endDate: 'May 2025',
+    description:
+      'Delivered end-to-end Android and web projects for small businesses and individual clients, handling everything from requirement gathering and UI design to deployment and post-launch support.',
+    responsibilities: [
+      'Designed and developed custom Android applications for clients across e-commerce, education, and utility domains using Kotlin and Java.',
+      'Built responsive, SEO-friendly websites with React, Next.js, and Tailwind CSS, improving client web presence and conversion rates.',
+      'Managed the full project lifecycle — scoping, wireframing, development, QA, Play Store / web deployment, and ongoing maintenance.',
+      'Integrated third-party services including Firebase Authentication, Cloud Firestore, Razorpay payments, and Google Maps SDK.',
+      'Communicated directly with clients to translate business requirements into technical specifications and iterative prototypes.',
+      'Maintained a 5-star average rating across completed projects with consistent on-time delivery.',
+    ],
+    technologies: [
+      'Kotlin',
+      'Java',
+      'Android SDK',
+      'React',
+      'Next.js',
+      'Tailwind CSS',
+      'Firebase',
+      'Node.js',
+      'MySQL',
+      'Git',
+    ],
+    icon: 'HiOutlineRocketLaunch',
+  },
+];
