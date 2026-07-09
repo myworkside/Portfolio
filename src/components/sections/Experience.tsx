@@ -77,7 +77,7 @@ export default function Experience() {
           className="relative mt-16"
         >
           {/* Vertical connecting line */}
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-px">
+          <div className="absolute left-6 lg:left-1/2 top-0 bottom-0 w-px lg:-translate-x-px">
             <motion.div
               className="w-full h-full"
               style={{
@@ -91,17 +91,17 @@ export default function Experience() {
           </div>
 
           {/* Timeline items */}
-          <div className="space-y-12 md:space-y-16">
+          <div className="space-y-12 lg:space-y-16">
             {experience.map((exp, index) => {
               const isLeft = index % 2 === 0;
               return (
                 <div
                   key={exp.id}
-                  className="relative flex items-start gap-6 md:gap-0"
+                  className="relative flex items-start gap-6 lg:gap-0"
                 >
                   {/* Desktop: left side content */}
                   <div
-                    className={`hidden md:flex md:w-1/2 ${
+                    className={`hidden lg:flex lg:w-1/2 ${
                       isLeft ? 'justify-end pr-10' : 'justify-start pl-10 order-3'
                     }`}
                   >
@@ -114,20 +114,20 @@ export default function Experience() {
                     </motion.div>
                   </div>
 
-                  {/* Timeline dot - centered on desktop, left on mobile */}
-                  <div className="flex-shrink-0 z-10 md:absolute md:left-1/2 md:-translate-x-1/2">
+                  {/* Timeline dot - centered on desktop, left on mobile/tablet */}
+                  <div className="flex-shrink-0 z-10 lg:absolute lg:left-1/2 lg:-translate-x-1/2">
                     <TimelineDot inView={isInView} delay={index * 0.2 + 0.3} />
                   </div>
 
                   {/* Desktop: spacer for the other side */}
                   <div
-                    className={`hidden md:block md:w-1/2 ${
+                    className={`hidden lg:block lg:w-1/2 ${
                       isLeft ? 'order-3' : ''
                     }`}
                   />
 
-                  {/* Mobile: card always on the right of the dot */}
-                  <div className="flex-1 md:hidden">
+                  {/* Mobile & Tablet: card always on the right of the dot */}
+                  <div className="flex-1 lg:hidden">
                     <motion.div
                       custom={false}
                       variants={cardVariants}

@@ -57,7 +57,7 @@ export default function Projects() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="mt-14 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+          className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {featuredProjects.map((project) => (
             <motion.div key={project.id} variants={cardVariants}>

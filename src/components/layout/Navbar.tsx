@@ -146,7 +146,7 @@ export default function Navbar() {
           </a>
 
           {/* Desktop nav links */}
-          <nav className="hidden items-center gap-1 md:flex">
+          <nav className="hidden items-center gap-1 lg:flex">
             {navLinks.map(({ label, href, sectionId }) => (
               <a
                 key={sectionId}
@@ -181,7 +181,7 @@ export default function Navbar() {
           <a
             href="#contact"
             onClick={handleCtaClick}
-            className="group relative hidden overflow-hidden rounded-full px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-[#4F46E5]/30 md:block"
+            className="group relative hidden overflow-hidden rounded-full px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-[#4F46E5]/30 lg:block"
             style={{
               background: "linear-gradient(135deg, #4F46E5, #8B5CF6)",
             }}
@@ -193,7 +193,7 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="relative z-[70] flex h-12 w-12 items-center justify-center rounded-lg text-white md:hidden hover:bg-white/[0.06] transition-colors"
+            className="relative z-[70] flex h-12 w-12 items-center justify-center rounded-lg text-white lg:hidden hover:bg-white/[0.06] transition-colors"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             <AnimatePresence mode="wait">
@@ -231,7 +231,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[55] flex items-center justify-center backdrop-blur-2xl md:hidden"
+            className="fixed inset-0 z-[55] flex items-center justify-center backdrop-blur-2xl lg:hidden"
             style={{
               background:
                 "linear-gradient(180deg, rgba(5,8,22,0.97) 0%, rgba(5,8,22,0.99) 100%)",

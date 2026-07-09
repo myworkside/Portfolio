@@ -206,7 +206,7 @@ export default function About() {
         </motion.div>
 
         {/* Education, Languages & Professional Strengths Grid */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Education */}
           <ScrollReveal delay={0.1}>
             <GlassCard className="p-6 h-full space-y-4">

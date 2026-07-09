@@ -101,7 +101,7 @@ export default function Hero() {
         {/* Name with gradient */}
         <motion.h1
           variants={itemVariants}
-          className="text-hero font-extrabold tracking-tight mb-4 leading-[1.1]"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight mb-4 leading-[1.1]"
         >
           <span
             className="bg-clip-text text-transparent"
@@ -132,7 +132,7 @@ export default function Hero() {
         {/* Tagline */}
         <motion.p
           variants={itemVariants}
-          className="text-[#94A3B8] text-base md:text-lg max-w-2xl leading-relaxed mb-10"
+          className="text-[#94A3B8] text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed mb-10"
         >
           {personal.tagline}
         </motion.p>
@@ -140,34 +140,38 @@ export default function Hero() {
         {/* CTA Buttons */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-wrap items-center justify-center gap-4 mb-16"
+          className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 mb-16 w-full"
         >
-          <MagneticButton>
-            <a
-              href={personal.resumeUrl}
-              className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 min-h-[48px] rounded-xl font-semibold text-white text-sm transition-all duration-300 hover:shadow-[0_0_30px_rgba(79,70,229,0.4)]"
-              style={{
-                background: 'linear-gradient(135deg, #4F46E5, #8B5CF6)',
-              }}
-            >
-              <FaDownload className="text-sm" />
-              Download Resume
-            </a>
-          </MagneticButton>
+          <div className="w-full sm:w-auto">
+            <MagneticButton>
+              <a
+                href={personal.resumeUrl}
+                className="w-full inline-flex items-center justify-center gap-2.5 px-7 py-3.5 min-h-[48px] rounded-xl font-semibold text-white text-sm transition-all duration-300 hover:shadow-[0_0_30px_rgba(79,70,229,0.4)]"
+                style={{
+                  background: 'linear-gradient(135deg, #4F46E5, #8B5CF6)',
+                }}
+              >
+                <FaDownload className="text-sm" />
+                Download Resume
+              </a>
+            </MagneticButton>
+          </div>
 
-          <MagneticButton>
-            <a
-              href="#projects"
-              className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 min-h-[48px] rounded-xl font-semibold text-[#E2E8F0] text-sm border border-[#4F46E5]/50 backdrop-blur-sm transition-all duration-300 hover:border-[#4F46E5] hover:bg-[#4F46E5]/10 hover:shadow-[0_0_30px_rgba(79,70,229,0.15)]"
-              style={{ background: 'rgba(15, 23, 42, 0.4)' }}
-            >
-              View Projects
-              <FaArrowRight className="text-xs" />
-            </a>
-          </MagneticButton>
+          <div className="w-full sm:w-auto">
+            <MagneticButton>
+              <a
+                href="#projects"
+                className="w-full inline-flex items-center justify-center gap-2.5 px-7 py-3.5 min-h-[48px] rounded-xl font-semibold text-[#E2E8F0] text-sm border border-[#4F46E5]/50 backdrop-blur-sm transition-all duration-300 hover:border-[#4F46E5] hover:bg-[#4F46E5]/10 hover:shadow-[0_0_30px_rgba(79,70,229,0.15)]"
+                style={{ background: 'rgba(15, 23, 42, 0.4)' }}
+              >
+                View Projects
+                <FaArrowRight className="text-xs" />
+              </a>
+            </MagneticButton>
+          </div>
 
           {/* Social Icons (Strictly CV: GitHub & LinkedIn) */}
-          <div className="flex items-center gap-2 ml-2">
+          <div className="flex items-center justify-center gap-3 w-full sm:w-auto mt-2 sm:mt-0">
             {[
               { icon: FaGithub, href: personal.social?.github ?? 'https://github.com/myworkside', label: 'GitHub' },
               { icon: FaLinkedin, href: personal.social?.linkedin ?? 'https://linkedin.com/in/sumitwork', label: 'LinkedIn' },
@@ -191,7 +195,7 @@ export default function Hero() {
         {/* Stats Bar */}
         <motion.div
           variants={itemVariants}
-          className="w-full max-w-3xl grid grid-cols-2 md:grid-cols-4 gap-4"
+          className="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
         >
           {stats.map((stat) => (
             <div
