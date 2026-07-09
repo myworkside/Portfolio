@@ -9,7 +9,7 @@ import {
   AnimatedCounter,
   ScrollReveal,
 } from '@/components/ui';
-import { personal } from '@/data';
+import { personal, education, languages } from '@/data';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -214,22 +214,21 @@ export default function About() {
                 Education
               </h3>
               <div className="space-y-3">
-                <div className="border-l-2 border-[#4F46E5] pl-3">
-                  <h4 className="text-white font-medium text-sm">
-                    Higher Secondary Examination
-                  </h4>
-                  <p className="text-xs text-[#94A3B8]">
-                    W.B.S.C. Vocational Education — Passed
-                  </p>
-                </div>
-                <div className="border-l-2 border-[#00E5FF] pl-3">
-                  <h4 className="text-white font-medium text-sm">
-                    Secondary Examination
-                  </h4>
-                  <p className="text-xs text-[#94A3B8]">
-                    W.B.B.S.E — Passed
-                  </p>
-                </div>
+                {education.map((edu, idx) => (
+                  <div
+                    key={edu.id}
+                    className={`border-l-2 pl-3 ${
+                      idx === 0 ? 'border-[#4F46E5]' : 'border-[#00E5FF]'
+                    }`}
+                  >
+                    <h4 className="text-white font-medium text-sm">
+                      {edu.degree}
+                    </h4>
+                    <p className="text-xs text-[#94A3B8]">
+                      {edu.institution} — {edu.status}
+                    </p>
+                  </div>
+                ))}
               </div>
             </GlassCard>
           </ScrollReveal>
@@ -241,18 +240,25 @@ export default function About() {
                 Languages
               </h3>
               <div className="space-y-3">
-                <div className="flex items-center justify-between p-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06]">
-                  <span className="text-white font-medium text-sm">Bengali</span>
-                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#4F46E5]/20 text-[#00E5FF] border border-[#4F46E5]/30">
-                    Native
-                  </span>
-                </div>
-                <div className="flex items-center justify-between p-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06]">
-                  <span className="text-white font-medium text-sm">English</span>
-                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#00E5FF]/20 text-white border border-[#00E5FF]/30">
-                    Professional
-                  </span>
-                </div>
+                {languages.map((lang, idx) => (
+                  <div
+                    key={lang.language}
+                    className="flex items-center justify-between p-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06]"
+                  >
+                    <span className="text-white font-medium text-sm">
+                      {lang.language}
+                    </span>
+                    <span
+                      className={`text-xs px-2.5 py-0.5 rounded-full border ${
+                        idx === 0
+                          ? 'bg-[#4F46E5]/20 text-[#00E5FF] border-[#4F46E5]/30'
+                          : 'bg-[#00E5FF]/20 text-white border-[#00E5FF]/30'
+                      }`}
+                    >
+                      {lang.proficiency.split(' / ')[0]}
+                    </span>
+                  </div>
+                ))}
               </div>
             </GlassCard>
           </ScrollReveal>

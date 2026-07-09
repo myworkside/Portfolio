@@ -45,7 +45,6 @@ const contactInfo = [
 const socialLinks = [
   { icon: FaGithub, href: personal.social?.github ?? 'https://github.com/myworkside', label: 'GitHub' },
   { icon: FaLinkedin, href: personal.social?.linkedin ?? 'https://linkedin.com/in/sumitwork', label: 'LinkedIn' },
-  { icon: FaInstagram, href: personal.social?.instagram ?? 'https://instagram.com/sumitupdat', label: 'Instagram' },
 ];
 
 interface FormErrors {
