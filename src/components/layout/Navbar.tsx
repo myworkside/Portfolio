@@ -117,7 +117,7 @@ export default function Navbar() {
       >
         <div
           className={cn(
-            "mx-auto flex max-w-7xl items-center justify-between rounded-2xl px-6 transition-all duration-500",
+            "container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 flex items-center justify-between rounded-2xl transition-all duration-500",
             hasScrolled
               ? "border border-white/[0.06] bg-[#050816]/80 shadow-2xl shadow-black/20 backdrop-blur-xl"
               : "bg-transparent"

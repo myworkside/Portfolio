@@ -45,7 +45,7 @@ export default function Projects() {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#4F46E5] rounded-full blur-3xl opacity-[0.04]" />
       <div className="absolute bottom-1/4 right-0 w-72 h-72 bg-[#00E5FF] rounded-full blur-3xl opacity-[0.04]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 w-full">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 relative z-10 w-full">
         <ScrollReveal>
           <SectionHeading
             title="Featured Projects"
@@ -57,7 +57,7 @@ export default function Projects() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch"
         >
           {featuredProjects.map((project) => (
             <motion.div key={project.id} variants={cardVariants}>
