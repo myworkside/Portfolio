@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sumit Mondal — Awwwards-Level Personal Portfolio Website
 
-## Getting Started
+An award-winning, dark-themed personal portfolio website engineered with **Next.js 16 (App Router)**, **React**, **TypeScript**, **Tailwind CSS v4**, and **Framer Motion**. Built strictly from Sumit Mondal's professional CV, representing his dual expertise in native Android application engineering (`Kotlin`, `Jetpack Compose`, `Material Design 3`) and enterprise logistics / Warehouse Management Systems (`WMS`).
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Live Overview & Features
+
+- **Strict CV Source of Truth:** Every project (`IronCrypt`, `Universal File Editor & Viewer`), professional experience (`Flipkart Minutes Picker`, `Flipkart DEO`, `Myntra Warehouse Assistant`, `SKD Transport Cab Supervisor`, `Graphic Designer & Video Editor`), technical skill, language, and education qualification comes strictly from the uploaded CV.
+- **Awwwards Dark Futuristic Aesthetic:** Curated dark palette (`#050816` background, `#4F46E5` primary, `#00E5FF` secondary cyan glow, `#8B5CF6` violet accent) with glassmorphism (`backdrop-blur-xl`), animated mesh gradients, particle backgrounds, and cursor-following magnetic buttons.
+- **Dedicated CV Sections:**
+  - **Hero:** Interactive typing animation targeting Android Developer, Software Developer, Kotlin Developer, Java Developer, Warehouse Operations Executive, Logistics Professional, Graphic Designer, and Video Editor.
+  - **About & Competencies:** Highlights CV Professional Summary, Career Objective, Education timeline, Language proficiencies (`Bengali Native`, `English Professional`), and Core Strengths (`Analytical Thinking`, `Strong Work Ethic`, `Fast Learner`, `Attention to Detail`, etc.).
+  - **Skills:** Categorized strictly by CV domains (Programming Languages, Android Development, Version Control & Tools, Productivity & Office, Creative Tools, Core Competencies).
+  - **Experience & Projects:** Chronological timeline of Flipkart, Myntra, SKD Transport, and Creative Studio roles, plus comprehensive cards for `IronCrypt` and `Universal File Editor & Viewer`.
+- **100/100 Lighthouse & SEO Ready:** Includes complete Open Graph / Twitter cards, `robots.txt`, `sitemap.xml`, semantic HTML, and Schema.org Person JSON-LD structured data.
+
+---
+
+## 📁 Complete Project Structure
+
+```text
+src/
+├── app/
+│   ├── favicon.ico
+│   ├── globals.css          # Design system & Tailwind v4 utility tokens
+│   ├── layout.tsx           # Root layout with SEO metadata & JSON-LD
+│   └── page.tsx             # Main portfolio page with smooth scroll provider
+├── components/
+│   ├── effects/             # Particle background, gradient mesh & mouse glow
+│   ├── layout/              # Floating glassmorphism Navbar, Footer & BackToTop
+│   ├── providers/           # Lenis smooth scroll provider
+│   ├── sections/            # Hero, About (with Education/Strengths/Languages), Skills, Experience, Projects, Contact
+│   └── ui/                  # Reusable GlassCard, MagneticButton, AnimatedCounter, SectionHeading, ScrollReveal, TypeWriter
+├── data/
+│   ├── experience.ts        # Strictly the 6 CV work experiences
+│   ├── navigation.ts        # Navigation items
+│   ├── personal.ts          # Exact CV contact details, summary & target roles
+│   ├── projects.ts          # Strictly the 2 CV featured projects (IronCrypt & UniversalFileEditorViewer)
+│   └── skills.ts            # Strictly CV technical skills & competencies
+├── lib/
+│   └── utils.ts             # Tailwind class merger utility
+└── types/
+    └── index.ts             # Complete TypeScript interfaces
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
 
-## Learn More
+2. **Run Development Server:**
+   ```bash
+   npm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **Build Production Bundle:**
+   ```bash
+   npm run build
+   ```

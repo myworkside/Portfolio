@@ -1,210 +1,91 @@
 import type { SkillCategory } from '@/types';
 
 export const skillCategories: SkillCategory[] = [
-  // ── Programming Languages ────────────────────────────────────────────────
+  // ── Programming Languages (CV Section) ───────────────────────────────────
   {
     title: 'Programming Languages',
     icon: 'HiOutlineCommandLine',
     description:
-      'Core languages I use daily — from systems programming to modern app development.',
+      'Programming languages listed in my technical skillset.',
     skills: [
       { name: 'Kotlin', icon: 'SiKotlin', proficiency: 92, color: '#7F52FF' },
       { name: 'Java', icon: 'SiOpenjdk', proficiency: 90, color: '#ED8B00' },
-      {
-        name: 'JavaScript',
-        icon: 'SiJavascript',
-        proficiency: 82,
-        color: '#F7DF1E',
-      },
-      { name: 'C++', icon: 'SiCplusplus', proficiency: 80, color: '#00599C' },
-      { name: 'SQL', icon: 'SiPostgresql', proficiency: 80, color: '#4169E1' },
-      { name: 'C', icon: 'SiC', proficiency: 78, color: '#A8B9CC' },
-      {
-        name: 'TypeScript',
-        icon: 'SiTypescript',
-        proficiency: 78,
-        color: '#3178C6',
-      },
-      { name: 'Python', icon: 'SiPython', proficiency: 75, color: '#3776AB' },
+      { name: 'JavaScript', icon: 'SiJavascript', proficiency: 82, color: '#F7DF1E' },
+      { name: 'HTML5', icon: 'SiHtml5', proficiency: 88, color: '#E34F26' },
+      { name: 'CSS3', icon: 'SiCss3', proficiency: 85, color: '#1572B6' },
     ],
   },
 
-  // ── Android Development ──────────────────────────────────────────────────
+  // ── Android Development (CV Section) ─────────────────────────────────────
   {
     title: 'Android Development',
     icon: 'SiAndroid',
     description:
-      'My primary domain — native Android apps with cutting-edge Jetpack libraries.',
+      'Native Android tooling, architecture, and SDK experience.',
     skills: [
-      {
-        name: 'Jetpack Compose',
-        icon: 'SiJetpackcompose',
-        proficiency: 90,
-        color: '#4285F4',
-      },
-      {
-        name: 'Android SDK',
-        icon: 'SiAndroid',
-        proficiency: 90,
-        color: '#34A853',
-      },
-      {
-        name: 'MVVM Architecture',
-        icon: 'SiArchlinux',
-        proficiency: 88,
-        color: '#1793D1',
-      },
-      {
-        name: 'Material Design 3',
-        icon: 'SiMaterialdesign',
-        proficiency: 88,
-        color: '#757575',
-      },
-      {
-        name: 'XML Layouts',
-        icon: 'SiAndroid',
-        proficiency: 85,
-        color: '#34A853',
-      },
-      {
-        name: 'Room Database',
-        icon: 'SiSqlite',
-        proficiency: 82,
-        color: '#003B57',
-      },
-      {
-        name: 'Retrofit',
-        icon: 'SiSquare',
-        proficiency: 80,
-        color: '#48B983',
-      },
-      { name: 'CameraX', icon: 'SiAndroid', proficiency: 78, color: '#34A853' },
-      {
-        name: 'Firebase',
-        icon: 'SiFirebase',
-        proficiency: 75,
-        color: '#FFCA28',
-      },
+      { name: 'Android Studio', icon: 'SiAndroidstudio', proficiency: 92, color: '#3DDC84' },
+      { name: 'Android SDK', icon: 'SiAndroid', proficiency: 90, color: '#34A853' },
+      { name: 'XML Layouts', icon: 'HiOutlineCode', proficiency: 88, color: '#F89820' },
+      { name: 'Material Design', icon: 'SiMaterialdesign', proficiency: 88, color: '#757575' },
+      { name: 'CameraX', icon: 'HiOutlineCamera', proficiency: 85, color: '#4285F4' },
+      { name: 'Google ML Kit', icon: 'SiGoogle', proficiency: 80, color: '#4285F4' },
     ],
   },
 
-  // ── Web Technologies ─────────────────────────────────────────────────────
+  // ── Version Control & Development (CV Section) ───────────────────────────
   {
-    title: 'Web Technologies',
-    icon: 'HiOutlineGlobeAlt',
+    title: 'Version Control & Tools',
+    icon: 'HiOutlineCodeBracket',
     description:
-      'Full-stack web skills for building modern, responsive interfaces and APIs.',
+      'Source control and development IDEs.',
     skills: [
-      { name: 'HTML', icon: 'SiHtml5', proficiency: 88, color: '#E34F26' },
-      { name: 'CSS', icon: 'SiCss3', proficiency: 85, color: '#1572B6' },
-      {
-        name: 'JavaScript',
-        icon: 'SiJavascript',
-        proficiency: 82,
-        color: '#F7DF1E',
-      },
-      {
-        name: 'Tailwind CSS',
-        icon: 'SiTailwindcss',
-        proficiency: 80,
-        color: '#06B6D4',
-      },
-      { name: 'React', icon: 'SiReact', proficiency: 75, color: '#61DAFB' },
-      {
-        name: 'Next.js',
-        icon: 'SiNextdotjs',
-        proficiency: 70,
-        color: '#ffffff',
-      },
-      {
-        name: 'Node.js',
-        icon: 'SiNodedotjs',
-        proficiency: 68,
-        color: '#5FA04E',
-      },
+      { name: 'Git', icon: 'SiGit', proficiency: 88, color: '#F05032' },
+      { name: 'GitHub', icon: 'SiGithub', proficiency: 90, color: '#FFFFFF' },
+      { name: 'Visual Studio Code', icon: 'SiVisualstudiocode', proficiency: 88, color: '#007ACC' },
     ],
   },
 
-  // ── Tools & DevOps ───────────────────────────────────────────────────────
+  // ── Productivity & Office (CV Section) ───────────────────────────────────
   {
-    title: 'Tools & DevOps',
-    icon: 'HiOutlineWrenchScrewdriver',
+    title: 'Productivity & Office',
+    icon: 'HiOutlineBriefcase',
     description:
-      'The developer toolkit — version control, editors, CI/CD, and containerisation.',
+      'Enterprise office and operational productivity suites.',
     skills: [
-      {
-        name: 'Android Studio',
-        icon: 'SiAndroidstudio',
-        proficiency: 92,
-        color: '#3DDC84',
-      },
-      { name: 'GitHub', icon: 'SiGithub', proficiency: 88, color: '#6e5494' },
-      { name: 'Git', icon: 'SiGit', proficiency: 85, color: '#F05032' },
-      {
-        name: 'VS Code',
-        icon: 'SiVisualstudiocode',
-        proficiency: 85,
-        color: '#007ACC',
-      },
-      { name: 'Gradle', icon: 'SiGradle', proficiency: 80, color: '#02303A' },
-      { name: 'Linux', icon: 'SiLinux', proficiency: 75, color: '#FCC624' },
-      { name: 'Figma', icon: 'SiFigma', proficiency: 72, color: '#F24E1E' },
-      { name: 'Docker', icon: 'SiDocker', proficiency: 65, color: '#2496ED' },
+      { name: 'Microsoft Excel', icon: 'HiOutlineTableCells', proficiency: 88, color: '#217346' },
+      { name: 'Microsoft Word', icon: 'HiOutlineDocumentText', proficiency: 90, color: '#2B579A' },
+      { name: 'Microsoft PowerPoint', icon: 'HiOutlinePresentationChartBar', proficiency: 85, color: '#D24726' },
     ],
   },
 
-  // ── Databases ────────────────────────────────────────────────────────────
+  // ── Creative Tools (CV Section) ──────────────────────────────────────────
   {
-    title: 'Databases',
-    icon: 'HiOutlineCircleStack',
+    title: 'Creative Tools',
+    icon: 'HiOutlineSparkles',
     description:
-      'Relational and NoSQL — from on-device SQLite to cloud-hosted solutions.',
+      'Graphic design and professional video editing tools.',
     skills: [
-      { name: 'SQLite', icon: 'SiSqlite', proficiency: 85, color: '#003B57' },
-      { name: 'Room', icon: 'SiAndroid', proficiency: 82, color: '#34A853' },
-      { name: 'MySQL', icon: 'SiMysql', proficiency: 80, color: '#4479A1' },
-      {
-        name: 'Firebase Realtime DB',
-        icon: 'SiFirebase',
-        proficiency: 75,
-        color: '#FFCA28',
-      },
-      {
-        name: 'MongoDB',
-        icon: 'SiMongodb',
-        proficiency: 70,
-        color: '#47A248',
-      },
+      { name: 'Adobe Photoshop', icon: 'SiAdobephotoshop', proficiency: 85, color: '#31A8FF' },
+      { name: 'Adobe Premiere Pro', icon: 'SiAdobepremierepro', proficiency: 82, color: '#9999FF' },
+      { name: 'DaVinci Resolve', icon: 'HiOutlineFilm', proficiency: 80, color: '#FF5722' },
     ],
   },
 
-  // ── Creative & Design ────────────────────────────────────────────────────
+  // ── Core Competencies & Soft Skills (CV Section) ─────────────────────────
   {
-    title: 'Creative & Design',
-    icon: 'HiOutlinePaintBrush',
+    title: 'Core Competencies',
+    icon: 'HiOutlineCheckBadge',
     description:
-      'Design sensibility that bridges aesthetics and usability.',
+      'Core competencies and professional strengths from my CV.',
     skills: [
-      { name: 'Canva', icon: 'SiCanva', proficiency: 80, color: '#00C4CC' },
-      {
-        name: 'UI/UX Design',
-        icon: 'SiFigma',
-        proficiency: 75,
-        color: '#F24E1E',
-      },
-      { name: 'Figma', icon: 'SiFigma', proficiency: 72, color: '#F24E1E' },
-      {
-        name: 'Adobe Photoshop',
-        icon: 'SiAdobephotoshop',
-        proficiency: 68,
-        color: '#31A8FF',
-      },
-      {
-        name: 'Video Editing',
-        icon: 'SiAdobepremierepro',
-        proficiency: 65,
-        color: '#9999FF',
-      },
+      { name: 'Android Application Dev', icon: 'SiAndroid', proficiency: 90, color: '#3DDC84' },
+      { name: 'Software Eng Fundamentals', icon: 'HiOutlineCpuChip', proficiency: 88, color: '#4F46E5' },
+      { name: 'Warehouse Operations', icon: 'HiOutlineCube', proficiency: 92, color: '#00E5FF' },
+      { name: 'Inventory Management', icon: 'HiOutlineClipboardDocumentCheck', proficiency: 90, color: '#34A853' },
+      { name: 'Data Analysis', icon: 'HiOutlineChartBar', proficiency: 85, color: '#8B5CF6' },
+      { name: 'Process Optimization', icon: 'HiOutlineCog6Tooth', proficiency: 88, color: '#F59E0B' },
+      { name: 'Problem Solving', icon: 'HiOutlineLightBulb', proficiency: 90, color: '#EC4899' },
+      { name: 'Team Collaboration', icon: 'HiOutlineUsers', proficiency: 92, color: '#10B981' },
     ],
   },
 ];

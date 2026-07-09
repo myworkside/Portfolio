@@ -22,10 +22,13 @@ export const personalInfo: PersonalInfo = {
   lastName: 'Mondal',
   roles: [
     'Android Developer',
-    'Kotlin Engineer',
-    'Software Engineer',
-    'Creative Designer',
-    'Operations Specialist',
+    'Software Developer',
+    'Kotlin Developer',
+    'Java Developer',
+    'Warehouse Operations Executive',
+    'Logistics Professional',
+    'Graphic Designer',
+    'Video Editor',
   ],
   social: {
     github: 'https://github.com/myworkside',

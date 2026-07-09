@@ -85,6 +85,30 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta name="theme-color" content="#050816" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Sumit Mondal",
+              jobTitle: "Android Developer & Software Engineer",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Hooghly",
+                addressRegion: "West Bengal",
+                addressCountry: "India",
+              },
+              telephone: "+91 7432838409",
+              email: "mondalsumit6966@gmail.com",
+              url: "https://sumitmondal.dev",
+              sameAs: [
+                "https://github.com/myworkside",
+                "https://linkedin.com/in/sumitwork",
+              ],
+            }),
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col bg-background text-text font-sans overflow-x-hidden">
         {/* Skip to content for accessibility */}

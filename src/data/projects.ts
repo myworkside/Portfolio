@@ -1,7 +1,7 @@
 import type { Project } from '@/types';
 
 export const projects: Project[] = [
-  // ── 1. IronCrypt ────────────────────────────────────────────────────────
+  // ── 1. IronCrypt — Secure File Management Application (CV Project 1) ─────
   {
     id: 'ironcrypt',
     title: 'IronCrypt',
@@ -15,9 +15,7 @@ export const projects: Project[] = [
       'Android Studio',
       'Material Design 3',
       'Git',
-      'Android SDK',
-      'Coroutines',
-      'Room Database',
+      'GitHub',
     ],
     features: [
       'Offline-first architecture ensuring maximum data privacy and zero cloud leakage',
@@ -43,104 +41,40 @@ export const projects: Project[] = [
     featured: true,
   },
 
-  // ── 2. UniversalFileEditorViewer ─────────────────────────────────────────
+  // ── 2. Universal File Editor & Viewer (CV Project 2) ─────────────────────
   {
     id: 'universal-file-editor-viewer',
-    title: 'UniversalFileEditorViewer',
-    subtitle: 'All-in-One Android File Manager',
+    title: 'Universal File Editor & Viewer',
+    subtitle: 'Multi-Format Modular Desktop & File Utility',
     description:
-      'A feature-packed Android file manager that combines file viewing, editing, a private vault, wireless sharing, storage analysis, and developer tools into a single, beautifully crafted application.',
+      'Application designed to view and manage multiple file formats using a modular architecture with offline functionality and extensible design.',
     longDescription:
-      'UniversalFileEditorViewer is the Swiss Army knife of Android file management. Built entirely with Kotlin and Jetpack Compose, it follows the MVVM architecture pattern to keep the codebase clean and testable. Users can browse, view, and edit virtually any file type — from documents and images to code files — all within one app. The integrated Private Vault uses biometric and PIN-based encryption to keep sensitive files secure. Wireless file sharing lets users transfer files across devices on the same network without cables, while the built-in Storage Analyzer provides detailed breakdowns of disk usage with interactive charts.',
+      'Universal File Editor & Viewer is designed to view and manage multiple file formats using a clean, modular architecture. Developed with Java and managed via Git and GitHub, it provides robust multi-format file support, complete offline functionality, and an extensible design pattern that allows easy expansion for additional file types.',
     technologies: [
-      'Kotlin',
-      'Jetpack Compose',
-      'MVVM',
-      'Room Database',
-      'Material Design 3',
-      'Coroutines',
-      'Hilt',
+      'Java',
+      'Git',
+      'GitHub',
+      'Modular Architecture',
     ],
     features: [
-      'Browse, view, and edit files with syntax highlighting for 30+ languages',
-      'Private Vault with biometric authentication and AES-256 encryption',
-      'Wireless file sharing via Wi-Fi Direct and local HTTP server',
-      'Storage Analyzer with interactive pie-charts and duplicate finder',
-      'Developer tools — JSON/XML formatter, hex editor, log viewer',
+      'Multi-format file support for viewing and managing diverse file structures',
+      'Modular architecture ensuring clean separation of parsing and UI layers',
+      '100% offline functionality — operates securely without external connectivity',
+      'Extensible design supporting streamlined integration of new format handlers',
     ],
     githubUrl: 'https://github.com/myworkside/UniversalFileEditorViewer',
     stars: 10,
     license: 'MIT',
     topics: [
-      'android',
-      'kotlin',
-      'developer-tools',
-      'file-explorer',
-      'file-manager',
-      'android-app',
-      'jetpack-compose',
+      'java',
+      'desktop-app',
+      'file-viewer',
+      'modular-architecture',
+      'offline',
     ],
     color: '#4F46E5',
     gradient: 'linear-gradient(135deg, #4F46E5 0%, #00E5FF 100%)',
     status: 'maintained',
     featured: true,
-  },
-
-  // ── 3. MotionCountingApp ─────────────────────────────────────────────────
-  {
-    id: 'motion-counting-app',
-    title: 'MotionCountingApp',
-    subtitle: 'Real-Time Motion Counter with CameraX',
-    description:
-      'An Android app built with Kotlin and CameraX that counts movements in real time using a live camera preview — great for fitness tracking, manufacturing QA, and experimental computer-vision projects.',
-    longDescription:
-      'MotionCountingApp leverages the CameraX API and frame-by-frame image analysis to detect and count movements captured through the device camera in real time. The algorithm compares consecutive frames using pixel-intensity differencing and contour detection to isolate meaningful motion events from background noise.',
-    technologies: [
-      'Kotlin',
-      'CameraX',
-      'Android SDK',
-      'Coroutines',
-      'Material Design 3',
-    ],
-    features: [
-      'Real-time motion detection via CameraX Image Analysis pipeline',
-      'Configurable sensitivity slider for different use-case environments',
-      'Live camera preview with translucent counter overlay',
-      'On-device processing — fully offline, no cloud dependency',
-    ],
-    githubUrl: 'https://github.com/myworkside/MotionCountingApp',
-    color: '#00E5FF',
-    gradient: 'linear-gradient(135deg, #00E5FF 0%, #4F46E5 100%)',
-    status: 'completed',
-    featured: true,
-  },
-
-  // ── 4. CountingApp ───────────────────────────────────────────────────────
-  {
-    id: 'counting-app',
-    title: 'CountingApp',
-    subtitle: 'Simple & Elegant Counting Tool',
-    description:
-      'A clean, user-friendly Android counting tool that helps users count, track numbers, and manage tasks efficiently — built with Java for maximum device compatibility.',
-    longDescription:
-      'CountingApp is a minimalist yet thoughtful counting utility designed for everyday use. Whether you are tracking inventory, counting laps, logging daily habits, or managing counts, the app provides a frictionless experience with accessible tap targets and persistent state.',
-    technologies: [
-      'Java',
-      'Android SDK',
-      'XML Layouts',
-      'SharedPreferences',
-      'Material Design',
-    ],
-    features: [
-      'Increment, decrement, and reset with large accessible tap targets',
-      'Multiple independent counters with custom labels and colours',
-      'Persistent state via SharedPreferences — never lose a count',
-      'Lightweight APK (< 3 MB) compatible with Android 5.0+',
-    ],
-    githubUrl: 'https://github.com/myworkside/CountingApp',
-    color: '#34A853',
-    gradient: 'linear-gradient(135deg, #34A853 0%, #4285F4 100%)',
-    status: 'completed',
-    featured: false,
   },
 ];

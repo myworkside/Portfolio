@@ -205,6 +205,87 @@ export default function About() {
           </motion.div>
         </motion.div>
 
+        {/* Education, Languages & Professional Strengths Grid */}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Education */}
+          <ScrollReveal delay={0.1}>
+            <GlassCard className="p-6 h-full space-y-4">
+              <h3 className="text-sm uppercase tracking-widest text-[#4F46E5] font-semibold">
+                Education
+              </h3>
+              <div className="space-y-3">
+                <div className="border-l-2 border-[#4F46E5] pl-3">
+                  <h4 className="text-white font-medium text-sm">
+                    Higher Secondary Examination
+                  </h4>
+                  <p className="text-xs text-[#94A3B8]">
+                    W.B.S.C. Vocational Education — Passed
+                  </p>
+                </div>
+                <div className="border-l-2 border-[#00E5FF] pl-3">
+                  <h4 className="text-white font-medium text-sm">
+                    Secondary Examination
+                  </h4>
+                  <p className="text-xs text-[#94A3B8]">
+                    W.B.B.S.E — Passed
+                  </p>
+                </div>
+              </div>
+            </GlassCard>
+          </ScrollReveal>
+
+          {/* Languages */}
+          <ScrollReveal delay={0.2}>
+            <GlassCard className="p-6 h-full space-y-4">
+              <h3 className="text-sm uppercase tracking-widest text-[#00E5FF] font-semibold">
+                Languages
+              </h3>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between p-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+                  <span className="text-white font-medium text-sm">Bengali</span>
+                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#4F46E5]/20 text-[#00E5FF] border border-[#4F46E5]/30">
+                    Native
+                  </span>
+                </div>
+                <div className="flex items-center justify-between p-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+                  <span className="text-white font-medium text-sm">English</span>
+                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#00E5FF]/20 text-white border border-[#00E5FF]/30">
+                    Professional
+                  </span>
+                </div>
+              </div>
+            </GlassCard>
+          </ScrollReveal>
+
+          {/* Professional Strengths */}
+          <ScrollReveal delay={0.3}>
+            <GlassCard className="p-6 h-full space-y-4">
+              <h3 className="text-sm uppercase tracking-widest text-[#8B5CF6] font-semibold">
+                Professional Strengths
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  'Analytical Thinking',
+                  'Strong Work Ethic',
+                  'Fast Learner',
+                  'Attention to Detail',
+                  'Adaptability',
+                  'Self-Motivated',
+                  'Quality-Oriented',
+                  'Work Under Pressure',
+                ].map((strength) => (
+                  <span
+                    key={strength}
+                    className="text-xs px-2.5 py-1 rounded-md bg-[#8B5CF6]/10 text-[#E2E8F0] border border-[#8B5CF6]/30 hover:border-[#8B5CF6] transition-colors"
+                  >
+                    {strength}
+                  </span>
+                ))}
+              </div>
+            </GlassCard>
+          </ScrollReveal>
+        </div>
+
         {/* Bottom Stats Row */}
         <motion.div
           variants={containerVariants}
