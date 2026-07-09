@@ -7,97 +7,92 @@ import {
   SiJavascript,
   SiPython,
   SiKotlin,
-  SiDart,
   SiCplusplus,
-  SiRust,
   SiReact,
   SiNextdotjs,
   SiTailwindcss,
-  SiFramer,
   SiHtml5,
-  SiVuedotjs,
+  SiCss,
   SiNodedotjs,
-  SiExpress,
   SiPostgresql,
-  SiMongodb,
-  SiFirebase,
-  SiGraphql,
   SiAndroid,
   SiJetpackcompose,
-  SiFlutter,
-  SiDocker,
   SiGit,
-  SiGithubactions,
-  SiLinux,
   SiAndroidstudio,
-  SiFigma,
-  SiPostman,
+  SiGoogle,
 } from 'react-icons/si';
 import {
-  FaPaintBrush,
-  FaSearch,
-  FaDraftingCompass,
-  FaLayerGroup,
-  FaMobile,
-  FaCode,
-  FaJava,
-  FaAws,
-} from 'react-icons/fa';
+  HiOutlineCommandLine,
+  HiOutlineCodeBracket,
+  HiOutlineBriefcase,
+  HiOutlineSparkles,
+  HiOutlineCheckBadge,
+  HiOutlineCamera,
+  HiOutlineDocumentText,
+  HiOutlineTableCells,
+  HiOutlinePresentationChartBar,
+  HiOutlineFilm,
+  HiOutlineCpuChip,
+  HiOutlineCube,
+  HiOutlineClipboardDocumentCheck,
+  HiOutlineChartBar,
+  HiOutlineCog6Tooth,
+  HiOutlineLightBulb,
+  HiOutlineUsers,
+  HiOutlineClock,
+  HiOutlineAcademicCap,
+} from 'react-icons/hi2';
+import { FaJava } from 'react-icons/fa';
 import { GlassCard, SectionHeading, ScrollReveal } from '@/components/ui';
-import { skills } from '@/data';
-import type { SkillCategory } from '@/types';
+import { skillCategories } from '@/data/skills';
+import type { Skill } from '@/types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const iconMap: Record<string, any> = {
-  TypeScript: SiTypescript,
-  JavaScript: SiJavascript,
-  Python: SiPython,
+  // Programming
   Kotlin: SiKotlin,
   Java: FaJava,
-  Dart: SiDart,
-  'C++': SiCplusplus,
-  Rust: SiRust,
-  React: SiReact,
-  'Next.js': SiNextdotjs,
-  'Tailwind CSS': SiTailwindcss,
-  'Framer Motion': SiFramer,
-  'HTML/CSS': SiHtml5,
-  'Vue.js': SiVuedotjs,
-  'Node.js': SiNodedotjs,
-  'Express.js': SiExpress,
-  PostgreSQL: SiPostgresql,
-  MongoDB: SiMongodb,
-  Firebase: SiFirebase,
-  GraphQL: SiGraphql,
-  'Android (Kotlin)': SiAndroid,
-  'Jetpack Compose': SiJetpackcompose,
-  Flutter: SiFlutter,
-  'React Native': FaMobile,
-  Docker: SiDocker,
-  'Git & GitHub': SiGit,
-  'CI/CD': SiGithubactions,
-  AWS: FaAws,
-  Linux: SiLinux,
-  'VS Code': FaCode,
+  JavaScript: SiJavascript,
+  HTML5: SiHtml5,
+  CSS3: SiCss,
+
+  // Android
   'Android Studio': SiAndroidstudio,
-  Figma: SiFigma,
-  Postman: SiPostman,
-  'UI Design': FaPaintBrush,
-  'UX Research': FaSearch,
-  Prototyping: FaDraftingCompass,
-  'Design Systems': FaLayerGroup,
+  'Android SDK': SiAndroid,
+  XML: HiOutlineCodeBracket,
+  'Material Design': HiOutlineSparkles,
+  CameraX: HiOutlineCamera,
+  'Google ML Kit': SiGoogle,
+
+  // Tools
+  Git: SiGit,
+  GitHub: SiGit,
+  'Visual Studio Code': HiOutlineCodeBracket,
+
+  // Office
+  'Microsoft Word': HiOutlineDocumentText,
+  'Microsoft Excel': HiOutlineTableCells,
+  'Microsoft PowerPoint': HiOutlinePresentationChartBar,
+
+  // Creative
+  'Adobe Photoshop': HiOutlineSparkles,
+  'Adobe Premiere Pro': HiOutlineFilm,
+  'DaVinci Resolve': HiOutlineFilm,
+
+  // Core Competencies
+  'Android Application Development': SiAndroid,
+  'Software Engineering Fundamentals': HiOutlineCpuChip,
+  'Warehouse Operations': HiOutlineCube,
+  'Inventory Management': HiOutlineClipboardDocumentCheck,
+  'Data Analysis': HiOutlineChartBar,
+  'Process Optimization': HiOutlineCog6Tooth,
+  'Problem Solving': HiOutlineLightBulb,
+  'Team Collaboration': HiOutlineUsers,
+  'Time Management': HiOutlineClock,
+  Adaptability: HiOutlineSparkles,
+  'Continuous Learning': HiOutlineAcademicCap,
 };
 /* eslint-enable @typescript-eslint/no-explicit-any */
-
-const categories: string[] = [
-  'Programming',
-  'Frontend',
-  'Backend',
-  'Mobile',
-  'DevOps',
-  'Tools',
-  'Design',
-];
 
 function SkillProgressBar({ proficiency, inView }: { proficiency: number; inView: boolean }) {
   return (
@@ -116,14 +111,19 @@ function SkillProgressBar({ proficiency, inView }: { proficiency: number; inView
 }
 
 export default function Skills() {
-  const [activeCategory, setActiveCategory] = useState<string>('Programming');
+  const categories = useMemo(() => skillCategories.map((cat) => cat.title), []);
+  const [activeCategory, setActiveCategory] = useState<string>(
+    categories[0] ?? 'Programming Languages'
+  );
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
-  const filteredSkills = useMemo(
-    () => skills.filter((s) => s.category === activeCategory),
+  const activeCategoryData = useMemo(
+    () => skillCategories.find((s) => s.title === activeCategory) ?? skillCategories[0],
     [activeCategory]
   );
+
+  const filteredSkills = activeCategoryData?.skills ?? [];
 
   return (
     <section
@@ -138,7 +138,10 @@ export default function Skills() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <ScrollReveal>
-          <SectionHeading title="Skills & Expertise" subtitle="What I bring to the table" />
+          <SectionHeading
+            title="Skills & Expertise"
+            subtitle="Technical Skills & Core Competencies from my CV"
+          />
         </ScrollReveal>
 
         {/* Category Tabs */}

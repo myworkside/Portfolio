@@ -29,7 +29,7 @@ export interface PersonalInfo {
   social?: {
     github: string;
     linkedin: string;
-    instagram: string;
+    instagram?: string;
     twitter?: string;
   };
   socials?: SocialLinkItem[] | Record<string, string>;
@@ -65,7 +65,7 @@ export interface SkillCategoryGroup {
   skills: SkillItem[];
 }
 
-export type SkillCategory = SkillCategoryGroup | string;
+export type SkillCategory = SkillCategoryGroup;
 
 export interface Skill {
   name: string;

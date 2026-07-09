@@ -2,9 +2,9 @@ import type { PersonalInfo, Stat } from '@/types';
 
 export const personalInfo: PersonalInfo = {
   name: 'Sumit Mondal',
-  title: 'Android Developer & Software Engineer',
+  title: 'Android Application Developer | Warehouse Operations & Logistics Professional',
   tagline:
-    'Building secure, scalable Android applications & efficient operational solutions',
+    'Results-driven professional with experience in Android application development, warehouse operations, logistics, transportation management, and data processing.',
   bio: [
     'Results-driven professional with experience in Android application development, warehouse operations, logistics, transportation management, and data processing. Proven ability to develop secure, scalable Android applications while maintaining operational excellence in fast-paced environments.',
     'Strong foundation in Kotlin, Java, Android Studio, Git, and modern software development practices, complemented by practical experience in inventory management and logistics coordination. Passionate about solving real-world problems through technology and continuously improving technical and professional skills.',
@@ -12,7 +12,7 @@ export const personalInfo: PersonalInfo = {
   mission:
     'To contribute to an innovative organization where I can apply my technical expertise in Android development along with my operational experience in logistics and warehouse management to build efficient solutions, improve business processes, and grow as a software professional.',
   vision:
-    'To build world-class mobile experiences and software automation tools that bridge the gap between physical operations and high-tech digital workflows.',
+    'To contribute to an innovative organization where I can apply my technical expertise in Android development along with my operational experience in logistics and warehouse management to build efficient solutions, improve business processes, and grow as a software professional.',
   email: 'mondalsumit6966@gmail.com',
   phone: '+91 7432838409',
   location: 'Itachuna, Hooghly, West Bengal, India',
@@ -21,44 +21,41 @@ export const personalInfo: PersonalInfo = {
   firstName: 'Sumit',
   lastName: 'Mondal',
   roles: [
-    'Android Developer',
-    'Software Developer',
-    'Kotlin Developer',
-    'Java Developer',
-    'Warehouse Operations Executive',
-    'Logistics Professional',
+    'Android Application Developer',
+    'Warehouse Operations Professional',
+    'Logistics Coordinator',
+    'Data Entry Operator (DEO)',
     'Graphic Designer',
     'Video Editor',
   ],
   social: {
     github: 'https://github.com/myworkside',
     linkedin: 'https://linkedin.com/in/sumitwork',
-    instagram: 'https://instagram.com/sumitupdat',
   },
   stats: {
-    yearsExperience: 3,
-    projectsCompleted: 20,
-    githubStars: 15,
-    happyClients: 10,
+    yearsExperience: 6,
+    projectsCompleted: 2,
+    githubStars: 11,
+    happyClients: 5,
   },
   highlights: [
     {
       year: 'Android Dev',
-      title: 'Secure Mobile Architectures',
+      title: 'Android Application Development',
       description:
-        'Developed offline-first applications like IronCrypt with modern Material Design and clean modular structures.',
+        'Featured projects IronCrypt and Universal File Editor & Viewer built with Kotlin, Java, Android Studio, Material Design, and Git.',
     },
     {
       year: 'Operations',
-      title: 'Logistics & WMS Excellence',
+      title: 'Warehouse Operations & Logistics',
       description:
-        'Practical expertise with Warehouse Management Systems, barcode scanners, and high-accuracy data workflows.',
+        'Hands-on operational experience at Flipkart, Myntra, and SKD Transport with Warehouse Management Systems (WMS), barcode scanners, and fleet coordination.',
     },
     {
       year: 'Creative',
-      title: 'Digital Branding & Media',
+      title: 'Graphic Design & Video Editing',
       description:
-        'Professional experience in graphic design and commercial video editing for digital campaigns.',
+        'Professional creative experience at Life Changing Physical Academy and Unique Images Studio using Adobe Photoshop, Premiere Pro, and DaVinci Resolve.',
     },
   ],
   socials: [
@@ -76,44 +73,34 @@ export const personalInfo: PersonalInfo = {
       username: 'sumitwork',
       color: '#0A66C2',
     },
-    {
-      platform: 'Instagram',
-      url: 'https://instagram.com/sumitupdat',
-      icon: 'SiInstagram',
-      username: 'sumitupdat',
-      color: '#E4405F',
-    },
   ],
 };
 
-// ─── Standalone stats array for the counter section ──────────────────────────
+// ─── Standalone stats array strictly from CV facts ──────────────────────────
 
 export const stats: Stat[] = [
   {
-    label: 'Years Experience',
-    value: personalInfo.stats.yearsExperience ?? 3,
-    suffix: '+',
+    label: 'Work Experiences Listed',
+    value: 6,
+    suffix: '',
     icon: 'HiOutlineBriefcase',
   },
   {
-    label: 'Projects Completed',
-    value:
-      personalInfo.stats.projectsCompleted ??
-      personalInfo.stats.projects ??
-      20,
-    suffix: '+',
+    label: 'Featured Projects',
+    value: 2,
+    suffix: '',
     icon: 'HiOutlineCode',
   },
   {
-    label: 'GitHub Stars',
-    value: personalInfo.stats.githubStars ?? 15,
-    suffix: '+',
-    icon: 'HiOutlineStar',
+    label: 'Core Competencies',
+    value: 11,
+    suffix: '',
+    icon: 'HiOutlineCheckBadge',
   },
   {
-    label: 'Happy Clients & Teams',
-    value: personalInfo.stats.happyClients ?? 10,
-    suffix: '+',
-    icon: 'HiOutlineUsers',
+    label: 'Technical Skill Domains',
+    value: 5,
+    suffix: '',
+    icon: 'HiOutlineAcademicCap',
   },
 ];
