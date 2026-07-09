@@ -1,86 +1,50 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { navLinks } from "@/data/navigation";
+import { navigation as navLinks } from "@/data";
 import { cn } from "@/lib/utils";
 
-export default function Navbar() {
-  const [activeSection, setActiveSection] = useState("home");
+export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
-  const { scrollYProgress, scrollY } = useScroll();
+  const { scrollYProgress } = useScroll();
 
-  // Hide on scroll down, show on scroll up
-  const lastScrollY = useState(0);
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = lastScrollY[0];
-    if (latest > previous && latest > 100) {
-      setIsVisible(false);
-      setIsMenuOpen(false);
-    } else {
-      setIsVisible(true);
-    }
-    lastScrollY[0] = latest;
-    setHasScrolled(latest > 20);
-  });
-
-  // IntersectionObserver for active section detection
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setHasScrolled(currentScrollY > 20);
 
-    navLinks.forEach(({ sectionId }) => {
-      if (!sectionId) return;
-      const el = document.getElementById(sectionId);
-      if (!el) return;
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setActiveSection(sectionId);
-            }
-          });
-        },
-        { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
-      );
-
-      observer.observe(el);
-      observers.push(observer);
-    });
-
-    return () => observers.forEach((obs) => obs.disconnect());
-  }, []);
-
-  const handleNavClick = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-      e.preventDefault();
-      setIsMenuOpen(false);
-      const targetId = href.replace("#", "");
-      const el = document.getElementById(targetId);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
       }
-    },
-    []
-  );
+      setLastScrollY(currentScrollY);
 
-  const handleCtaClick = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>) => {
-      e.preventDefault();
-      setIsMenuOpen(false);
-      const el = document.getElementById("contact");
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+      const sections = navLinks.map((link) => link.sectionId);
+      for (const sectionId of sections.slice().reverse()) {
+        if (!sectionId) continue;
+        const el = document.getElementById(sectionId);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 200) {
+            setActiveSection(sectionId);
+            break;
+          }
+        }
       }
-    },
-    []
-  );
+    };
 
-  // Lock body scroll when mobile menu is open
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -92,9 +56,34 @@ export default function Navbar() {
     };
   }, [isMenuOpen]);
 
+  const handleNavClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      e.preventDefault();
+      setIsMenuOpen(false);
+
+      const targetId = href.replace("#", "");
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    },
+    []
+  );
+
+  const handleCtaClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      setIsMenuOpen(false);
+      const contactEl = document.getElementById("contact");
+      if (contactEl) {
+        contactEl.scrollIntoView({ behavior: "smooth" });
+      }
+    },
+    []
+  );
+
   return (
     <>
-      {/* Scroll progress bar */}
       <motion.div
         className="fixed left-0 right-0 top-0 z-[60] h-[2px] origin-left"
         style={{
@@ -103,21 +92,18 @@ export default function Navbar() {
         }}
       />
 
-      {/* Navbar */}
       <motion.header
         initial={{ y: 0 }}
         animate={{ y: isVisible ? 0 : -100 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className={cn(
           "fixed left-0 right-0 top-[2px] z-50 transition-all duration-300",
-          hasScrolled
-            ? "py-3"
-            : "py-5"
+          hasScrolled ? "py-3" : "py-5"
         )}
       >
         <div
           className={cn(
-            "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-10 flex items-center justify-between rounded-2xl transition-all duration-500",
+            "max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 xl:px-10 flex items-center justify-between rounded-2xl transition-all duration-500",
             hasScrolled
               ? "border border-white/[0.06] bg-[#050816]/80 shadow-2xl shadow-black/20 backdrop-blur-xl"
               : "bg-transparent"
@@ -126,26 +112,24 @@ export default function Navbar() {
             padding: hasScrolled ? "12px 24px" : "8px 24px",
           }}
         >
-          {/* Logo */}
           <a
             href="#hero"
             onClick={(e) => handleNavClick(e, "#hero")}
-            className="relative z-10 select-none"
+            className="relative z-10 select-none whitespace-nowrap"
           >
             <span
-              className="text-2xl font-bold tracking-tight"
+              className="text-lg sm:text-xl font-bold tracking-tight text-white"
               style={{
-                background: "linear-gradient(135deg, #4F46E5, #00E5FF)",
+                background:
+                  "linear-gradient(135deg, #4F46E5 0%, #00E5FF 50%, #8B5CF6 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
-                filter: "drop-shadow(0 0 20px rgba(79,70,229,0.4))",
               }}
             >
-              SM
+              Sumit.dev
             </span>
           </a>
 
-          {/* Desktop nav links */}
           <nav className="hidden items-center gap-1 lg:flex">
             {navLinks.map(({ label, href, sectionId }) => (
               <a
@@ -160,7 +144,6 @@ export default function Navbar() {
                 )}
               >
                 {label}
-                {/* Hover underline */}
                 <span
                   className={cn(
                     "absolute bottom-0 left-1/2 h-[2px] -translate-x-1/2 rounded-full transition-all duration-300",
@@ -169,31 +152,27 @@ export default function Navbar() {
                       : "w-0 group-hover:w-3/5"
                   )}
                   style={{
-                    background:
-                      "linear-gradient(90deg, #4F46E5, #00E5FF)",
+                    background: "linear-gradient(90deg, #4F46E5, #00E5FF)",
                   }}
                 />
               </a>
             ))}
           </nav>
 
-          {/* Desktop CTA */}
           <a
             href="#contact"
             onClick={handleCtaClick}
-            className="group relative hidden overflow-hidden rounded-full px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-[#4F46E5]/30 lg:block"
+            className="group relative hidden overflow-hidden rounded-full px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-[#4F46E5]/30 lg:block whitespace-nowrap"
             style={{
               background: "linear-gradient(135deg, #4F46E5, #8B5CF6)",
             }}
           >
             <span className="relative z-10">Let&apos;s Talk</span>
-            <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
           </a>
 
-          {/* Mobile hamburger */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="relative z-[70] flex h-12 w-12 items-center justify-center rounded-lg text-white lg:hidden hover:bg-white/[0.06] transition-colors"
+            className="relative z-[70] flex h-11 w-11 items-center justify-center rounded-lg text-white lg:hidden hover:bg-white/[0.06] transition-colors"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             <AnimatePresence mode="wait">
@@ -223,7 +202,6 @@ export default function Navbar() {
         </div>
       </motion.header>
 
-      {/* Mobile full-screen menu overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -243,38 +221,32 @@ export default function Navbar() {
                   key={sectionId}
                   href={href}
                   onClick={(e) => handleNavClick(e, href)}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{
-                    duration: 0.3,
-                    delay: index * 0.08,
-                    ease: "easeOut",
-                  }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ delay: index * 0.05 + 0.1, duration: 0.3 }}
                   className={cn(
-                    "px-6 py-4 text-3xl font-medium transition-colors duration-300",
+                    "px-8 py-3 text-2xl font-bold tracking-tight transition-colors",
                     activeSection === sectionId
                       ? "text-white"
-                      : "text-[#94A3B8]"
+                      : "text-[#94A3B8] hover:text-white"
                   )}
                 >
                   {label}
                 </motion.a>
               ))}
 
-              {/* Mobile CTA */}
               <motion.a
                 href="#contact"
                 onClick={handleCtaClick}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
+                exit={{ opacity: 0, y: 10 }}
                 transition={{
+                  delay: navLinks.length * 0.05 + 0.15,
                   duration: 0.3,
-                  delay: navLinks.length * 0.08,
-                  ease: "easeOut",
                 }}
-                className="mt-6 rounded-full px-10 py-3.5 text-lg font-semibold text-white"
+                className="mt-6 rounded-full px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-[#4F46E5]/30"
                 style={{
                   background: "linear-gradient(135deg, #4F46E5, #8B5CF6)",
                 }}
@@ -288,3 +260,5 @@ export default function Navbar() {
     </>
   );
 }
+
+export default Navbar;

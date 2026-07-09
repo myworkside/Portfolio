@@ -1,416 +1,200 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { useState, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import {
   FaEnvelope,
-  FaPhone,
+  FaPhoneAlt,
   FaMapMarkerAlt,
-  FaGithub,
-  FaLinkedin,
-  FaInstagram,
   FaPaperPlane,
-  FaCheck,
+  FaCheckCircle,
 } from 'react-icons/fa';
 import {
   GlassCard,
-  MagneticButton,
   SectionHeading,
+  MagneticButton,
   ScrollReveal,
 } from '@/components/ui';
 import { personal } from '@/data';
-import type { ContactFormData } from '@/types';
 
-const contactInfo = [
+const contactItems = [
   {
-    icon: FaEnvelope,
+    icon: <FaEnvelope className="text-xl text-[#4F46E5]" />,
     label: 'Email',
     value: personal.email,
     href: `mailto:${personal.email}`,
   },
   {
-    icon: FaPhone,
+    icon: <FaPhoneAlt className="text-xl text-[#00E5FF]" />,
     label: 'Phone',
     value: personal.phone,
     href: `tel:${personal.phone.replace(/\s/g, '')}`,
   },
   {
-    icon: FaMapMarkerAlt,
+    icon: <FaMapMarkerAlt className="text-xl text-[#8B5CF6]" />,
     label: 'Location',
     value: personal.location,
-    href: '#',
+    href: '#contact',
   },
 ];
 
-const socialLinks = [
-  { icon: FaGithub, href: personal.social?.github ?? 'https://github.com/myworkside', label: 'GitHub' },
-  { icon: FaLinkedin, href: personal.social?.linkedin ?? 'https://linkedin.com/in/sumitwork', label: 'LinkedIn' },
-];
-
-interface FormErrors {
-  name?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
-}
-
-const initialFormState: ContactFormData = {
-  name: '',
-  email: '',
-  subject: '',
-  message: '',
-};
-
-export default function Contact() {
+export function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+  const isInView = useInView(sectionRef, { once: false, amount: 0.15 });
 
-  const [formData, setFormData] = useState<ContactFormData>(initialFormState);
-  const [errors, setErrors] = useState<FormErrors>({});
+  const [formState, setFormState] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const validate = useCallback((): FormErrors => {
-    const errs: FormErrors = {};
-    if (!formData.name.trim()) errs.name = 'Name is required';
-    if (!formData.email.trim()) {
-      errs.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      errs.email = 'Please enter a valid email';
-    }
-    if (!formData.subject.trim()) errs.subject = 'Subject is required';
-    if (!formData.message.trim()) {
-      errs.message = 'Message is required';
-    } else if (formData.message.trim().length < 10) {
-      errs.message = 'Message must be at least 10 characters';
-    }
-    return errs;
-  }, [formData]);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear error on change
-    if (errors[name as keyof FormErrors]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
     setIsSubmitting(true);
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData(initialFormState);
-    setTimeout(() => setIsSubmitted(false), 4000);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      setFormState({ name: '', email: '', message: '' });
+      setTimeout(() => setIsSubmitted(false), 5000);
+    }, 1200);
   };
 
   return (
     <section
-      id="contact"
       ref={sectionRef}
-      className="w-full relative py-24 md:py-32 overflow-hidden"
+      id="contact"
+      className="w-full relative py-24 lg:py-32 overflow-hidden"
       style={{ background: '#050816' }}
     >
-      {/* Bg accents */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-[#4F46E5] rounded-full blur-3xl opacity-[0.05]" />
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#8B5CF6] rounded-full blur-3xl opacity-[0.05]" />
 
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-10 relative z-10">
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 xl:px-10 relative z-10">
         <ScrollReveal>
           <SectionHeading title="Get in Touch" subtitle="Let's work together" />
         </ScrollReveal>
 
+        {/* Desktop 50/50: Left Column Contact Information | Right Column Form */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.6 }}
-          className="mt-14 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start"
+          className="mt-14 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch"
         >
           {/* Left Column - Contact Info */}
-          <div className="space-y-6">
-            {/* Contact Cards */}
-            {contactInfo.map((item, i) => (
-              <ScrollReveal key={item.label} delay={i * 0.1}>
+          <div className="space-y-6 flex flex-col justify-between">
+            {contactItems.map((item, i) => (
+              <ScrollReveal key={item.label} delay={i * 0.1} className="w-full">
                 <a
                   href={item.href}
-                  className="block group"
-                  target={item.href.startsWith('http') ? '_blank' : undefined}
-                  rel={
-                    item.href.startsWith('http')
-                      ? 'noopener noreferrer'
-                      : undefined
-                  }
+                  className="block group w-full"
+                  target={item.href.startsWith('http') ? '_blank' : '_self'}
+                  rel="noopener noreferrer"
                 >
-                  <GlassCard className="p-5 flex items-center gap-4 hover:border-[#4F46E5]/30 hover:shadow-[0_0_25px_rgba(79,70,229,0.08)] transition-all duration-500">
-                    <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-shadow duration-300 group-hover:shadow-[0_0_20px_rgba(79,70,229,0.3)]"
-                      style={{
-                        background:
-                          'linear-gradient(135deg, #4F46E5, #8B5CF6)',
-                      }}
-                    >
-                      <item.icon className="text-white text-lg" />
+                  <GlassCard className="p-6 flex items-center gap-5 border border-white/[0.06] group-hover:border-[#4F46E5]/40 transition-all duration-300 w-full">
+                    <div className="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                      {item.icon}
                     </div>
                     <div>
-                      <p className="text-xs text-[#94A3B8] uppercase tracking-widest mb-0.5">
+                      <div className="text-xs uppercase tracking-widest text-[#94A3B8] font-semibold mb-1">
                         {item.label}
-                      </p>
-                      <p className="text-[#E2E8F0] font-medium text-sm group-hover:text-white transition-colors">
+                      </div>
+                      <div className="text-white font-medium text-base group-hover:text-[#00E5FF] transition-colors">
                         {item.value}
-                      </p>
+                      </div>
                     </div>
                   </GlassCard>
                 </a>
               </ScrollReveal>
             ))}
-
-            {/* Social Links */}
-            <ScrollReveal delay={0.3}>
-              <div className="flex items-center gap-3 pt-2">
-                {socialLinks.map(({ icon: Icon, href, label }) => (
-                  <MagneticButton key={label}>
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={label}
-                      className="inline-flex items-center justify-center w-12 h-12 rounded-xl border border-white/[0.08] text-[#94A3B8] backdrop-blur-sm transition-all duration-300 hover:text-white hover:border-[#4F46E5]/40 hover:bg-[#4F46E5]/10 hover:shadow-[0_0_20px_rgba(79,70,229,0.15)]"
-                      style={{ background: 'rgba(15, 23, 42, 0.6)' }}
-                    >
-                      <Icon className="text-lg" />
-                    </a>
-                  </MagneticButton>
-                ))}
-              </div>
-            </ScrollReveal>
-
-            {/* Map Placeholder */}
-            <ScrollReveal delay={0.4}>
-              <GlassCard className="p-8 flex items-center justify-center min-h-[180px]">
-                <div className="text-center">
-                  <div className="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center bg-gradient-to-br from-[#4F46E5]/20 to-[#8B5CF6]/20 border border-white/[0.06]">
-                    <FaMapMarkerAlt className="text-2xl text-[#4F46E5]" />
-                  </div>
-                  <p
-                    className="text-lg font-bold bg-clip-text text-transparent"
-                    style={{
-                      backgroundImage:
-                        'linear-gradient(135deg, #4F46E5, #00E5FF, #8B5CF6)',
-                    }}
-                  >
-                    Map Coming Soon
-                  </p>
-                  <p className="text-xs text-[#94A3B8] mt-1">
-                    {personal.location}
-                  </p>
-                </div>
-              </GlassCard>
-            </ScrollReveal>
           </div>
 
-          {/* Right Column - Contact Form */}
-          <ScrollReveal delay={0.15}>
-            <GlassCard className="p-6 md:p-8">
-              <h3 className="text-lg font-bold text-[#E2E8F0] mb-6">
-                Send me a message
+          {/* Right Column - Interactive Form */}
+          <ScrollReveal delay={0.25} className="h-full">
+            <GlassCard className="p-8 border border-white/[0.08] h-full flex flex-col justify-between">
+              <h3 className="text-xl font-bold text-white mb-6">
+                Send a Message
               </h3>
 
-              <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-                {/* Name */}
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-xs text-[#94A3B8] uppercase tracking-widest mb-2 font-medium"
-                  >
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your Full Name"
-                    className="w-full px-4 py-3 rounded-xl text-sm text-[#E2E8F0] placeholder:text-[#94A3B8]/40 border border-white/[0.06] backdrop-blur-md outline-none transition-all duration-300 focus:border-[#4F46E5]/50 focus:shadow-[0_0_20px_rgba(79,70,229,0.12)]"
-                    style={{ background: 'rgba(15, 23, 42, 0.8)' }}
-                  />
-                  <AnimatePresence>
-                    {errors.name && (
-                      <motion.p
-                        initial={{ opacity: 0, y: -5, height: 0 }}
-                        animate={{ opacity: 1, y: 0, height: 'auto' }}
-                        exit={{ opacity: 0, y: -5, height: 0 }}
-                        className="text-red-400 text-xs mt-1.5 pl-1"
-                      >
-                        {errors.name}
-                      </motion.p>
-                    )}
-                  </AnimatePresence>
+              <form onSubmit={handleSubmit} className="space-y-5 flex-1 flex flex-col justify-between">
+                <div className="space-y-5">
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-[#94A3B8] mb-2">
+                      Your Name
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={formState.name}
+                      onChange={(e) =>
+                        setFormState({ ...formState, name: e.target.value })
+                      }
+                      placeholder="Enter your name"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white placeholder-[#64748B] text-sm focus:outline-none focus:border-[#4F46E5] transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-[#94A3B8] mb-2">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      value={formState.email}
+                      onChange={(e) =>
+                        setFormState({ ...formState, email: e.target.value })
+                      }
+                      placeholder="Enter your email"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white placeholder-[#64748B] text-sm focus:outline-none focus:border-[#4F46E5] transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-[#94A3B8] mb-2">
+                      Message
+                    </label>
+                    <textarea
+                      rows={4}
+                      required
+                      value={formState.message}
+                      onChange={(e) =>
+                        setFormState({ ...formState, message: e.target.value })
+                      }
+                      placeholder="Tell me about your project or opportunity..."
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white placeholder-[#64748B] text-sm focus:outline-none focus:border-[#4F46E5] transition-colors resize-none"
+                    />
+                  </div>
                 </div>
 
-                {/* Email */}
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-xs text-[#94A3B8] uppercase tracking-widest mb-2 font-medium"
-                  >
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="your@email.com"
-                    className="w-full px-4 py-3 rounded-xl text-sm text-[#E2E8F0] placeholder:text-[#94A3B8]/40 border border-white/[0.06] backdrop-blur-md outline-none transition-all duration-300 focus:border-[#4F46E5]/50 focus:shadow-[0_0_20px_rgba(79,70,229,0.12)]"
-                    style={{ background: 'rgba(15, 23, 42, 0.8)' }}
-                  />
-                  <AnimatePresence>
-                    {errors.email && (
-                      <motion.p
-                        initial={{ opacity: 0, y: -5, height: 0 }}
-                        animate={{ opacity: 1, y: 0, height: 'auto' }}
-                        exit={{ opacity: 0, y: -5, height: 0 }}
-                        className="text-red-400 text-xs mt-1.5 pl-1"
-                      >
-                        {errors.email}
-                      </motion.p>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {/* Subject */}
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-xs text-[#94A3B8] uppercase tracking-widest mb-2 font-medium"
-                  >
-                    Subject
-                  </label>
-                  <input
-                    id="subject"
-                    name="subject"
-                    type="text"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    placeholder="Project Inquiry / Opportunity"
-                    className="w-full px-4 py-3 rounded-xl text-sm text-[#E2E8F0] placeholder:text-[#94A3B8]/40 border border-white/[0.06] backdrop-blur-md outline-none transition-all duration-300 focus:border-[#4F46E5]/50 focus:shadow-[0_0_20px_rgba(79,70,229,0.12)]"
-                    style={{ background: 'rgba(15, 23, 42, 0.8)' }}
-                  />
-                  <AnimatePresence>
-                    {errors.subject && (
-                      <motion.p
-                        initial={{ opacity: 0, y: -5, height: 0 }}
-                        animate={{ opacity: 1, y: 0, height: 'auto' }}
-                        exit={{ opacity: 0, y: -5, height: 0 }}
-                        className="text-red-400 text-xs mt-1.5 pl-1"
-                      >
-                        {errors.subject}
-                      </motion.p>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {/* Message */}
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-xs text-[#94A3B8] uppercase tracking-widest mb-2 font-medium"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Tell me about your project..."
-                    className="w-full px-4 py-3 rounded-xl text-sm text-[#E2E8F0] placeholder:text-[#94A3B8]/40 border border-white/[0.06] backdrop-blur-md outline-none transition-all duration-300 focus:border-[#4F46E5]/50 focus:shadow-[0_0_20px_rgba(79,70,229,0.12)] resize-none"
-                    style={{ background: 'rgba(15, 23, 42, 0.8)' }}
-                  />
-                  <AnimatePresence>
-                    {errors.message && (
-                      <motion.p
-                        initial={{ opacity: 0, y: -5, height: 0 }}
-                        animate={{ opacity: 1, y: 0, height: 'auto' }}
-                        exit={{ opacity: 0, y: -5, height: 0 }}
-                        className="text-red-400 text-xs mt-1.5 pl-1"
-                      >
-                        {errors.message}
-                      </motion.p>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {/* Submit */}
-                <MagneticButton>
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full inline-flex items-center justify-center gap-2.5 px-7 py-3.5 min-h-[48px] rounded-xl font-semibold text-white text-sm transition-all duration-300 hover:shadow-[0_0_30px_rgba(79,70,229,0.4)] disabled:opacity-60 disabled:cursor-not-allowed"
-                    style={{
-                      background:
-                        'linear-gradient(135deg, #4F46E5, #8B5CF6)',
-                    }}
-                  >
-                    <AnimatePresence mode="wait">
-                      {isSubmitted ? (
-                        <motion.span
-                          key="success"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.8 }}
-                          className="inline-flex items-center gap-2"
-                        >
-                          <FaCheck />
-                          Message Sent!
-                        </motion.span>
-                      ) : isSubmitting ? (
-                        <motion.span
-                          key="loading"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          className="inline-flex items-center gap-2"
-                        >
-                          <motion.div
-                            className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
-                            animate={{ rotate: 360 }}
-                            transition={{
-                              repeat: Infinity,
-                              duration: 0.8,
-                              ease: 'linear',
-                            }}
-                          />
-                          Sending...
-                        </motion.span>
+                <div className="pt-4">
+                  <MagneticButton className="w-full">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full inline-flex items-center justify-center gap-2.5 py-4 rounded-xl font-semibold text-white text-sm transition-all duration-300 hover:shadow-[0_0_30px_rgba(79,70,229,0.4)] disabled:opacity-50"
+                      style={{
+                        background: 'linear-gradient(135deg, #4F46E5, #8B5CF6)',
+                      }}
+                    >
+                      {isSubmitting ? (
+                        <span>Sending...</span>
+                      ) : isSubmitted ? (
+                        <>
+                          <FaCheckCircle className="text-base" />
+                          <span>Message Sent!</span>
+                        </>
                       ) : (
-                        <motion.span
-                          key="default"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          className="inline-flex items-center gap-2"
-                        >
-                          <FaPaperPlane />
-                          Send Message
-                        </motion.span>
+                        <>
+                          <FaPaperPlane className="text-sm" />
+                          <span>Send Message</span>
+                        </>
                       )}
-                    </AnimatePresence>
-                  </button>
-                </MagneticButton>
+                    </button>
+                  </MagneticButton>
+                </div>
               </form>
             </GlassCard>
           </ScrollReveal>
@@ -419,3 +203,5 @@ export default function Contact() {
     </section>
   );
 }
+
+export default Contact;

@@ -1,21 +1,7 @@
 "use client";
 
-import { navLinks, socialLinks, contactInfo } from "@/data/navigation";
-import { FaGithub, FaLinkedinIn, FaInstagram } from "react-icons/fa";
-import { Mail, Phone, MapPin } from "lucide-react";
-import { SiNextdotjs, SiTailwindcss, SiFramer, SiTypescript } from "react-icons/si";
-
-const socialIconMap = {
-  github: FaGithub,
-  linkedin: FaLinkedinIn,
-  instagram: FaInstagram,
-} as const;
-
-const socialColorMap = {
-  github: "hover:text-white",
-  linkedin: "hover:text-[#0A66C2]",
-  instagram: "hover:text-[#E4405F]",
-} as const;
+import { navigation as navLinks, socialLinks, contactInfo } from "@/data";
+import { FaGithub, FaLinkedinIn, FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 
 export default function Footer() {
   const handleNavClick = (
@@ -47,9 +33,9 @@ export default function Footer() {
             "linear-gradient(180deg, rgba(5,8,22,1) 0%, rgba(10,15,35,1) 100%)",
         }}
       >
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-10 pb-8 pt-16">
-          {/* Grid */}
-          <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 xl:px-10 py-16">
+          {/* Desktop 4 Equal Columns Grid, Tablet 2 columns, Mobile 1 column */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 items-start">
             {/* Column 1 — Brand */}
             <div className="space-y-5">
               <a href="#hero" onClick={(e) => handleNavClick(e, "#hero")}>
@@ -61,47 +47,29 @@ export default function Footer() {
                     WebkitTextFillColor: "transparent",
                   }}
                 >
-                  SM
+                  Sumit.dev
                 </span>
               </a>
-              <p className="mt-4 text-sm leading-relaxed text-[#94A3B8]">
-                Android Application Developer & Warehouse Operations Specialist building secure mobile applications and efficient logistics workflows.
+
+              <p className="text-sm leading-relaxed text-[#94A3B8]">
+                Results-driven professional specializing in Android application
+                development and warehouse operations management.
               </p>
-              {/* Social Icons */}
-              <div className="flex items-center gap-4 pt-2">
-                {socialLinks.map(({ label, href, icon }) => {
-                  const Icon = socialIconMap[icon];
-                  const hoverClass = socialColorMap[icon];
-                  return (
-                    <a
-                      key={label}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={label}
-                      className={`flex h-12 w-12 min-h-[48px] min-w-[48px] items-center justify-center rounded-lg border border-white/[0.06] bg-white/[0.03] text-[#94A3B8] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/10 hover:bg-white/[0.06] ${hoverClass}`}
-                    >
-                      <Icon className="h-4 w-4" />
-                    </a>
-                  );
-                })}
-              </div>
             </div>
 
             {/* Column 2 — Quick Links */}
             <div>
-              <h3 className="mb-5 text-sm font-semibold uppercase tracking-wider text-white">
+              <h4 className="mb-5 text-sm font-semibold uppercase tracking-wider text-[#E2E8F0]">
                 Quick Links
-              </h3>
+              </h4>
               <ul className="space-y-3">
-                {navLinks.map(({ label, href, sectionId }) => (
-                  <li key={sectionId}>
+                {navLinks.map(({ label, href }) => (
+                  <li key={label}>
                     <a
                       href={href}
                       onClick={(e) => handleNavClick(e, href)}
-                      className="group flex items-center text-sm text-[#94A3B8] transition-colors duration-300 hover:text-white"
+                      className="text-sm text-[#94A3B8] transition-colors hover:text-[#00E5FF]"
                     >
-                      <span className="mr-2 inline-block h-px w-0 bg-[#4F46E5] transition-all duration-300 group-hover:w-4" />
                       {label}
                     </a>
                   </li>
@@ -109,69 +77,65 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Column 3 — Contact */}
+            {/* Column 3 — Contact Info */}
             <div>
-              <h3 className="mb-5 text-sm font-semibold uppercase tracking-wider text-white">
-                Contact
-              </h3>
-              <ul className="space-y-4">
-                <li>
+              <h4 className="mb-5 text-sm font-semibold uppercase tracking-wider text-[#E2E8F0]">
+                Contact Info
+              </h4>
+              <ul className="space-y-3.5">
+                <li className="flex items-center gap-3 text-sm text-[#94A3B8]">
+                  <FaEnvelope className="text-[#4F46E5] flex-shrink-0" />
                   <a
                     href={`mailto:${contactInfo.email}`}
-                    className="group flex items-center gap-3 text-sm text-[#94A3B8] transition-colors duration-300 hover:text-white"
+                    className="hover:text-white transition-colors break-all"
                   >
-                    <Mail className="h-4 w-4 text-[#4F46E5] transition-colors duration-300 group-hover:text-[#00E5FF]" />
                     {contactInfo.email}
                   </a>
                 </li>
-                <li>
+                <li className="flex items-center gap-3 text-sm text-[#94A3B8]">
+                  <FaPhone className="text-[#00E5FF] flex-shrink-0" />
                   <a
                     href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
-                    className="group flex items-center gap-3 text-sm text-[#94A3B8] transition-colors duration-300 hover:text-white"
+                    className="hover:text-white transition-colors"
                   >
-                    <Phone className="h-4 w-4 text-[#4F46E5] transition-colors duration-300 group-hover:text-[#00E5FF]" />
                     {contactInfo.phone}
                   </a>
                 </li>
-                <li className="group flex items-center gap-3 text-sm text-[#94A3B8]">
-                  <MapPin className="h-4 w-4 text-[#4F46E5]" />
-                  {contactInfo.location}
+                <li className="flex items-start gap-3 text-sm text-[#94A3B8]">
+                  <FaMapMarkerAlt className="text-[#8B5CF6] flex-shrink-0 mt-1" />
+                  <span>{contactInfo.location}</span>
                 </li>
               </ul>
             </div>
 
-            {/* Column 4 — Built With */}
+            {/* Column 4 — Social */}
             <div>
-              <h3 className="mb-5 text-sm font-semibold uppercase tracking-wider text-white">
-                Built With
-              </h3>
-              <p className="mb-4 text-sm text-[#94A3B8]">
-                Built with ❤️ using Next.js
-              </p>
-              <div className="flex items-center gap-3">
-                {[
-                  { Icon: SiNextdotjs, label: "Next.js" },
-                  { Icon: SiTypescript, label: "TypeScript" },
-                  { Icon: SiTailwindcss, label: "Tailwind CSS" },
-                  { Icon: SiFramer, label: "Framer Motion" },
-                ].map(({ Icon, label }) => (
-                  <div
-                    key={label}
-                    className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.06] bg-white/[0.03] text-[#94A3B8] transition-all duration-300 hover:-translate-y-0.5 hover:text-white"
-                    title={label}
-                  >
-                    <Icon className="h-4 w-4" />
-                  </div>
-                ))}
+              <h4 className="mb-5 text-sm font-semibold uppercase tracking-wider text-[#E2E8F0]">
+                Social Connect
+              </h4>
+              <div className="flex flex-wrap gap-3">
+                {socialLinks.map(({ label, href, icon }) => {
+                  const Icon = icon === "github" ? FaGithub : FaLinkedinIn;
+                  return (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.03] text-[#94A3B8] transition-all duration-300 hover:border-[#4F46E5] hover:bg-[#4F46E5]/10 hover:text-white"
+                    >
+                      <Icon className="h-5 w-5" />
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>
 
-          {/* Bottom bar */}
-          <div className="mt-14 border-t border-white/[0.06] pt-8">
-            <p className="text-center text-sm text-[#94A3B8]">
-              © 2024 Sumit Mondal. All rights reserved.
-            </p>
+          {/* Bottom row */}
+          <div className="mt-12 border-t border-white/[0.06] pt-8 text-center text-xs text-[#94A3B8]">
+            © {new Date().getFullYear()} Sumit Mondal. All rights reserved.
           </div>
         </div>
       </div>

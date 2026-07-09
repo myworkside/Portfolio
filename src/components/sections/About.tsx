@@ -2,11 +2,9 @@
 
 import { useRef } from 'react';
 import { motion, useInView, type Variants } from 'framer-motion';
-import { FaCode, FaRocket, FaUsers, FaStar } from 'react-icons/fa';
 import {
   GlassCard,
   SectionHeading,
-  AnimatedCounter,
   ScrollReveal,
 } from '@/components/ui';
 import { personal, education, languages } from '@/data';
@@ -15,7 +13,10 @@ const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
   },
 };
 
@@ -24,163 +25,140 @@ const itemVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
 
-const aboutStats = [
-  {
-    icon: FaCode,
-    label: 'Featured CV Projects',
-    value: 2,
-    suffix: '',
-  },
-  {
-    icon: FaRocket,
-    label: 'Professional Roles',
-    value: 6,
-    suffix: '',
-  },
-  {
-    icon: FaStar,
-    label: 'Core Competencies',
-    value: 11,
-    suffix: '',
-  },
-  {
-    icon: FaUsers,
-    label: 'CV Strengths',
-    value: 8,
-    suffix: '',
-  },
-];
-
-export default function About() {
+export function About() {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
+  const isInView = useInView(sectionRef, { once: false, amount: 0.15 });
+
+  const bioParagraphs = Array.isArray(personal.bio)
+    ? personal.bio
+    : [personal.bio];
 
   return (
     <section
-      id="about"
       ref={sectionRef}
-      className="w-full relative py-24 md:py-32 overflow-hidden"
+      id="about"
+      className="w-full relative py-24 lg:py-32 overflow-hidden"
       style={{ background: '#050816' }}
     >
-      {/* Subtle bg accent */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#4F46E5] rounded-full blur-3xl opacity-[0.06]" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#8B5CF6] rounded-full blur-3xl opacity-[0.06]" />
+      {/* Background ambient lighting */}
+      <div
+        className="absolute top-1/3 right-0 w-96 h-96 rounded-full blur-3xl opacity-10 pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, #00E5FF 0%, transparent 70%)',
+        }}
+      />
+      <div
+        className="absolute bottom-10 left-10 w-80 h-80 rounded-full blur-3xl opacity-10 pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, #4F46E5 0%, transparent 70%)',
+        }}
+      />
 
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-10 relative z-10">
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 xl:px-10 relative z-10">
+        {/* Heading */}
         <ScrollReveal>
-          <SectionHeading title="About Me" subtitle="Get to know me" />
+          <SectionHeading
+            title="About Me"
+            subtitle="Get to know me"
+          />
         </ScrollReveal>
 
+        {/* Two Equal Columns (Desktop 50% Biography / 50% Profile) */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
         >
-          {/* Left - Bio & Highlights */}
-          <motion.div variants={itemVariants} className="space-y-8">
-            {/* Bio Paragraphs */}
-            <div className="space-y-5">
-              {personal.bio.map((paragraph, i) => (
-                <ScrollReveal key={i} delay={i * 0.1}>
-                  <p className="text-[#94A3B8] leading-relaxed text-base md:text-lg">
-                    {paragraph}
-                  </p>
-                </ScrollReveal>
+          {/* Left Column — 50% Professional Bio */}
+          <motion.div variants={itemVariants} className="space-y-6">
+            <div className="space-y-4">
+              {bioParagraphs.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className="text-[#94A3B8] text-base md:text-lg leading-relaxed"
+                >
+                  {paragraph}
+                </p>
               ))}
             </div>
 
-            {/* Career Highlights */}
-            <div className="space-y-3">
-              <h3 className="text-sm uppercase tracking-widest text-[#4F46E5] font-semibold mb-4">
-                Career Highlights
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {(personal.highlights ?? []).map((highlight, i) => (
-                  <ScrollReveal key={highlight.year} delay={i * 0.08}>
-                    <div
-                      className="rounded-xl p-4 border border-white/[0.06] backdrop-blur-md transition-all duration-500 hover:border-[#4F46E5]/30 hover:shadow-[0_0_25px_rgba(79,70,229,0.08)] group"
-                      style={{ background: 'rgba(15, 23, 42, 0.6)' }}
-                    >
-                      <span
-                        className="text-xs font-bold tracking-wide bg-clip-text text-transparent"
-                        style={{
-                          backgroundImage:
-                            'linear-gradient(90deg, #4F46E5, #00E5FF)',
-                        }}
-                      >
-                        {highlight.year}
-                      </span>
-                      <h4 className="text-[#E2E8F0] font-semibold text-sm mt-1 mb-1 group-hover:text-white transition-colors">
-                        {highlight.title}
+            {/* Career Journey Highlights */}
+            {personal.highlights && personal.highlights.length > 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 items-stretch">
+                {personal.highlights.map((item, idx) => (
+                  <GlassCard
+                    key={idx}
+                    className="p-5 border border-white/[0.06] hover:border-[#4F46E5]/30 transition-all duration-300 h-full flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="w-2 h-2 rounded-full bg-[#00E5FF]" />
+                        <span className="text-xs font-semibold uppercase tracking-wider text-[#00E5FF]">
+                          {item.year}
+                        </span>
+                      </div>
+                      <h4 className="text-white font-medium text-sm mb-1">
+                        {item.title}
                       </h4>
-                      <p className="text-[#94A3B8] text-xs leading-relaxed">
-                        {highlight.description}
-                      </p>
                     </div>
-                  </ScrollReveal>
+                    <p className="text-[#94A3B8] text-xs leading-relaxed mt-2">
+                      {item.description}
+                    </p>
+                  </GlassCard>
                 ))}
               </div>
-            </div>
+            )}
           </motion.div>
 
-          {/* Right - Profile Visual & Mission */}
+          {/* Right Column — 50% Profile Centered & Mission Below Profile */}
           <motion.div variants={itemVariants} className="space-y-8">
-            {/* Profile Image Placeholder */}
-            <ScrollReveal>
-              <div className="flex justify-center lg:justify-end">
-                <div className="relative">
-                  {/* Outer glow ring */}
+            {/* Profile Centered */}
+            <ScrollReveal direction="left" delay={0.2}>
+              <div className="relative flex justify-center">
+                <div
+                  className="absolute w-64 h-64 md:w-72 md:h-72 rounded-full blur-2xl opacity-25 -z-10 animate-pulse"
+                  style={{
+                    background:
+                      'linear-gradient(135deg, #4F46E5, #00E5FF, #8B5CF6)',
+                  }}
+                />
+
+                <div className="relative p-1 rounded-full bg-gradient-to-tr from-[#4F46E5] via-[#00E5FF] to-[#8B5CF6]">
                   <div
-                    className="absolute -inset-1 rounded-full blur-md opacity-60"
-                    style={{
-                      background:
-                        'linear-gradient(135deg, #4F46E5, #00E5FF, #8B5CF6)',
-                    }}
-                  />
-                  {/* Gradient border circle */}
-                  <div
-                    className="relative w-64 h-64 md:w-72 md:h-72 rounded-full p-[3px]"
-                    style={{
-                      background:
-                        'linear-gradient(135deg, #4F46E5, #00E5FF, #8B5CF6)',
-                    }}
+                    className="w-56 h-56 md:w-64 md:h-64 rounded-full flex items-center justify-center overflow-hidden border-4 border-[#050816]"
+                    style={{ background: '#0F172A' }}
                   >
-                    <div
-                      className="w-full h-full rounded-full flex items-center justify-center"
-                      style={{ background: '#0F172A' }}
-                    >
-                      <span
-                        className="text-6xl md:text-7xl font-extrabold bg-clip-text text-transparent select-none"
+                    <div className="text-center p-6">
+                      <div
+                        className="w-20 h-20 mx-auto mb-3 rounded-2xl flex items-center justify-center text-3xl font-extrabold text-white shadow-lg"
                         style={{
-                          backgroundImage:
-                            'linear-gradient(135deg, #4F46E5, #00E5FF)',
+                          background:
+                            'linear-gradient(135deg, #4F46E5, #8B5CF6)',
                         }}
                       >
-                        {(personal.firstName ?? 'Sumit')[0]}
-                        {(personal.lastName ?? 'Mondal')[0]}
-                      </span>
+                        {personal.name
+                          .split(' ')
+                          .map((n) => n[0])
+                          .join('')}
+                      </div>
+                      <p className="text-white font-bold text-lg">
+                        {personal.name}
+                      </p>
+                      <p className="text-[#00E5FF] text-xs font-medium tracking-wide mt-1">
+                        {personal.title}
+                      </p>
                     </div>
-                  </div>
-                  {/* Floating status badge */}
-                  <div
-                    className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full text-xs font-semibold text-white backdrop-blur-md border border-white/10"
-                    style={{
-                      background:
-                        'linear-gradient(135deg, #4F46E5, #8B5CF6)',
-                    }}
-                  >
-                    Available for work
                   </div>
                 </div>
               </div>
             </ScrollReveal>
 
-            {/* Mission & Vision */}
+            {/* Mission & Vision Below Profile */}
             <ScrollReveal delay={0.2}>
               <GlassCard className="p-6 space-y-4">
                 <div>
@@ -205,124 +183,101 @@ export default function About() {
           </motion.div>
         </motion.div>
 
-        {/* Education, Languages & Professional Strengths Grid */}
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Education, Languages & Professional Strengths Grid (3 equal cards) */}
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {/* Education */}
-          <ScrollReveal delay={0.1}>
-            <GlassCard className="p-6 h-full space-y-4">
-              <h3 className="text-sm uppercase tracking-widest text-[#4F46E5] font-semibold">
-                Education
-              </h3>
-              <div className="space-y-3">
-                {education.map((edu, idx) => (
-                  <div
-                    key={edu.id}
-                    className={`border-l-2 pl-3 ${
-                      idx === 0 ? 'border-[#4F46E5]' : 'border-[#00E5FF]'
-                    }`}
-                  >
-                    <h4 className="text-white font-medium text-sm">
-                      {edu.degree}
-                    </h4>
-                    <p className="text-xs text-[#94A3B8]">
-                      {edu.institution} — {edu.status}
-                    </p>
-                  </div>
-                ))}
+          <ScrollReveal delay={0.1} className="h-full">
+            <GlassCard className="p-6 h-full flex flex-col justify-between space-y-4">
+              <div>
+                <h3 className="text-sm uppercase tracking-widest text-[#4F46E5] font-semibold mb-3">
+                  Education
+                </h3>
+                <div className="space-y-3">
+                  {education.map((edu, idx) => (
+                    <div
+                      key={edu.id}
+                      className={`border-l-2 pl-3 ${
+                        idx === 0 ? 'border-[#4F46E5]' : 'border-[#00E5FF]'
+                      }`}
+                    >
+                      <h4 className="text-white font-medium text-sm">
+                        {edu.degree}
+                      </h4>
+                      <p className="text-xs text-[#94A3B8]">
+                        {edu.institution} — {edu.status}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </GlassCard>
           </ScrollReveal>
 
           {/* Languages */}
-          <ScrollReveal delay={0.2}>
-            <GlassCard className="p-6 h-full space-y-4">
-              <h3 className="text-sm uppercase tracking-widest text-[#00E5FF] font-semibold">
-                Languages
-              </h3>
-              <div className="space-y-3">
-                {languages.map((lang, idx) => (
-                  <div
-                    key={lang.language}
-                    className="flex items-center justify-between p-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06]"
-                  >
-                    <span className="text-white font-medium text-sm">
-                      {lang.language}
-                    </span>
-                    <span
-                      className={`text-xs px-2.5 py-0.5 rounded-full border ${
-                        idx === 0
-                          ? 'bg-[#4F46E5]/20 text-[#00E5FF] border-[#4F46E5]/30'
-                          : 'bg-[#00E5FF]/20 text-white border-[#00E5FF]/30'
-                      }`}
+          <ScrollReveal delay={0.2} className="h-full">
+            <GlassCard className="p-6 h-full flex flex-col justify-between space-y-4">
+              <div>
+                <h3 className="text-sm uppercase tracking-widest text-[#00E5FF] font-semibold mb-3">
+                  Languages
+                </h3>
+                <div className="space-y-3">
+                  {languages.map((lang, idx) => (
+                    <div
+                      key={lang.language}
+                      className="flex items-center justify-between p-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06]"
                     >
-                      {lang.proficiency.split(' / ')[0]}
-                    </span>
-                  </div>
-                ))}
+                      <span className="text-white font-medium text-sm">
+                        {lang.language}
+                      </span>
+                      <span
+                        className={`text-xs px-2.5 py-0.5 rounded-full border ${
+                          idx === 0
+                            ? 'bg-[#4F46E5]/20 text-[#00E5FF] border-[#4F46E5]/30'
+                            : 'bg-[#00E5FF]/20 text-white border-[#00E5FF]/30'
+                        }`}
+                      >
+                        {lang.proficiency.split(' / ')[0]}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </GlassCard>
           </ScrollReveal>
 
           {/* Professional Strengths */}
-          <ScrollReveal delay={0.3}>
-            <GlassCard className="p-6 h-full space-y-4">
-              <h3 className="text-sm uppercase tracking-widest text-[#8B5CF6] font-semibold">
-                Professional Strengths
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  'Analytical Thinking',
-                  'Strong Work Ethic',
-                  'Fast Learner',
-                  'Attention to Detail',
-                  'Adaptability',
-                  'Self-Motivated',
-                  'Quality-Oriented',
-                  'Work Under Pressure',
-                ].map((strength) => (
-                  <span
-                    key={strength}
-                    className="text-xs px-2.5 py-1 rounded-md bg-[#8B5CF6]/10 text-[#E2E8F0] border border-[#8B5CF6]/30 hover:border-[#8B5CF6] transition-colors"
-                  >
-                    {strength}
-                  </span>
-                ))}
+          <ScrollReveal delay={0.3} className="h-full">
+            <GlassCard className="p-6 h-full flex flex-col justify-between space-y-4">
+              <div>
+                <h3 className="text-sm uppercase tracking-widest text-[#8B5CF6] font-semibold mb-3">
+                  Professional Strengths
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    'Analytical Thinking',
+                    'Strong Work Ethic',
+                    'Fast Learner',
+                    'Attention to Detail',
+                    'Adaptability',
+                    'Self-Motivated',
+                    'Quality-Oriented',
+                    'Work Under Pressure',
+                  ].map((strength) => (
+                    <span
+                      key={strength}
+                      className="text-xs px-3 py-1 rounded-full bg-white/[0.05] text-[#E2E8F0] border border-white/[0.08]"
+                    >
+                      {strength}
+                    </span>
+                  ))}
+                </div>
               </div>
             </GlassCard>
           </ScrollReveal>
         </div>
-
-        {/* Bottom Stats Row */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
-        >
-          {aboutStats.map((stat, i) => (
-            <ScrollReveal key={stat.label} delay={i * 0.1}>
-              <GlassCard className="p-6 text-center group hover:border-[#4F46E5]/30 hover:shadow-[0_0_30px_rgba(79,70,229,0.08)] transition-all duration-500">
-                <stat.icon className="text-2xl text-[#4F46E5] mx-auto mb-3 group-hover:text-[#00E5FF] transition-colors duration-300" />
-                <div className="text-3xl font-bold text-white mb-1">
-                  <AnimatedCounter target={stat.value} />
-                  <span
-                    className="bg-clip-text text-transparent"
-                    style={{
-                      backgroundImage:
-                        'linear-gradient(90deg, #4F46E5, #00E5FF)',
-                    }}
-                  >
-                    {stat.suffix}
-                  </span>
-                </div>
-                <div className="text-xs text-[#94A3B8] uppercase tracking-widest">
-                  {stat.label}
-                </div>
-              </GlassCard>
-            </ScrollReveal>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
 }
+
+export default About;
