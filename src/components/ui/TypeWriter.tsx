@@ -1,12 +1,14 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState, useRef } from "react";
 
 interface TypeWriterProps {
   words: string[];
   speed?: number;
   deleteSpeed?: number;
   pauseTime?: number;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 export default function TypeWriter({
@@ -14,16 +16,18 @@ export default function TypeWriter({
   speed = 80,
   deleteSpeed = 50,
   pauseTime = 2000,
+  className = "",
+  style,
 }: TypeWriterProps) {
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
   const wordIndexRef = useRef(0);
   const charIndexRef = useRef(0);
   const isDeletingRef = useRef(false);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     function tick() {
-      const currentWord = words[wordIndexRef.current] ?? '';
+      const currentWord = words[wordIndexRef.current] ?? "";
       const isDeleting = isDeletingRef.current;
 
       if (!isDeleting) {
@@ -31,8 +35,7 @@ export default function TypeWriter({
         charIndexRef.current += 1;
         setText(currentWord.slice(0, charIndexRef.current));
 
-        if (charIndexRef.current >= currentWord.length) {
-          // Finished typing — pause then delete
+        if (charIndexRef.current === currentWord.length) {
           isDeletingRef.current = true;
           timeoutRef.current = setTimeout(tick, pauseTime);
           return;
@@ -40,15 +43,14 @@ export default function TypeWriter({
 
         timeoutRef.current = setTimeout(tick, speed);
       } else {
-        // Deleting
+        // Deleting backward
         charIndexRef.current -= 1;
         setText(currentWord.slice(0, charIndexRef.current));
 
-        if (charIndexRef.current <= 0) {
-          // Finished deleting — move to next word
+        if (charIndexRef.current === 0) {
           isDeletingRef.current = false;
           wordIndexRef.current = (wordIndexRef.current + 1) % words.length;
-          timeoutRef.current = setTimeout(tick, speed / 2);
+          timeoutRef.current = setTimeout(tick, 300);
           return;
         }
 
@@ -56,7 +58,6 @@ export default function TypeWriter({
       }
     }
 
-    // Kick off the loop
     timeoutRef.current = setTimeout(tick, speed);
 
     return () => {
@@ -65,37 +66,9 @@ export default function TypeWriter({
   }, [words, speed, deleteSpeed, pauseTime]);
 
   return (
-    <span className="inline-flex items-center">
-      <span
-        className="font-semibold"
-        style={{
-          background: 'linear-gradient(135deg, #4F46E5, #00E5FF)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-        }}
-      >
-        {text}
-      </span>
-      <span
-        className="ml-0.5 inline-block w-[2px] h-[1.1em] rounded-full"
-        style={{
-          background: 'linear-gradient(to bottom, #4F46E5, #00E5FF)',
-          animation: 'typewriter-blink 0.8s step-end infinite',
-        }}
-      />
-
-      <style jsx>{`
-        @keyframes typewriter-blink {
-          0%,
-          100% {
-            opacity: 1;
-          }
-          50% {
-            opacity: 0;
-          }
-        }
-      `}</style>
+    <span className={`inline-flex items-center ${className}`} style={style}>
+      <span>{text}</span>
+      <span className="ml-1 inline-block w-[2px] h-6 bg-current animate-pulse" />
     </span>
   );
 }

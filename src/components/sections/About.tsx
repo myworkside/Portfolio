@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, type Variants } from 'framer-motion';
 import { FaCode, FaRocket, FaUsers, FaStar } from 'react-icons/fa';
 import {
   GlassCard,
@@ -11,7 +11,7 @@ import {
 } from '@/components/ui';
 import { personal } from '@/data';
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -19,7 +19,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
@@ -100,7 +100,7 @@ export default function About() {
                 Career Highlights
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {personal.highlights.map((highlight, i) => (
+                {(personal.highlights ?? []).map((highlight, i) => (
                   <ScrollReveal key={highlight.year} delay={i * 0.08}>
                     <div
                       className="rounded-xl p-4 border border-white/[0.06] backdrop-blur-md transition-all duration-500 hover:border-[#4F46E5]/30 hover:shadow-[0_0_25px_rgba(79,70,229,0.08)] group"
@@ -161,8 +161,8 @@ export default function About() {
                             'linear-gradient(135deg, #4F46E5, #00E5FF)',
                         }}
                       >
-                        {personal.firstName[0]}
-                        {personal.lastName[0]}
+                        {(personal.firstName ?? 'Sumit')[0]}
+                        {(personal.lastName ?? 'Mondal')[0]}
                       </span>
                     </div>
                   </div>

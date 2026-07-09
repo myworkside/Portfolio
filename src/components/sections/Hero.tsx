@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, type Variants } from 'framer-motion';
 import {
   FaGithub,
   FaLinkedin,
@@ -27,7 +27,7 @@ const floatingOrbs = [
   },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -38,7 +38,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
@@ -120,7 +120,7 @@ export default function Hero() {
           className="text-xl md:text-2xl lg:text-3xl font-medium text-[#E2E8F0] mb-6 h-10"
         >
           <TypeWriter
-            words={personal.roles}
+            words={personal.roles ?? ['Android Developer', 'Software Engineer', 'Full-Stack Developer']}
             className="bg-clip-text text-transparent"
             style={{
               backgroundImage:
@@ -169,9 +169,9 @@ export default function Hero() {
           {/* Social Icons */}
           <div className="flex items-center gap-2 ml-2">
             {[
-              { icon: FaGithub, href: personal.social.github, label: 'GitHub' },
-              { icon: FaLinkedin, href: personal.social.linkedin, label: 'LinkedIn' },
-              { icon: FaInstagram, href: personal.social.instagram, label: 'Instagram' },
+              { icon: FaGithub, href: personal.social?.github ?? 'https://github.com/myworkside', label: 'GitHub' },
+              { icon: FaLinkedin, href: personal.social?.linkedin ?? 'https://linkedin.com/in/sumitwork', label: 'LinkedIn' },
+              { icon: FaInstagram, href: personal.social?.instagram ?? 'https://instagram.com/sumitupdat', label: 'Instagram' },
             ].map(({ icon: Icon, href, label }) => (
               <MagneticButton key={label}>
                 <a

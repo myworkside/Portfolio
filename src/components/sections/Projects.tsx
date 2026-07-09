@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, type Variants } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import {
   GlassCard,
@@ -11,7 +11,7 @@ import {
 } from '@/components/ui';
 import { projects } from '@/data';
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -19,7 +19,7 @@ const containerVariants = {
   },
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
@@ -83,7 +83,7 @@ export default function Projects() {
 
                   {/* Tech Stack Pills */}
                   <div className="flex flex-wrap gap-2 mb-5">
-                    {project.techStack.map((tech) => (
+                    {(project.techStack ?? project.technologies ?? []).map((tech) => (
                       <span
                         key={tech}
                         className="px-2.5 py-1 rounded-full text-xs font-medium border backdrop-blur-sm transition-all duration-300"

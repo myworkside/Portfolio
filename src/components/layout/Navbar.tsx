@@ -33,6 +33,7 @@ export default function Navbar() {
     const observers: IntersectionObserver[] = [];
 
     navLinks.forEach(({ sectionId }) => {
+      if (!sectionId) return;
       const el = document.getElementById(sectionId);
       if (!el) return;
 

@@ -89,7 +89,7 @@ const iconMap: Record<string, any> = {
 };
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
-const categories: SkillCategory[] = [
+const categories: string[] = [
   'Programming',
   'Frontend',
   'Backend',
@@ -116,7 +116,7 @@ function SkillProgressBar({ proficiency, inView }: { proficiency: number; inView
 }
 
 export default function Skills() {
-  const [activeCategory, setActiveCategory] = useState<SkillCategory>('Programming');
+  const [activeCategory, setActiveCategory] = useState<string>('Programming');
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 

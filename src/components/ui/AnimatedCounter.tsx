@@ -7,7 +7,7 @@ interface AnimatedCounterProps {
   value?: number;
   target?: number;
   suffix?: string;
-  label: string;
+  label?: string;
   duration?: number;
 }
 
@@ -15,7 +15,7 @@ export default function AnimatedCounter({
   value,
   target,
   suffix = '',
-  label,
+  label = '',
   duration = 2,
 }: AnimatedCounterProps) {
   const finalValue = value ?? target ?? 0;

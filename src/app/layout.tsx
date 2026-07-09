@@ -15,6 +15,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sumitmondal.dev"),
   title: "Sumit Mondal | Android Developer & Software Engineer",
   description:
     "Portfolio of Sumit Mondal — Android Developer & Software Engineer specializing in Kotlin, Jetpack Compose, and full-stack development. Building exceptional mobile experiences with modern technologies.",

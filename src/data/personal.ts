@@ -48,25 +48,25 @@ export const personalInfo: PersonalInfo = {
 export const stats: Stat[] = [
   {
     label: 'Years Experience',
-    value: personalInfo.stats.yearsExperience,
+    value: personalInfo.stats.yearsExperience ?? 2,
     suffix: '+',
     icon: 'HiOutlineBriefcase',
   },
   {
     label: 'Projects Completed',
-    value: personalInfo.stats.projectsCompleted,
+    value: personalInfo.stats.projectsCompleted ?? personalInfo.stats.projects ?? 19,
     suffix: '+',
     icon: 'HiOutlineCode',
   },
   {
     label: 'GitHub Stars',
-    value: personalInfo.stats.githubStars,
+    value: personalInfo.stats.githubStars ?? 10,
     suffix: '',
     icon: 'HiOutlineStar',
   },
   {
     label: 'Happy Clients',
-    value: personalInfo.stats.happyClients,
+    value: personalInfo.stats.happyClients ?? 5,
     suffix: '+',
     icon: 'HiOutlineUsers',
   },

@@ -1,11 +1,11 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, type Variants } from 'framer-motion';
 import { GlassCard, SectionHeading, ScrollReveal } from '@/components/ui';
 import { experience } from '@/data';
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -13,7 +13,7 @@ const containerVariants = {
   },
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: (isLeft: boolean) => ({
     opacity: 0,
     x: isLeft ? -60 : 60,
@@ -192,7 +192,7 @@ function ExperienceCard({
 
       {/* Tech Stack Badges */}
       <div className="flex flex-wrap gap-2">
-        {exp.techStack.map((tech) => (
+        {(exp.techStack ?? exp.technologies ?? []).map((tech) => (
           <span
             key={tech}
             className="px-2.5 py-1 rounded-md text-xs font-medium text-[#94A3B8] border border-white/[0.06] backdrop-blur-sm transition-all duration-300 hover:border-[#4F46E5]/30 hover:text-[#E2E8F0]"
