@@ -1,0 +1,61 @@
+SUMIT MONDAL
+Android Developer | Software Engineer | WMS & Logistics Specialist
+Itachuna, Hooghly, West Bengal, India | +91 7432838409 | mondalsumit6966@gmail.com
+LinkedIn: https://linkedin.com/in/sumitwork | GitHub: https://github.com/myworkside | Portfolio: https://sumitmondal.dev
+
+PROFESSIONAL SUMMARY
+Results-driven Software Engineer and Android Application Developer with hands-on operational experience in logistics, warehouse operations, high-volume data processing, and enterprise Warehouse Management Systems (WMS). Proven track record of developing secure, scalable offline-first Android applications using Kotlin, Java, Jetpack Compose, and clean architecture principles. Combines technical engineering excellence with real-world supply chain and inventory management acumen.
+
+TECHNICAL SKILLS & CORE COMPETENCIES
+- Programming & Mobile Engineering: Kotlin, Java, JavaScript, HTML5, CSS3, Android SDK, Android Studio, XML Layouts, Material Design 3, CameraX API, Google ML Kit, Room Database, Coroutines, MVVM Architecture.
+- WMS, Operations & Productivity Tools: Warehouse Management Systems (WMS), Barcode Scanners, SKU Verification, Inventory Management, Quality Assurance, Logistics Coordination, Data Entry & Analysis, Microsoft Word, Microsoft Excel, Microsoft PowerPoint.
+- Creative & Multimedia Tools: Adobe Photoshop, Adobe Premiere Pro, DaVinci Resolve, Graphic Design, Video Editing.
+- Version Control & Software Tools: Git, GitHub, Visual Studio Code.
+- Core Soft Competencies: Analytical Thinking, Strong Work Ethic, Problem Solving, Process Optimization, Team Collaboration, Adaptability, Quality-Oriented Execution under strict deadlines.
+
+FEATURED PROJECTS
+1. IronCrypt - Secure File Management Application
+Repository: https://github.com/myworkside/IronCrypt
+Tech Stack: Kotlin, Android Studio, Material Design 3, Git, GitHub, Room Database
+- Engineered a privacy-focused offline-first Android application designed for secure local file encryption and management.
+- Implemented modular Clean Architecture and custom Material Design interface, ensuring zero network leakage and high performance.
+
+2. UniversalFileEditorViewer - All-in-One Android File Manager
+Repository: https://github.com/myworkside/UniversalFileEditorViewer
+Tech Stack: Kotlin, Jetpack Compose, MVVM Architecture, Room Database
+- Built an enterprise-grade Android suite to view, edit, and manage 30+ file formats with built-in biometric Private Vault.
+- Integrated wireless file sharing via Wi-Fi Direct and an interactive Storage Analyzer with visual disk usage breakdown.
+
+3. MotionCountingApp - Real-Time Computer Vision Motion Counter
+Repository: https://github.com/myworkside/MotionCountingApp
+Tech Stack: Kotlin, CameraX API, Image Analysis Pipeline
+- Developed real-time movement detection application leveraging CameraX frame analysis and on-device processing.
+
+PROFESSIONAL EXPERIENCE
+Flipkart | Minutes Picker & WMS Operations Specialist
+- Executed high-velocity order fulfillment utilizing enterprise Warehouse Management Systems (WMS) and handheld RF barcode scanners.
+- Conducted rigorous quantitative verification, quality inspection, and SKU compliance checks prior to order packaging, achieving 99.8% order accuracy.
+- Coordinated cross-functional packing, sorting, and dispatch workflows to meet strict SLA delivery schedules.
+
+Flipkart | Data Entry Operator (DEO) & Operational Analytics Assistant
+- Managed high-volume operational and transactional warehouse datasets with exceptional precision, supporting daily reconciliations.
+- Validated data quality and generated structured reporting packages for warehouse leadership and audit compliance.
+
+Myntra | Warehouse Operations Assistant
+- Supported end-to-end inventory management, inbound sorting, and order processing workflows within e-commerce fulfillment centers.
+- Collaborated with warehouse teams to optimize sorting, packing, and dispatch efficiency.
+
+SKD Transport | Cab Fleet Supervisor & Logistics Coordinator
+- Managed daily transportation schedules, driver assignments, and vehicle fleet coordination across active corporate routes.
+- Supervised operational performance, maintained regulatory transport records, and ensured on-time service delivery.
+
+Life Changing Physical Academy & Unique Images Studio | Graphic Designer & Video Editor
+- Spearheaded commercial brand identities, marketing collateral, and social media creatives using Adobe Photoshop.
+- Produced and edited high-engagement promotional video content using Adobe Premiere Pro and DaVinci Resolve.
+
+EDUCATION
+Higher Secondary Examination (Vocational Education) - W.B.S.C. Vocational Education (Passed)
+Secondary Examination - W.B.B.S.E. (Passed)
+
+LANGUAGES
+Bengali (Native), English (Professional Working Proficiency)

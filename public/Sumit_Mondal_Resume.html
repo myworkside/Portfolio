@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sumit Mondal — Professional Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --text-main: #0F172A;
+      --text-muted: #475569;
+      --accent: #2563EB;
+      --border: #E2E8F0;
+      --tag-bg: #F1F5F9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #F8FAFC;
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .resume-container {
+      max-width: 850px;
+      margin: 0 auto;
+      background: var(--bg);
+      box-shadow: 0 20px 60px -15px rgba(15, 23, 42, 0.08);
+      border-radius: 16px;
+      padding: 56px 64px;
+      border: 1px solid var(--border);
+    }
+
+    header {
+      border-bottom: 2px solid var(--text-main);
+      padding-bottom: 28px;
+      margin-bottom: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .header-left h1 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+      line-height: 1.1;
+    }
+
+    .header-left .title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px 20px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+
+    .contact-grid a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-grid a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    section {
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .summary-text {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .skills-wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .skill-category h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill-tag {
+      background: var(--tag-bg);
+      color: var(--text-main);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .experience-item {
+      margin-bottom: 24px;
+    }
+
+    .experience-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .exp-role {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .exp-company {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .exp-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      margin-top: 8px;
+    }
+
+    .exp-bullets li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 13.8px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      line-height: 1.55;
+    }
+
+    .exp-bullets li::before {
+      content: '▪';
+      position: absolute;
+      left: 2px;
+      color: var(--accent);
+      font-size: 10px;
+      top: 3px;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      background: #FAFBFD;
+    }
+
+    .proj-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .proj-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .proj-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin: 6px 0 10px;
+    }
+
+    .education-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      .resume-container {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume-container">
+    <!-- Header -->
+    <header>
+      <div class="header-left">
+        <h1>SUMIT MONDAL</h1>
+        <div class="title">Android Developer & Software Engineer | Operations & WMS Specialist</div>
+      </div>
+      <div class="contact-grid">
+        <div>📍 Itachuna, Hooghly, WB, India</div>
+        <div>📞 +91 7432838409</div>
+        <div>✉️ <a href="mailto:mondalsumit6966@gmail.com">mondalsumit6966@gmail.com</a></div>
+        <div>🌐 <a href="https://linkedin.com/in/sumitwork" target="_blank">linkedin.com/in/sumitwork</a></div>
+        <div>💻 <a href="https://github.com/myworkside" target="_blank">github.com/myworkside</a></div>
+        <div>🚀 <a href="https://sumitmondal.dev" target="_blank">sumitmondal.dev</a></div>
+      </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section>
+      <div class="section-title">Professional Summary</div>
+      <p class="summary-text">
+        Results-driven <strong>Software Engineer and Android Application Developer</strong> blending technical expertise in secure mobile engineering with hands-on operational leadership in logistics, high-volume data processing, and enterprise Warehouse Management Systems (WMS). Demonstrates proven ability to engineer offline-first Android architectures using Kotlin, Jetpack Compose, and Clean Architecture while optimizing end-to-end supply chain execution. Adept at cross-functional collaboration, rigorous SKU/inventory quality control, and commercial multimedia design.
+      </p>
+    </section>
+
+    <!-- Core Competencies & Technical Skills -->
+    <section>
+      <div class="section-title">Technical Skills & Competencies</div>
+      <div class="skills-wrapper">
+        <div class="skill-category">
+          <h4>Programming & Android Engineering</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Kotlin</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">HTML5 / CSS3</span>
+            <span class="skill-tag">Android SDK</span>
+            <span class="skill-tag">Android Studio</span>
+            <span class="skill-tag">Material Design 3</span>
+            <span class="skill-tag">CameraX API</span>
+            <span class="skill-tag">Google ML Kit</span>
+            <span class="skill-tag">Room Database</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h4>WMS, Operations & Productivity Tools</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Warehouse Management Systems (WMS)</span>
+            <span class="skill-tag">Barcode Scanners</span>
+            <span class="skill-tag">SKU Quality Verification</span>
+            <span class="skill-tag">Inventory Reconciliations</span>
+            <span class="skill-tag">Git / GitHub</span>
+            <span class="skill-tag">VS Code</span>
+            <span class="skill-tag">MS Excel / Word / PowerPoint</span>
+            <span class="skill-tag">Adobe Photoshop / Premiere Pro</span>
+            <span class="skill-tag">DaVinci Resolve</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Engineering Projects -->
+    <section>
+      <div class="section-title">Featured Projects</div>
+      <div class="project-card">
+        <div class="proj-title">
+          <span>IronCrypt — Privacy-First Secure File Management Application</span>
+          <a href="https://github.com/myworkside/IronCrypt" target="_blank" class="proj-link">github.com/myworkside/IronCrypt</a>
+        </div>
+        <p class="proj-desc">
+          Engineered an offline-first Android application designed for encrypted file management with zero network leakage. Implemented modular Clean Architecture, custom Material Design UI, and optimized local database access.
+        </p>
+        <div class="skill-tags">
+          <span class="skill-tag">Kotlin</span>
+          <span class="skill-tag">Android Studio</span>
+          <span class="skill-tag">Material Design</span>
+          <span class="skill-tag">Security</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="proj-title">
+          <span>UniversalFileEditorViewer — All-in-One Android File Manager</span>
+          <a href="https://github.com/myworkside/UniversalFileEditorViewer" target="_blank" class="proj-link">github.com/myworkside/UniversalFileEditorViewer</a>
+        </div>
+        <p class="proj-desc">
+          Architected a comprehensive Android suite utilizing Kotlin, Jetpack Compose, and MVVM to view, edit, and secure 30+ file formats. Built an encrypted Private Vault, wireless file sharing, and interactive storage analyzer.
+        </p>
+        <div class="skill-tags">
+          <span class="skill-tag">Kotlin</span>
+          <span class="skill-tag">Jetpack Compose</span>
+          <span class="skill-tag">MVVM</span>
+          <span class="skill-tag">Room DB</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section>
+      <div class="section-title">Professional Experience</div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <div class="exp-role">Minutes Picker & WMS Operations Specialist — <span class="exp-company">Flipkart</span></div>
+          <div class="exp-date">Logistics Fulfillment Operations</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Executed high-velocity order processing and inventory fulfillment using enterprise Warehouse Management Systems (WMS) and handheld RF barcode scanners across thousands of daily SKUs.</li>
+          <li>Conducted rigorous quantitative verification, quality inspection, and SKU compliance checks prior to order packaging, maintaining a 99.8% order accuracy rate.</li>
+          <li>Synchronized workflows across sorting, packing, and dispatch teams to consistently meet strict SLA delivery metrics and daily fulfillment targets.</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <div class="exp-role">Data Entry Operator (DEO) & Analytics Assistant — <span class="exp-company">Flipkart</span></div>
+          <div class="exp-date">High-Volume Operational Data</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Managed high-volume operational and transactional warehouse datasets with exceptional precision, minimizing record discrepancies.</li>
+          <li>Generated structured daily inventory and operational performance reports supporting executive decision-making and audit readiness.</li>
+          <li>Improved documentation workflows and digital archiving accuracy across warehouse operations.</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <div class="exp-role">Warehouse Operations Assistant — <span class="exp-company">Myntra</span></div>
+          <div class="exp-date">E-Commerce Supply Chain</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Supported end-to-end inventory management, inbound stock allocation, and order processing workflows within e-commerce fulfillment centers.</li>
+          <li>Collaborated cross-functionally with logistics and quality control teams to streamline sorting, packing, and dispatch efficiency.</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <div class="exp-role">Cab Fleet Supervisor & Logistics Coordinator — <span class="exp-company">SKD Transport</span></div>
+          <div class="exp-date">Fleet Management</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Orchestrated daily transportation schedules, driver assignments, and vehicle fleet coordination across active corporate routes.</li>
+          <li>Supervised driver operational performance, maintained regulatory transport records, and ensured on-time service delivery.</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <div class="exp-role">Graphic Designer & Commercial Video Editor — <span class="exp-company">Life Changing Physical Academy & Unique Images Studio</span></div>
+          <div class="exp-date">Multimedia & Branding</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Spearheaded commercial brand identities, marketing collateral, and social media creatives using Adobe Photoshop.</li>
+          <li>Produced and edited high-engagement promotional video content and digital marketing campaigns using Adobe Premiere Pro and DaVinci Resolve.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Education & Languages -->
+    <section>
+      <div class="section-title">Education & Languages</div>
+      <div class="education-item">
+        <div><strong>Higher Secondary Examination (Vocational Education)</strong> — W.B.S.C.</div>
+        <div class="exp-date">Passed with Distinction</div>
+      </div>
+      <div class="education-item">
+        <div><strong>Secondary Examination</strong> — W.B.B.S.E.</div>
+        <div class="exp-date">Passed</div>
+      </div>
+      <div style="margin-top: 10px; font-size: 13.5px; color: var(--text-muted);">
+        <strong>Languages:</strong> Bengali (Native) • English (Professional Working Proficiency)
+      </div>
+    </section>
+  </div>
+</body>
+</html>
