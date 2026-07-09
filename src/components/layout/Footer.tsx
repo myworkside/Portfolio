@@ -65,8 +65,7 @@ export default function Footer() {
                 </span>
               </a>
               <p className="mt-4 text-sm leading-relaxed text-[#94A3B8]">
-                Full-stack developer crafting pixel-perfect, performant digital
-                experiences with modern web technologies.
+                Android Application Developer & Warehouse Operations Specialist building secure mobile applications and efficient logistics workflows.
               </p>
               {/* Social Icons */}
               <div className="flex items-center gap-4 pt-2">
@@ -80,7 +79,7 @@ export default function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={label}
-                      className={`flex h-10 w-10 items-center justify-center rounded-lg border border-white/[0.06] bg-white/[0.03] text-[#94A3B8] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/10 hover:bg-white/[0.06] ${hoverClass}`}
+                      className={`flex h-12 w-12 min-h-[48px] min-w-[48px] items-center justify-center rounded-lg border border-white/[0.06] bg-white/[0.03] text-[#94A3B8] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/10 hover:bg-white/[0.06] ${hoverClass}`}
                     >
                       <Icon className="h-4 w-4" />
                     </a>

@@ -8,7 +8,7 @@ export interface NavLinkItem {
 export interface SocialLinkItem {
   label: string;
   href: string;
-  icon: 'github' | 'linkedin' | 'instagram';
+  icon: 'github' | 'linkedin';
 }
 
 export interface ContactInfoItem {
@@ -37,15 +37,10 @@ export const socialLinks: SocialLinkItem[] = [
     href: 'https://linkedin.com/in/sumitwork',
     icon: 'linkedin',
   },
-  {
-    label: 'Instagram',
-    href: 'https://instagram.com/sumitupdat',
-    icon: 'instagram',
-  },
 ];
 
 export const contactInfo: ContactInfoItem = {
-  email: 'sumitmondal.dev@gmail.com',
-  phone: '+91 98765 43210',
-  location: 'Kolkata, India',
+  email: 'mondalsumit6966@gmail.com',
+  phone: '+91 7432838409',
+  location: 'Itachuna, Hooghly, West Bengal, India',
 };

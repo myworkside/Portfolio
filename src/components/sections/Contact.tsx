@@ -241,7 +241,7 @@ export default function Contact() {
                     type="text"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="John Doe"
+                    placeholder="Your Full Name"
                     className="w-full px-4 py-3 rounded-xl text-sm text-[#E2E8F0] placeholder:text-[#94A3B8]/40 border border-white/[0.06] backdrop-blur-md outline-none transition-all duration-300 focus:border-[#4F46E5]/50 focus:shadow-[0_0_20px_rgba(79,70,229,0.12)]"
                     style={{ background: 'rgba(15, 23, 42, 0.8)' }}
                   />
@@ -273,7 +273,7 @@ export default function Contact() {
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="john@example.com"
+                    placeholder="your@email.com"
                     className="w-full px-4 py-3 rounded-xl text-sm text-[#E2E8F0] placeholder:text-[#94A3B8]/40 border border-white/[0.06] backdrop-blur-md outline-none transition-all duration-300 focus:border-[#4F46E5]/50 focus:shadow-[0_0_20px_rgba(79,70,229,0.12)]"
                     style={{ background: 'rgba(15, 23, 42, 0.8)' }}
                   />
@@ -305,7 +305,7 @@ export default function Contact() {
                     type="text"
                     value={formData.subject}
                     onChange={handleChange}
-                    placeholder="Project Inquiry"
+                    placeholder="Project Inquiry / Opportunity"
                     className="w-full px-4 py-3 rounded-xl text-sm text-[#E2E8F0] placeholder:text-[#94A3B8]/40 border border-white/[0.06] backdrop-blur-md outline-none transition-all duration-300 focus:border-[#4F46E5]/50 focus:shadow-[0_0_20px_rgba(79,70,229,0.12)]"
                     style={{ background: 'rgba(15, 23, 42, 0.8)' }}
                   />
@@ -360,7 +360,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-white text-sm transition-all duration-300 hover:shadow-[0_0_30px_rgba(79,70,229,0.4)] disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="w-full inline-flex items-center justify-center gap-2.5 px-7 py-3.5 min-h-[48px] rounded-xl font-semibold text-white text-sm transition-all duration-300 hover:shadow-[0_0_30px_rgba(79,70,229,0.4)] disabled:opacity-60 disabled:cursor-not-allowed"
                     style={{
                       background:
                         'linear-gradient(135deg, #4F46E5, #8B5CF6)',

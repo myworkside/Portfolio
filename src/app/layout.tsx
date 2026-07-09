@@ -14,34 +14,39 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover" as const,
+};
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sumitmondal.dev"),
-  title: "Sumit Mondal | Android Developer & Software Engineer",
+  metadataBase: new URL("https://github.com/myworkside"),
+  title: "Sumit Mondal | Android Application Developer & Warehouse Operations Specialist",
   description:
-    "Portfolio of Sumit Mondal — Android Developer & Software Engineer specializing in Kotlin, Jetpack Compose, and full-stack development. Building exceptional mobile experiences with modern technologies.",
+    "Portfolio of Sumit Mondal — Results-driven professional with experience in Android application development, warehouse operations, logistics, transportation management, and data processing.",
   keywords: [
     "Sumit Mondal",
-    "Android Developer",
-    "Software Engineer",
+    "Android Application Developer",
     "Kotlin",
-    "Jetpack Compose",
-    "Full Stack Developer",
-    "Portfolio",
-    "Mobile App Developer",
-    "React",
-    "Next.js",
-    "TypeScript",
+    "Java",
+    "Warehouse Operations",
+    "Logistics",
+    "Warehouse Management Systems",
+    "WMS",
+    "IronCrypt",
+    "Universal File Editor & Viewer",
   ],
-  authors: [{ name: "Sumit Mondal" }],
+  authors: [{ name: "Sumit Mondal", url: "https://linkedin.com/in/sumitwork" }],
   creator: "Sumit Mondal",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://sumitmondal.dev",
+    url: "https://github.com/myworkside",
     siteName: "Sumit Mondal — Portfolio",
-    title: "Sumit Mondal | Android Developer & Software Engineer",
+    title: "Sumit Mondal | Android Application Developer & Warehouse Operations Specialist",
     description:
-      "Building exceptional mobile experiences with modern Android technologies. Explore my projects, skills, and professional journey.",
+      "Results-driven professional with experience in Android application development, warehouse operations, logistics, transportation management, and data processing.",
     images: [
       {
         url: "/og-image.png",
@@ -53,9 +58,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sumit Mondal | Android Developer & Software Engineer",
+    title: "Sumit Mondal | Android Application Developer & Warehouse Operations Specialist",
     description:
-      "Building exceptional mobile experiences with modern Android technologies.",
+      "Results-driven professional with experience in Android application development, warehouse operations, logistics, transportation management, and data processing.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -92,16 +97,16 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Sumit Mondal",
-              jobTitle: "Android Developer & Software Engineer",
+              jobTitle: "Android Application Developer & Warehouse Operations Specialist",
               address: {
                 "@type": "PostalAddress",
-                addressLocality: "Hooghly",
+                addressLocality: "Itachuna, Hooghly",
                 addressRegion: "West Bengal",
                 addressCountry: "India",
               },
               telephone: "+91 7432838409",
               email: "mondalsumit6966@gmail.com",
-              url: "https://sumitmondal.dev",
+              url: "https://github.com/myworkside",
               sameAs: [
                 "https://github.com/myworkside",
                 "https://linkedin.com/in/sumitwork",

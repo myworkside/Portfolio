@@ -101,7 +101,7 @@ export default function Hero() {
         {/* Name with gradient */}
         <motion.h1
           variants={itemVariants}
-          className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-4 leading-[1.1]"
+          className="text-hero font-extrabold tracking-tight mb-4 leading-[1.1]"
         >
           <span
             className="bg-clip-text text-transparent"
@@ -117,10 +117,10 @@ export default function Hero() {
         {/* TypeWriter Roles */}
         <motion.div
           variants={itemVariants}
-          className="text-xl md:text-2xl lg:text-3xl font-medium text-[#E2E8F0] mb-6 h-10"
+          className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-[#E2E8F0] mb-6 min-h-[40px]"
         >
           <TypeWriter
-            words={personal.roles ?? ['Android Developer', 'Software Engineer', 'Full-Stack Developer']}
+            words={personal.roles ?? ['Android Application Developer', 'Warehouse Operations Specialist', 'Logistics Professional']}
             className="bg-clip-text text-transparent"
             style={{
               backgroundImage:
@@ -145,7 +145,7 @@ export default function Hero() {
           <MagneticButton>
             <a
               href={personal.resumeUrl}
-              className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-white text-sm transition-all duration-300 hover:shadow-[0_0_30px_rgba(79,70,229,0.4)]"
+              className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 min-h-[48px] rounded-xl font-semibold text-white text-sm transition-all duration-300 hover:shadow-[0_0_30px_rgba(79,70,229,0.4)]"
               style={{
                 background: 'linear-gradient(135deg, #4F46E5, #8B5CF6)',
               }}
@@ -158,7 +158,7 @@ export default function Hero() {
           <MagneticButton>
             <a
               href="#projects"
-              className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-[#E2E8F0] text-sm border border-[#4F46E5]/50 backdrop-blur-sm transition-all duration-300 hover:border-[#4F46E5] hover:bg-[#4F46E5]/10 hover:shadow-[0_0_30px_rgba(79,70,229,0.15)]"
+              className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 min-h-[48px] rounded-xl font-semibold text-[#E2E8F0] text-sm border border-[#4F46E5]/50 backdrop-blur-sm transition-all duration-300 hover:border-[#4F46E5] hover:bg-[#4F46E5]/10 hover:shadow-[0_0_30px_rgba(79,70,229,0.15)]"
               style={{ background: 'rgba(15, 23, 42, 0.4)' }}
             >
               View Projects
@@ -166,12 +166,11 @@ export default function Hero() {
             </a>
           </MagneticButton>
 
-          {/* Social Icons */}
+          {/* Social Icons (Strictly CV: GitHub & LinkedIn) */}
           <div className="flex items-center gap-2 ml-2">
             {[
               { icon: FaGithub, href: personal.social?.github ?? 'https://github.com/myworkside', label: 'GitHub' },
               { icon: FaLinkedin, href: personal.social?.linkedin ?? 'https://linkedin.com/in/sumitwork', label: 'LinkedIn' },
-              { icon: FaInstagram, href: personal.social?.instagram ?? 'https://instagram.com/sumitupdat', label: 'Instagram' },
             ].map(({ icon: Icon, href, label }) => (
               <MagneticButton key={label}>
                 <a
@@ -179,7 +178,7 @@ export default function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="inline-flex items-center justify-center w-11 h-11 rounded-xl border border-white/10 text-[#94A3B8] backdrop-blur-sm transition-all duration-300 hover:text-white hover:border-[#4F46E5]/50 hover:bg-[#4F46E5]/10 hover:shadow-[0_0_20px_rgba(79,70,229,0.15)]"
+                  className="inline-flex items-center justify-center w-12 h-12 min-h-[48px] min-w-[48px] rounded-xl border border-white/10 text-[#94A3B8] backdrop-blur-sm transition-all duration-300 hover:text-white hover:border-[#4F46E5]/50 hover:bg-[#4F46E5]/10 hover:shadow-[0_0_20px_rgba(79,70,229,0.15)]"
                   style={{ background: 'rgba(15, 23, 42, 0.4)' }}
                 >
                   <Icon className="text-lg" />

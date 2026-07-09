@@ -193,7 +193,7 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="relative z-[70] flex h-10 w-10 items-center justify-center rounded-lg text-white md:hidden"
+            className="relative z-[70] flex h-12 w-12 items-center justify-center rounded-lg text-white md:hidden hover:bg-white/[0.06] transition-colors"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             <AnimatePresence mode="wait">

@@ -42,7 +42,7 @@ export default function SectionHeading({
 
       {/* Title — gradient text */}
       <motion.h2
-        className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight"
+        className="text-section font-bold leading-tight"
         style={{
           background: 'linear-gradient(135deg, #4F46E5, #00E5FF)',
           WebkitBackgroundClip: 'text',
