@@ -128,8 +128,8 @@ export default function Navbar() {
         >
           {/* Logo */}
           <a
-            href="#home"
-            onClick={(e) => handleNavClick(e, "#home")}
+            href="#hero"
+            onClick={(e) => handleNavClick(e, "#hero")}
             className="relative z-10 select-none"
           >
             <span

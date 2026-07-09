@@ -88,7 +88,7 @@ export default function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
-        className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full flex flex-col items-center text-center"
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 w-full flex flex-col items-center text-center"
       >
         {/* Greeting */}
         <motion.p

@@ -34,11 +34,11 @@ export interface PersonalInfo {
   };
   socials?: SocialLinkItem[] | Record<string, string>;
   stats: {
-    yearsExperience?: number;
     projects?: number;
-    projectsCompleted?: number;
-    githubStars?: number;
-    happyClients?: number;
+    roles?: number;
+    competencies?: number;
+    strengths?: number;
+    [key: string]: number | undefined;
   };
   mission?: string;
   vision?: string;

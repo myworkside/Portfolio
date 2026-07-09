@@ -61,7 +61,7 @@ export default function Experience() {
       {/* Bg accents */}
       <div className="absolute top-1/4 right-0 w-80 h-80 bg-[#8B5CF6] rounded-full blur-3xl opacity-[0.05]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 w-full">
         <ScrollReveal>
           <SectionHeading
             title="Experience"

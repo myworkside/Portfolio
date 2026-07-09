@@ -31,27 +31,27 @@ const itemVariants: Variants = {
 const aboutStats = [
   {
     icon: FaCode,
-    label: 'Projects Completed',
-    value: personal.stats.projects,
-    suffix: '+',
+    label: 'Featured CV Projects',
+    value: 2,
+    suffix: '',
   },
   {
     icon: FaRocket,
-    label: 'Years Experience',
-    value: personal.stats.yearsExperience,
-    suffix: '+',
+    label: 'Professional Roles',
+    value: 6,
+    suffix: '',
   },
   {
     icon: FaStar,
-    label: 'GitHub Stars',
-    value: personal.stats.githubStars,
+    label: 'Core Competencies',
+    value: 11,
     suffix: '',
   },
   {
     icon: FaUsers,
-    label: 'Happy Clients',
-    value: personal.stats.happyClients,
-    suffix: '+',
+    label: 'CV Strengths',
+    value: 8,
+    suffix: '',
   },
 ];
 
@@ -70,7 +70,7 @@ export default function About() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#4F46E5] rounded-full blur-3xl opacity-[0.06]" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#8B5CF6] rounded-full blur-3xl opacity-[0.06]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 w-full">
         <ScrollReveal>
           <SectionHeading title="About Me" subtitle="Get to know me" />
         </ScrollReveal>

@@ -18,7 +18,7 @@ export interface ContactInfoItem {
 }
 
 export const navLinks: NavLinkItem[] = [
-  { label: 'Home', href: '#home', sectionId: 'home', icon: 'HiOutlineHome' },
+  { label: 'Home', href: '#hero', sectionId: 'hero', icon: 'HiOutlineHome' },
   { label: 'About', href: '#about', sectionId: 'about', icon: 'HiOutlineUser' },
   { label: 'Skills', href: '#skills', sectionId: 'skills', icon: 'HiOutlineSparkles' },
   { label: 'Experience', href: '#experience', sectionId: 'experience', icon: 'HiOutlineBriefcase' },

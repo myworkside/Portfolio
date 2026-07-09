@@ -24,7 +24,7 @@ export default function Home() {
       <Navbar />
 
       {/* ─── Main Content ─── */}
-      <main id="main-content" className="relative z-10">
+      <main id="main-content" className="relative z-10 w-full overflow-x-hidden">
         <Hero />
         <About />
         <Skills />

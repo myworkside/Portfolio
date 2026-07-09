@@ -33,10 +33,10 @@ export const personalInfo: PersonalInfo = {
     linkedin: 'https://linkedin.com/in/sumitwork',
   },
   stats: {
-    yearsExperience: 6,
-    projectsCompleted: 2,
-    githubStars: 11,
-    happyClients: 5,
+    projects: 2,
+    roles: 6,
+    competencies: 11,
+    strengths: 8,
   },
   highlights: [
     {
