@@ -62,7 +62,7 @@ export default function Hero() {
     <section
       id="hero"
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="w-full relative min-h-screen flex items-center justify-center overflow-hidden py-20 md:py-32"
       style={{ background: '#050816' }}
     >
       {/* Floating gradient orbs */}
@@ -88,7 +88,7 @@ export default function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
-        className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 relative z-10 w-full flex flex-col items-center text-center"
+        className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-10 relative z-10 flex flex-col items-center text-center"
       >
         {/* Greeting */}
         <motion.p
@@ -132,7 +132,7 @@ export default function Hero() {
         {/* Tagline */}
         <motion.p
           variants={itemVariants}
-          className="text-[#94A3B8] text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed mb-10"
+          className="text-[#94A3B8] text-sm sm:text-base md:text-lg max-w-[800px] mx-auto leading-relaxed mb-10"
         >
           {personal.tagline}
         </motion.p>

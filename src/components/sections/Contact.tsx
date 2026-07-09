@@ -118,14 +118,14 @@ export default function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="w-full relative py-24 md:py-32 overflow-hidden"
       style={{ background: '#050816' }}
     >
       {/* Bg accents */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-[#4F46E5] rounded-full blur-3xl opacity-[0.05]" />
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#8B5CF6] rounded-full blur-3xl opacity-[0.05]" />
 
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 relative z-10 w-full">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-10 relative z-10">
         <ScrollReveal>
           <SectionHeading title="Get in Touch" subtitle="Let's work together" />
         </ScrollReveal>

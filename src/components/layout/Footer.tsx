@@ -31,7 +31,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative mt-auto">
+    <footer className="w-full relative mt-auto">
       {/* Top gradient divider */}
       <div
         className="h-px w-full"
@@ -47,7 +47,7 @@ export default function Footer() {
             "linear-gradient(180deg, rgba(5,8,22,1) 0%, rgba(10,15,35,1) 100%)",
         }}
       >
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 pb-8 pt-16 w-full">
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-10 pb-8 pt-16">
           {/* Grid */}
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
             {/* Column 1 — Brand */}

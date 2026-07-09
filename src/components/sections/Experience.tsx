@@ -55,13 +55,13 @@ export default function Experience() {
     <section
       id="experience"
       ref={sectionRef}
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="w-full relative py-24 md:py-32 overflow-hidden"
       style={{ background: '#050816' }}
     >
       {/* Bg accents */}
       <div className="absolute top-1/4 right-0 w-80 h-80 bg-[#8B5CF6] rounded-full blur-3xl opacity-[0.05]" />
 
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 relative z-10 w-full">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-10 relative z-10">
         <ScrollReveal>
           <SectionHeading
             title="Experience"
@@ -74,7 +74,7 @@ export default function Experience() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="relative mt-16"
+          className="w-full relative mt-16"
         >
           {/* Vertical connecting line */}
           <div className="absolute left-6 lg:left-1/2 top-0 bottom-0 w-px lg:-translate-x-px">
@@ -91,13 +91,13 @@ export default function Experience() {
           </div>
 
           {/* Timeline items */}
-          <div className="space-y-12 lg:space-y-16">
+          <div className="space-y-12 lg:space-y-16 w-full">
             {experience.map((exp, index) => {
               const isLeft = index % 2 === 0;
               return (
                 <div
                   key={exp.id}
-                  className="relative flex items-start gap-6 lg:gap-0"
+                  className="relative flex items-start gap-6 lg:gap-0 w-full"
                 >
                   {/* Desktop: left side content */}
                   <div
@@ -108,7 +108,7 @@ export default function Experience() {
                     <motion.div
                       custom={isLeft}
                       variants={cardVariants}
-                      className="w-full max-w-lg"
+                      className="w-full max-w-[520px]"
                     >
                       <ExperienceCard exp={exp} />
                     </motion.div>
@@ -127,10 +127,11 @@ export default function Experience() {
                   />
 
                   {/* Mobile & Tablet: card always on the right of the dot */}
-                  <div className="flex-1 lg:hidden">
+                  <div className="w-full max-w-[520px] flex-1 lg:hidden">
                     <motion.div
                       custom={false}
                       variants={cardVariants}
+                      className="w-full"
                     >
                       <ExperienceCard exp={exp} />
                     </motion.div>
