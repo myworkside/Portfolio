@@ -87,7 +87,7 @@ export default function Navbar() {
             className={cn(
               "relative h-[72px] w-full rounded-full px-8 flex items-center justify-between transition-all duration-500 border",
               hasScrolled
-                ? "border-white/[0.12] bg-[#0B1220]/80 shadow-[0_8px_32px_rgba(0,0,0,0.45)] backdrop-blur-xl"
+                ? "border-white/[0.14] bg-[#0B1220]/85 shadow-[0_0_35px_rgba(79,70,229,0.35),0_8px_32px_rgba(0,0,0,0.5)] backdrop-blur-xl"
                 : "border-white/[0.08] bg-[#050816]/70 backdrop-blur-lg"
             )}
           >

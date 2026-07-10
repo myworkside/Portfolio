@@ -73,7 +73,7 @@ export function Hero() {
         {/* TypeWriter Roles (prevents word wrap break on roles) */}
         <motion.div
           variants={itemVariants}
-          className="text-lg sm:text-xl md:text-2xl font-semibold text-[#E2E8F0] mb-6 min-h-[44px] flex items-center justify-center max-w-[90vw]"
+          className="text-lg sm:text-xl md:text-[22px] font-semibold text-[#E2E8F0] mb-6 min-h-[44px] flex items-center justify-center max-w-[90vw]"
         >
           <TypeWriter
             words={[

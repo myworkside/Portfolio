@@ -50,7 +50,7 @@ export function Projects() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch my-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 items-stretch my-8"
         >
           {projects.map((project) => (
             <motion.div

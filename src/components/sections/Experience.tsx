@@ -150,10 +150,10 @@ export function Experience() {
           animate={isInView ? 'visible' : 'hidden'}
           className="relative max-w-[1140px] mx-auto"
         >
-          {/* Vertical connecting line — left on mobile, center on desktop */}
-          <div className="absolute left-6 lg:left-1/2 lg:-translate-x-px top-0 bottom-0 w-px">
+          {/* Vertical connecting glowing neon line — left on mobile, center on desktop */}
+          <div className="absolute left-6 lg:left-1/2 lg:-translate-x-1/2 top-0 bottom-0 w-[2px]">
             <motion.div
-              className="w-full h-full"
+              className="w-full h-full shadow-[0_0_15px_rgba(0,229,255,0.7)]"
               style={{
                 background:
                   'linear-gradient(to bottom, #4F46E5, #00E5FF, #8B5CF6)',

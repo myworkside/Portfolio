@@ -112,8 +112,10 @@ export function Contact() {
           </div>
 
           {/* Right Column (60% - lg:col-span-6) - Form */}
-          <div className="lg:col-span-6 h-full">
-            <GlassCard className="p-8 h-full flex flex-col justify-between">
+          <div className="relative lg:col-span-6 h-full">
+            {/* Background Space Glow Behind Form */}
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#4F46E5]/30 via-[#8B5CF6]/20 to-[#00E5FF]/30 blur-2xl opacity-60 -z-10 pointer-events-none" />
+            <GlassCard className="p-8 h-full flex flex-col justify-between relative z-10">
               <div>
                 <h3 className="text-2xl font-bold text-white mb-6">
                   Send a Direct Message
@@ -135,7 +137,7 @@ export function Contact() {
                         setFormState({ ...formState, name: e.target.value })
                       }
                       placeholder="Enter your name"
-                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#4F46E5] transition-colors"
+                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.25)] transition-all duration-300"
                     />
                   </div>
 
@@ -151,7 +153,7 @@ export function Contact() {
                         setFormState({ ...formState, email: e.target.value })
                       }
                       placeholder="Enter your email"
-                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#4F46E5] transition-colors"
+                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.25)] transition-all duration-300"
                     />
                   </div>
 
@@ -167,7 +169,7 @@ export function Contact() {
                         setFormState({ ...formState, message: e.target.value })
                       }
                       placeholder="Tell me about your project or opportunity..."
-                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#4F46E5] transition-colors resize-none"
+                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.25)] transition-all duration-300 resize-none"
                     />
                   </div>
 
