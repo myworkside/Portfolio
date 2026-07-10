@@ -65,9 +65,9 @@ export function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className="w-full relative py-[72px] md:py-[96px] lg:py-[120px] overflow-hidden"
+      className="w-full relative py-28 md:py-36 lg:py-[160px] overflow-hidden"
     >
-      <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10 2xl:px-16 relative z-10">
+      <div className="mx-auto w-full max-w-[1440px] px-8 relative z-10">
         <ScrollReveal>
           <SectionHeading
             title="Let's Connect"
@@ -76,12 +76,12 @@ export function Contact() {
           />
         </ScrollReveal>
 
-        {/* Desktop 40% / 60% Layout: grid-cols-1 lg:grid-cols-10 gap-10 */}
+        {/* Desktop 40% / 60% Layout: grid-cols-1 lg:grid-cols-10 gap-8 */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 lg:grid-cols-10 gap-10 items-stretch"
+          className="grid grid-cols-1 lg:grid-cols-10 gap-8 items-stretch"
         >
           {/* Left Column (40% - lg:col-span-4) - Contact Info Cards */}
           <div className="lg:col-span-4 flex flex-col justify-between gap-6 h-full">

@@ -36,9 +36,9 @@ export default function Footer() {
       {/* Subtle top glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-[#4F46E5]/40 to-transparent" />
 
-      <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10 2xl:px-16 py-20">
+      <div className="mx-auto w-full max-w-[1440px] px-8 py-20">
         {/* Desktop 4 Equal Columns Grid, Tablet 2 columns, Mobile 1 column spanning full width */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 items-start w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-start w-full">
           {/* Column 1 — Brand */}
           <div className="space-y-5">
             <a href="#hero" onClick={(e) => handleNavClick(e, "#hero")}>

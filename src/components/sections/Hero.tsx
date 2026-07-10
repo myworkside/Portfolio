@@ -34,14 +34,14 @@ export function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-screen w-full flex flex-col justify-center overflow-hidden py-[72px] md:py-[96px] lg:py-[120px]"
+      className="relative min-h-screen w-full flex flex-col justify-center overflow-hidden py-28 md:py-36 lg:py-[160px]"
     >
-      {/* Standardized Global Container: max-w-[1440px] */}
+      {/* Standardized Global Container: max-w-[1440px] px-8 */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
-        className="mx-auto w-full max-w-[1440px] px-6 lg:px-10 2xl:px-16 relative z-10 flex flex-col items-center text-center"
+        className="mx-auto w-full max-w-[1440px] px-8 relative z-10 flex flex-col items-center text-center"
       >
         {/* Top Floating Glass Badge Subtitle */}
         <motion.div variants={itemVariants} className="mb-8">
@@ -53,10 +53,10 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* Main Heading — 40px mobile, 56px tablet, 76px desktop */}
+        {/* Main Heading — 64–72px Desktop */}
         <motion.h1
           variants={itemVariants}
-          className="text-[40px] md:text-[56px] lg:text-[76px] font-extrabold tracking-tight mb-6 leading-[1.08] max-w-5xl mx-auto"
+          className="text-[40px] sm:text-[56px] lg:text-[72px] font-extrabold tracking-tight mb-6 leading-[1.08] w-full mx-auto"
         >
           <span>Engineering Ultra-Responsive </span>
           <span

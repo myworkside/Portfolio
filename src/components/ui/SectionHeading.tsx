@@ -27,10 +27,10 @@ export default function SectionHeading({
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
     >
-      {/* Subtitle — 16px label */}
+      {/* Subtitle — 14px label */}
       {subtitle && (
         <motion.span
-          className="text-sm sm:text-base font-semibold uppercase tracking-[0.2em] text-[#94A3B8]"
+          className="text-[14px] font-semibold uppercase tracking-[0.2em] text-[#94A3B8]"
           initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -39,9 +39,9 @@ export default function SectionHeading({
         </motion.span>
       )}
 
-      {/* Title — gradient text (56px desktop) */}
+      {/* Title — gradient text (48px desktop) */}
       <motion.h2
-        className="text-[32px] md:text-[44px] lg:text-[56px] font-bold leading-[1.12] tracking-tight"
+        className="text-[32px] sm:text-[40px] lg:text-[48px] font-bold leading-[1.15] tracking-tight"
         style={{
           background: 'linear-gradient(135deg, #4F46E5, #00E5FF)',
           WebkitBackgroundClip: 'text',

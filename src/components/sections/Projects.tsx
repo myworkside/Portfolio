@@ -34,23 +34,23 @@ export function Projects() {
     <section
       ref={sectionRef}
       id="projects"
-      className="w-full relative py-[72px] md:py-[96px] lg:py-[120px] overflow-hidden"
+      className="w-full relative py-28 md:py-36 lg:py-[160px] overflow-hidden"
     >
-      <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10 2xl:px-16 relative z-10">
+      <div className="mx-auto w-full max-w-[1440px] px-8 relative z-10">
         <ScrollReveal>
           <SectionHeading
-            title="Featured Projects"
-            subtitle="Architectural Case Studies"
+            title="Featured Works"
+            subtitle="Engineered Excellence"
             align="center"
           />
         </ScrollReveal>
 
-        {/* Desktop 2 equal cards: max-w-[1140px] mx-auto, gap-8 */}
+        {/* Award-Level 2-Column Grid: equal widths, gap-10, my-8 */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="max-w-[1140px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch my-8"
         >
           {projects.map((project) => (
             <motion.div

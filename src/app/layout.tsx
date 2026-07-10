@@ -115,7 +115,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-background text-text font-sans overflow-x-hidden">
+      <body className="min-h-full w-full flex flex-col items-center justify-start bg-background text-text font-sans overflow-x-hidden">
         {/* Skip to content for accessibility */}
         <a href="#main-content" className="skip-to-content">
           Skip to main content

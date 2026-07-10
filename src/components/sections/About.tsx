@@ -41,9 +41,9 @@ export function About() {
     <section
       ref={sectionRef}
       id="about"
-      className="w-full relative py-[72px] md:py-[96px] lg:py-[120px] overflow-hidden"
+      className="w-full relative py-28 md:py-36 lg:py-[160px] overflow-hidden"
     >
-      <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10 2xl:px-16 relative z-10">
+      <div className="mx-auto w-full max-w-[1440px] px-8 relative z-10">
         <ScrollReveal>
           <SectionHeading
             title="About Me"
@@ -52,15 +52,15 @@ export function About() {
           />
         </ScrollReveal>
 
-        {/* Award-Level 2-Column Layout: Left (50%), Right (50%) */}
+        {/* 45% Left / 55% Right Layout: grid-cols-1 lg:grid-cols-12 gap-8 items-stretch */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch"
         >
-          {/* Left Column (50%) — Biography + Highlight Cards + Education + Languages */}
-          <motion.div variants={itemVariants} className="flex flex-col justify-between space-y-8">
+          {/* Left Column (45% — lg:col-span-5) — Biography + Highlight Cards + Education + Languages */}
+          <motion.div variants={itemVariants} className="lg:col-span-5 flex flex-col justify-between space-y-8">
             {/* Biography */}
             <div className="space-y-6">
               {bioParagraphs.map((paragraph, index) => (
@@ -161,8 +161,8 @@ export function About() {
             </div>
           </motion.div>
 
-          {/* Right Column (50%) — Profile Card + Mission Card + Vision Card + Strength Tags */}
-          <motion.div variants={itemVariants} className="flex flex-col justify-between space-y-8">
+          {/* Right Column (55% — lg:col-span-7) — Profile Card + Mission Card + Vision Card + Strength Tags */}
+          <motion.div variants={itemVariants} className="lg:col-span-7 flex flex-col justify-between space-y-8">
             {/* Profile Card */}
             <ScrollReveal delay={0.1}>
               <div className="relative rounded-2xl p-8 border border-white/10 backdrop-blur-xl shadow-xl flex flex-col sm:flex-row items-center gap-8" style={{ background: 'rgba(255, 255, 255, 0.03)' }}>
@@ -195,29 +195,34 @@ export function About() {
               </div>
             </ScrollReveal>
 
-            {/* Distinct Mission Card */}
-            <ScrollReveal delay={0.15}>
-              <GlassCard className="p-8">
-                <h3 className="text-[14px] uppercase tracking-widest text-[#4F46E5] font-bold mb-3">
-                  Mission
-                </h3>
-                <p className="text-[#E2E8F0] text-[16px] md:text-[18px] leading-relaxed">
-                  {personal.mission}
-                </p>
-              </GlassCard>
-            </ScrollReveal>
+            {/* Equal Height Side-by-Side Mission & Vision Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch">
+              <ScrollReveal delay={0.15} className="h-full">
+                <GlassCard className="p-8 h-full flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-[14px] uppercase tracking-widest text-[#4F46E5] font-bold mb-3">
+                      Mission
+                    </h3>
+                    <p className="text-[#E2E8F0] text-[16px] md:text-[18px] leading-relaxed">
+                      {personal.mission}
+                    </p>
+                  </div>
+                </GlassCard>
+              </ScrollReveal>
 
-            {/* Distinct Vision Card */}
-            <ScrollReveal delay={0.2}>
-              <GlassCard className="p-8">
-                <h3 className="text-[14px] uppercase tracking-widest text-[#00E5FF] font-bold mb-3">
-                  Vision
-                </h3>
-                <p className="text-[#E2E8F0] text-[16px] md:text-[18px] leading-relaxed">
-                  {personal.vision}
-                </p>
-              </GlassCard>
-            </ScrollReveal>
+              <ScrollReveal delay={0.2} className="h-full">
+                <GlassCard className="p-8 h-full flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-[14px] uppercase tracking-widest text-[#00E5FF] font-bold mb-3">
+                      Vision
+                    </h3>
+                    <p className="text-[#E2E8F0] text-[16px] md:text-[18px] leading-relaxed">
+                      {personal.vision}
+                    </p>
+                  </div>
+                </GlassCard>
+              </ScrollReveal>
+            </div>
 
             {/* Professional Strengths Card */}
             <ScrollReveal delay={0.25}>

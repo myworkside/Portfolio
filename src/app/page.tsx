@@ -24,7 +24,7 @@ export default function Home() {
       <Navbar />
 
       {/* ─── Main Content ─── */}
-      <main id="main-content" className="relative z-10 w-full overflow-x-hidden">
+      <main id="main-content" className="relative z-10 w-full flex flex-col items-center justify-start overflow-x-hidden">
         <Hero />
         <About />
         <Skills />

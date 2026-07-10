@@ -98,9 +98,9 @@ export function Skills() {
     <section
       ref={sectionRef}
       id="skills"
-      className="w-full relative py-[72px] md:py-[96px] lg:py-[120px] overflow-hidden"
+      className="w-full relative py-28 md:py-36 lg:py-[160px] overflow-hidden"
     >
-      <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10 2xl:px-16 relative z-10">
+      <div className="mx-auto w-full max-w-[1440px] px-8 relative z-10">
         <ScrollReveal>
           <SectionHeading
             title="Technical Arsenal"
@@ -161,8 +161,8 @@ export function Skills() {
                     }}
                     className="w-full"
                   >
-                    {/* Exact height 170px, same padding p-6 */}
-                    <GlassCard className="p-6 h-[170px] flex flex-col justify-between group w-full">
+                    {/* Equal height 180px, padding p-7 */}
+                    <GlassCard className="p-7 h-[180px] flex flex-col justify-between group w-full">
                       {/* Top: Icon + Name */}
                       <div className="flex items-center gap-4">
                         <div

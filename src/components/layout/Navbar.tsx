@@ -81,11 +81,11 @@ export default function Navbar() {
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         className="fixed left-0 right-0 top-4 z-50 transition-all duration-500"
       >
-        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10 2xl:px-16">
+        <div className="mx-auto w-full max-w-[1440px] px-8">
           {/* 72px Floating Glass Pill Navbar */}
           <div
             className={cn(
-              "h-[72px] w-full rounded-full px-6 lg:px-8 flex items-center justify-between transition-all duration-500 border",
+              "relative h-[72px] w-full rounded-full px-8 flex items-center justify-between transition-all duration-500 border",
               hasScrolled
                 ? "border-white/[0.12] bg-[#0B1220]/80 shadow-[0_8px_32px_rgba(0,0,0,0.45)] backdrop-blur-xl"
                 : "border-white/[0.08] bg-[#050816]/70 backdrop-blur-lg"
@@ -113,8 +113,8 @@ export default function Navbar() {
               </span>
             </a>
 
-            {/* Navigation Center */}
-            <nav className="hidden items-center gap-1.5 lg:flex">
+            {/* Navigation Perfectly Centered (absolute left-1/2 -translate-x-1/2) */}
+            <nav className="absolute left-1/2 -translate-x-1/2 hidden items-center gap-10 xl:gap-12 lg:flex z-10">
               {navLinks.map(({ label, href, sectionId }) => {
                 const isActive = activeSection === sectionId;
                 return (
@@ -123,17 +123,17 @@ export default function Navbar() {
                     href={href}
                     onClick={(e) => handleNavClick(e, href)}
                     className={cn(
-                      "relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300",
+                      "relative py-2 text-sm font-medium transition-all duration-300 whitespace-nowrap",
                       isActive
-                        ? "text-white bg-white/[0.08]"
-                        : "text-[#94A3B8] hover:text-white hover:bg-white/[0.04]"
+                        ? "text-white"
+                        : "text-[#94A3B8] hover:text-white"
                     )}
                   >
                     {label}
                     {isActive && (
                       <motion.div
                         layoutId="activeNavIndicator"
-                        className="absolute bottom-1.5 left-1/2 -translate-x-1/2 h-[2px] w-4 rounded-full"
+                        className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-6 rounded-full"
                         style={{
                           background: "linear-gradient(90deg, #4F46E5, #00E5FF)",
                         }}

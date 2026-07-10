@@ -142,24 +142,27 @@
 }
 
 /* ─── Base Styles ─── */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-body {
-  background: var(--color-background);
-  color: var(--color-text);
-  font-family: var(--font-sans);
-  overflow-x: hidden;
-  min-height: 100vh;
+  body {
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    min-height: 100vh;
+    width: 100%;
+  }
 }
 
 /* ─── Custom Scrollbar ─── */

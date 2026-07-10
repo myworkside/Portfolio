@@ -133,9 +133,9 @@ export function Experience() {
     <section
       ref={sectionRef}
       id="experience"
-      className="w-full relative py-[72px] md:py-[96px] lg:py-[120px] overflow-hidden"
+      className="w-full relative py-28 md:py-36 lg:py-[160px] overflow-hidden"
     >
-      <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10 2xl:px-16 relative z-10">
+      <div className="mx-auto w-full max-w-[1440px] px-8 relative z-10">
         <ScrollReveal>
           <SectionHeading
             title="Career Journey"
@@ -188,7 +188,7 @@ export function Experience() {
                     </motion.div>
                   </div>
 
-                  {/* Desktop: Centered alternating LEFT / RIGHT with 480-520px cards */}
+                  {/* Desktop: Centered alternating LEFT / RIGHT with 600px cards */}
                   <div className="hidden lg:grid lg:grid-cols-2 items-start">
                     {/* Left cell */}
                     <div className="flex justify-end pr-14">
@@ -196,7 +196,7 @@ export function Experience() {
                         <motion.div
                           custom={true}
                           variants={cardVariants}
-                          className="w-full max-w-[500px]"
+                          className="w-full max-w-[600px]"
                         >
                           <ExperienceCard exp={exp} />
                         </motion.div>
@@ -209,7 +209,7 @@ export function Experience() {
                         <motion.div
                           custom={false}
                           variants={cardVariants}
-                          className="w-full max-w-[500px]"
+                          className="w-full max-w-[600px]"
                         >
                           <ExperienceCard exp={exp} />
                         </motion.div>
