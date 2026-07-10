@@ -106,7 +106,7 @@ export default function MagneticButton({
   const combinedClass = `
     relative inline-flex items-center justify-center
     cursor-pointer select-none no-underline
-    transition-shadow duration-300
+    transition-all duration-300 ease-out hover:scale-[1.03]
     ${sizeClasses[size]}
     ${variantClasses[variant]}
     ${className}
@@ -128,9 +128,9 @@ export default function MagneticButton({
     whileHover: disabled
       ? undefined
       : {
-          scale: 1.05,
+          scale: 1.03,
           boxShadow: hoverShadows[variant],
-          transition: { duration: 0.25 },
+          transition: { duration: 0.3 },
         },
     whileTap: disabled ? undefined : { scale: 0.97 },
     onMouseMove: disabled ? undefined : handleMouseMove,

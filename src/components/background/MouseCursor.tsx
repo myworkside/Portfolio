@@ -26,7 +26,7 @@ export default function MouseCursor() {
     const handleMouseMove = (e: MouseEvent) => {
       targetRef.current = { x: e.clientX, y: e.clientY };
 
-      // Check if hovering interactive element
+      // Check if hovering interactive element or card
       const target = e.target as HTMLElement | null;
       if (target) {
         const interactive =
@@ -35,8 +35,10 @@ export default function MouseCursor() {
           target.tagName === "INPUT" ||
           target.tagName === "TEXTAREA" ||
           target.closest("a") !== null ||
-          target.closest("button") !== null;
-        setIsHovering(interactive);
+          target.closest("button") !== null ||
+          target.closest(".cursor-pointer") !== null ||
+          target.getAttribute("role") === "button";
+        setIsHovering(Boolean(interactive));
       }
     };
 

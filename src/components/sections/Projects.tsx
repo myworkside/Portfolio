@@ -104,16 +104,16 @@ export function Projects() {
                     </div>
                   </div>
 
-                  {/* Buttons aligned bottom left */}
-                  <div className="flex items-center gap-4 pt-5 border-t border-white/10">
+                  {/* Buttons aligned bottom left with smooth fade-up hover reveal */}
+                  <div className="flex items-center gap-4 pt-5 border-t border-white/10 transition-all duration-300 ease-out translate-y-1.5 opacity-85 group-hover:translate-y-0 group-hover:opacity-100">
                     {project.githubUrl && (
                       <a
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-white/[0.06] border border-white/15 hover:bg-white/15 transition-all"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-white/[0.06] border border-white/15 hover:bg-white/15 hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(79,70,229,0.4)] transition-all duration-300 ease-out"
                       >
-                        <FaGithub className="text-base" />
+                        <FaGithub className="text-base transition-transform duration-300 group-hover:rotate-6" />
                         Source Code
                       </a>
                     )}
@@ -123,12 +123,12 @@ export function Projects() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white shadow-md shadow-[#4F46E5]/20 border border-white/15 hover:opacity-90 transition-all"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white shadow-md shadow-[#4F46E5]/20 border border-white/15 hover:scale-[1.03] hover:shadow-[0_0_25px_rgba(0,229,255,0.45)] transition-all duration-300 ease-out"
                         style={{
                           background: 'linear-gradient(135deg, #4F46E5, #8B5CF6)',
                         }}
                       >
-                        <FaExternalLinkAlt className="text-xs" />
+                        <FaExternalLinkAlt className="text-xs transition-transform duration-300 group-hover:scale-110" />
                         Live Demo
                       </a>
                     )}

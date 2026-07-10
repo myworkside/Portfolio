@@ -125,9 +125,9 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.03] text-[#94A3B8] transition-all duration-300 hover:border-[#4F46E5] hover:bg-[#4F46E5]/10 hover:text-white"
+                    className="group flex h-11 w-11 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.03] text-[#94A3B8] transition-all duration-300 ease-out hover:-translate-y-1.5 hover:scale-105 hover:border-[#00E5FF] hover:bg-[#00E5FF]/10 hover:text-[#00E5FF] hover:shadow-[0_0_20px_rgba(0,229,255,0.45)]"
                   >
-                    <Icon className="h-5 w-5" />
+                    <Icon className="h-5 w-5 transition-transform duration-300 group-hover:rotate-6" />
                   </a>
                 );
               })}

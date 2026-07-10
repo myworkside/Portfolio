@@ -123,19 +123,30 @@ export default function Navbar() {
                     href={href}
                     onClick={(e) => handleNavClick(e, href)}
                     className={cn(
-                      "relative py-2 text-sm font-medium transition-all duration-300 whitespace-nowrap",
+                      "group relative py-2 text-sm font-medium transition-colors duration-300 whitespace-nowrap",
                       isActive
                         ? "text-white"
                         : "text-[#94A3B8] hover:text-white"
                     )}
                   >
                     {label}
+                    {/* Hover Animated Underline */}
+                    {!isActive && (
+                      <span
+                        className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 rounded-full transition-all duration-300 ease-out group-hover:w-full opacity-0 group-hover:opacity-100"
+                        style={{
+                          background: "linear-gradient(90deg, #4F46E5, #00E5FF)",
+                          boxShadow: "0 0 10px rgba(0, 229, 255, 0.6)",
+                        }}
+                      />
+                    )}
                     {isActive && (
                       <motion.div
                         layoutId="activeNavIndicator"
                         className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-6 rounded-full"
                         style={{
                           background: "linear-gradient(90deg, #4F46E5, #00E5FF)",
+                          boxShadow: "0 0 12px rgba(0, 229, 255, 0.7)",
                         }}
                       />
                     )}

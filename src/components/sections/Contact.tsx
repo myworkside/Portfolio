@@ -137,7 +137,7 @@ export function Contact() {
                         setFormState({ ...formState, name: e.target.value })
                       }
                       placeholder="Enter your name"
-                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.25)] transition-all duration-300"
+                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base hover:border-[#00E5FF]/40 hover:bg-white/[0.05] hover:shadow-[0_0_15px_rgba(0,229,255,0.15)] focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.35)] transition-all duration-300 ease-out"
                     />
                   </div>
 
@@ -153,7 +153,7 @@ export function Contact() {
                         setFormState({ ...formState, email: e.target.value })
                       }
                       placeholder="Enter your email"
-                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.25)] transition-all duration-300"
+                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base hover:border-[#00E5FF]/40 hover:bg-white/[0.05] hover:shadow-[0_0_15px_rgba(0,229,255,0.15)] focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.35)] transition-all duration-300 ease-out"
                     />
                   </div>
 
@@ -169,7 +169,7 @@ export function Contact() {
                         setFormState({ ...formState, message: e.target.value })
                       }
                       placeholder="Tell me about your project or opportunity..."
-                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.25)] transition-all duration-300 resize-none"
+                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base hover:border-[#00E5FF]/40 hover:bg-white/[0.05] hover:shadow-[0_0_15px_rgba(0,229,255,0.15)] focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.35)] transition-all duration-300 ease-out resize-none"
                     />
                   </div>
 

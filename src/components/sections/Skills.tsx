@@ -166,13 +166,13 @@ export function Skills() {
                       {/* Top: Icon + Name */}
                       <div className="flex items-center gap-4">
                         <div
-                          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110 border border-white/10"
+                          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ease-out group-hover:scale-110 group-hover:rotate-6 border border-white/10 group-hover:border-[#00E5FF]/40 group-hover:shadow-[0_0_16px_rgba(0,229,255,0.35)]"
                           style={{
                             background: `${skill.color}15`,
                           }}
                         >
                           <Icon
-                            className="text-2xl"
+                            className="text-2xl transition-colors duration-300 group-hover:text-[#00E5FF]"
                             style={{ color: skill.color }}
                           />
                         </div>
@@ -184,16 +184,16 @@ export function Skills() {
                       {/* Progress Bar Perfectly Aligned */}
                       <div>
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-[13px] uppercase tracking-wider text-[#94A3B8] font-semibold">
+                          <span className="text-[13px] uppercase tracking-wider text-[#94A3B8] font-semibold group-hover:text-white transition-colors duration-300">
                             Proficiency
                           </span>
-                          <span className="text-sm font-bold text-[#00E5FF]">
+                          <span className="text-sm font-bold text-[#00E5FF] group-hover:drop-shadow-[0_0_8px_#00E5FF] transition-all duration-300">
                             {skill.proficiency ?? 80}%
                           </span>
                         </div>
                         <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden">
                           <motion.div
-                            className="h-full rounded-full"
+                            className="h-full rounded-full transition-all duration-300 ease-out group-hover:brightness-125 group-hover:shadow-[0_0_14px_rgba(0,229,255,0.85)]"
                             style={{
                               background:
                                 'linear-gradient(90deg, #4F46E5, #00E5FF)',
