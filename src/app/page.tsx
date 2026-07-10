@@ -7,18 +7,14 @@ import Projects from "@/components/sections/Projects";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/layout/BackToTop";
-import MouseGlow from "@/components/effects/MouseGlow";
-import GradientMesh from "@/components/effects/GradientMesh";
-import ParticleBackground from "@/components/effects/ParticleBackground";
+import BackgroundCanvas from "@/components/background/BackgroundCanvas";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 
 export default function Home() {
   return (
     <SmoothScroll>
-      {/* ─── Background Effects ─── */}
-      <GradientMesh />
-      <ParticleBackground />
-      <MouseGlow />
+      {/* ─── Interactive 10-Layer Universe Background ─── */}
+      <BackgroundCanvas />
 
       {/* ─── Navigation ─── */}
       <Navbar />
