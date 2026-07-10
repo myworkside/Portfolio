@@ -1,138 +1,137 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, type Variants } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { GlassCard, SectionHeading, ScrollReveal } from '@/components/ui';
 import { projects } from '@/data';
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
 
 export function Projects() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
 
-  const featuredProjects = projects.filter((p) => p.featured);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15 },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
-    },
-  };
-
   return (
     <section
       ref={sectionRef}
       id="projects"
-      className="w-full relative py-24 lg:py-32 overflow-hidden"
-      style={{ background: '#050816' }}
+      className="w-full relative py-[72px] md:py-[96px] lg:py-[120px] overflow-hidden"
     >
-      {/* Bg accents */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#4F46E5] rounded-full blur-3xl opacity-[0.04]" />
-      <div className="absolute bottom-1/4 right-0 w-72 h-72 bg-[#00E5FF] rounded-full blur-3xl opacity-[0.04]" />
-
-      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 xl:px-10 relative z-10">
+      <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10 2xl:px-16 relative z-10">
         <ScrollReveal>
           <SectionHeading
             title="Featured Projects"
-            subtitle="What I've been building"
+            subtitle="Architectural Case Studies"
+            align="center"
           />
         </ScrollReveal>
 
-        {/* Desktop: 3 Equal Columns, Tablet: 2 Columns, Mobile: 1 Column with Equal Height Cards */}
+        {/* Desktop 2 equal cards: max-w-[1140px] mx-auto, gap-8 */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch"
+          className="max-w-[1140px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch"
         >
-          {featuredProjects.map((project) => (
-            <motion.div key={project.id} variants={cardVariants} className="h-full">
-              <GlassCard className="h-full flex flex-col justify-between overflow-hidden group hover:border-[#4F46E5]/40 transition-all duration-500">
-                {/* Top accent gradient bar */}
+          {projects.map((project) => (
+            <motion.div
+              key={project.id}
+              variants={cardVariants}
+              className="w-full h-full"
+            >
+              <GlassCard className="h-full flex flex-col overflow-hidden group">
+                {/* Showcase Top (55%) — Visual Architectural Showcase Area */}
                 <div
-                  className="h-1.5 w-full flex-shrink-0"
+                  className="relative h-56 sm:h-64 w-full flex-shrink-0 overflow-hidden border-b border-white/10"
                   style={{
-                    background: `linear-gradient(90deg, ${project.color}, ${project.color}88, transparent)`,
+                    background: `linear-gradient(135deg, ${project.color || '#4F46E5'}30 0%, #050816 100%)`,
                   }}
-                />
+                >
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-transparent to-transparent opacity-85" />
+                  <div className="absolute bottom-4 left-7 right-7 flex items-center justify-between">
+                    <span className="text-[13px] font-bold uppercase tracking-widest text-[#00E5FF] px-3 py-1 rounded-md border border-[#00E5FF]/30 bg-[#00E5FF]/10">
+                      Featured Work
+                    </span>
+                    <span className="text-[13px] text-[#94A3B8] font-mono">
+                      {project.id.toUpperCase()}
+                    </span>
+                  </div>
+                </div>
 
-                <div className="p-6 flex flex-col flex-1 justify-between">
+                {/* Content Bottom (45%) */}
+                <div className="p-8 flex flex-col flex-1 justify-between">
                   <div>
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-[#E2E8F0] mb-2 group-hover:text-white transition-colors">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-[#00E5FF] transition-colors">
                       {project.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-[#94A3B8] text-sm leading-relaxed min-h-[48px] mb-5">
+                    <p className="text-[#94A3B8] text-[16px] leading-relaxed mb-6">
                       {project.description}
                     </p>
 
-                    {/* Key Highlights / Features */}
-                    {project.features && project.features.length > 0 && (
-                      <ul className="space-y-1.5 mb-6">
-                        {project.features.map((feature, i) => (
-                          <li
-                            key={i}
-                            className="text-xs text-[#E2E8F0] flex items-start gap-2"
-                          >
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] mt-1.5 flex-shrink-0" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-
-                  <div className="mt-auto pt-4 flex flex-col justify-end">
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-1.5 mb-6">
-                      {(project.techStack ?? project.technologies ?? project.topics ?? []).map((tag) => (
+                    {/* Tech Stack Pills */}
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {(project.technologies ?? project.techStack ?? project.topics ?? []).map((tag) => (
                         <span
                           key={tag}
-                          className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-white/[0.04] text-[#00E5FF] border border-white/[0.06]"
+                          className="text-[13px] font-medium px-3 py-1 rounded-full border border-white/10 text-[#E2E8F0]"
+                          style={{ background: 'rgba(255, 255, 255, 0.03)' }}
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
+                  </div>
 
-                    {/* Links Row */}
-                    <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06]">
-                      {project.githubUrl && (
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-xs font-semibold text-[#94A3B8] hover:text-white transition-colors"
-                        >
-                          <FaGithub className="text-sm" />
-                          Source Code
-                        </a>
-                      )}
+                  {/* Buttons aligned bottom left */}
+                  <div className="flex items-center gap-4 pt-5 border-t border-white/10">
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-white/[0.06] border border-white/15 hover:bg-white/15 transition-all"
+                      >
+                        <FaGithub className="text-base" />
+                        Source Code
+                      </a>
+                    )}
 
-                      {project.liveUrl && (
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-xs font-semibold text-[#00E5FF] hover:text-white transition-colors ml-auto"
-                        >
-                          <FaExternalLinkAlt className="text-xs" />
-                          Repository
-                        </a>
-                      )}
-                    </div>
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white shadow-md shadow-[#4F46E5]/20 border border-white/15 hover:opacity-90 transition-all"
+                        style={{
+                          background: 'linear-gradient(135deg, #4F46E5, #8B5CF6)',
+                        }}
+                      >
+                        <FaExternalLinkAlt className="text-xs" />
+                        Live Demo
+                      </a>
+                    )}
                   </div>
                 </div>
               </GlassCard>

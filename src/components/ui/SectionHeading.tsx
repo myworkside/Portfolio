@@ -22,66 +22,46 @@ export default function SectionHeading({
   return (
     <motion.div
       ref={ref}
-      className={`flex flex-col gap-3 ${alignClass}`}
-      initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      className={`flex flex-col gap-3 mb-16 ${alignClass}`}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
     >
-      {/* Subtitle — small uppercase label */}
+      {/* Subtitle — 16px label */}
       {subtitle && (
         <motion.span
-          className="text-xs font-semibold uppercase tracking-[0.2em]"
-          style={{ color: '#94A3B8' }}
-          initial={{ opacity: 0, y: 12 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+          className="text-sm sm:text-base font-semibold uppercase tracking-[0.2em] text-[#94A3B8]"
+          initial={{ opacity: 0, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           {subtitle}
         </motion.span>
       )}
 
-      {/* Title — gradient text */}
+      {/* Title — gradient text (56px desktop) */}
       <motion.h2
-        className="text-section font-bold leading-tight"
+        className="text-[32px] md:text-[44px] lg:text-[56px] font-bold leading-[1.12] tracking-tight"
         style={{
           background: 'linear-gradient(135deg, #4F46E5, #00E5FF)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
         }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
+        initial={{ opacity: 0, y: 15 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+        transition={{ duration: 0.6, delay: 0.15 }}
       >
         {title}
       </motion.h2>
 
       {/* Animated gradient underline */}
       <motion.div
-        className="h-1 rounded-full"
-        style={{
-          background: 'linear-gradient(90deg, #4F46E5, #00E5FF, #8B5CF6)',
-          backgroundSize: '200% 100%',
-          animation: 'shimmer 3s ease infinite',
-        }}
+        className="h-1 rounded-full bg-gradient-to-r from-[#4F46E5] via-[#00E5FF] to-[#8B5CF6]"
         initial={{ width: 0 }}
         animate={isInView ? { width: align === 'center' ? 80 : 64 } : { width: 0 }}
-        transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
       />
-
-      <style jsx>{`
-        @keyframes shimmer {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-      `}</style>
     </motion.div>
   );
 }

@@ -1,18 +1,25 @@
 'use client';
 
-import { useRef, type ReactNode, type MouseEvent } from 'react';
+import { useRef, type ReactNode, type MouseEvent, type CSSProperties } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 type Variant = 'primary' | 'secondary' | 'outline' | 'ghost';
 type Size = 'sm' | 'md' | 'lg';
 
-interface MagneticButtonProps {
+export interface MagneticButtonProps {
   children: ReactNode;
   className?: string;
   variant?: Variant;
-  href?: string;
-  onClick?: () => void;
   size?: Size;
+  href?: string;
+  target?: string;
+  rel?: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  onClick?: (e?: React.MouseEvent<HTMLElement>) => void;
+  style?: CSSProperties;
+  as?: 'button' | 'a' | 'div';
+  'aria-label'?: string;
 }
 
 const sizeClasses: Record<Size, string> = {
@@ -62,11 +69,18 @@ export default function MagneticButton({
   children,
   className = '',
   variant = 'primary',
-  href,
-  onClick,
   size = 'md',
+  href,
+  target,
+  rel,
+  type,
+  disabled,
+  onClick,
+  style,
+  as,
+  'aria-label': ariaLabel,
 }: MagneticButtonProps) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement & HTMLAnchorElement & HTMLButtonElement>(null);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -74,7 +88,7 @@ export default function MagneticButton({
   const springY = useSpring(y, { stiffness: 250, damping: 20 });
 
   function handleMouseMove(e: MouseEvent) {
-    if (!ref.current) return;
+    if (!ref.current || disabled) return;
     const rect = ref.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
@@ -91,48 +105,82 @@ export default function MagneticButton({
 
   const combinedClass = `
     relative inline-flex items-center justify-center
-    cursor-pointer select-none
+    cursor-pointer select-none no-underline
     transition-shadow duration-300
     ${sizeClasses[size]}
     ${variantClasses[variant]}
     ${className}
   `.trim();
 
-  const content = (
-    <motion.div
-      ref={ref}
-      className={combinedClass}
-      style={{
-        x: springX,
-        y: springY,
-        ...variantStyles[variant],
-      }}
-      whileHover={{
-        scale: 1.05,
-        boxShadow: hoverShadows[variant],
-        transition: { duration: 0.25 },
-      }}
-      whileTap={{ scale: 0.97 }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
-      {/* Inner glow overlay */}
+  const isAnchor = Boolean(href) || as === 'a';
+  const isButton = Boolean(type) || Boolean(onClick) || disabled !== undefined || as === 'button';
+
+  const motionStyles = {
+    x: springX,
+    y: springY,
+    ...variantStyles[variant],
+    ...style,
+  };
+
+  const commonProps = {
+    className: combinedClass,
+    style: motionStyles,
+    whileHover: disabled
+      ? undefined
+      : {
+          scale: 1.05,
+          boxShadow: hoverShadows[variant],
+          transition: { duration: 0.25 },
+        },
+    whileTap: disabled ? undefined : { scale: 0.97 },
+    onMouseMove: disabled ? undefined : handleMouseMove,
+    onMouseLeave: disabled ? undefined : handleMouseLeave,
+    'aria-label': ariaLabel,
+  };
+
+  const innerContent = (
+    <>
       <span className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 hover:opacity-100 transition-opacity duration-300 bg-white/[0.05]" />
-      <span className="relative z-10">{children}</span>
-    </motion.div>
+      <span className="relative z-10 flex items-center justify-center gap-2 w-full">{children}</span>
+    </>
   );
 
-  if (href) {
+  if (isAnchor && href) {
     return (
-      <a href={href} className="inline-block no-underline">
-        {content}
-      </a>
+      <motion.a
+        ref={ref as React.Ref<HTMLAnchorElement>}
+        href={href}
+        target={target}
+        rel={rel}
+        onClick={onClick}
+        {...commonProps}
+      >
+        {innerContent}
+      </motion.a>
+    );
+  }
+
+  if (isButton && !isAnchor) {
+    return (
+      <motion.button
+        ref={ref as React.Ref<HTMLButtonElement>}
+        type={type ?? 'button'}
+        disabled={disabled}
+        onClick={onClick}
+        {...commonProps}
+      >
+        {innerContent}
+      </motion.button>
     );
   }
 
   return (
-    <button type="button" onClick={onClick} className="inline-block border-0 bg-transparent p-0">
-      {content}
-    </button>
+    <motion.div
+      ref={ref as React.Ref<HTMLDivElement>}
+      onClick={onClick}
+      {...commonProps}
+    >
+      {innerContent}
+    </motion.div>
   );
 }

@@ -19,9 +19,10 @@ export default function MouseGlow() {
   const y = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    // Only show on non-touch devices
     const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
-    setIsDesktop(mediaQuery.matches);
+    queueMicrotask(() => {
+      setIsDesktop(mediaQuery.matches);
+    });
 
     const handleChange = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
     mediaQuery.addEventListener("change", handleChange);

@@ -22,40 +22,46 @@ export default function GlassCard({
 
   return (
     <motion.div
-      className={cn("relative rounded-2xl group", className)}
+      className={cn("relative rounded-2xl group shadow-xl", className)}
       whileHover={
         hoverEffect
-          ? { scale: 1.02, transition: { duration: 0.3, ease: "easeOut" } }
+          ? {
+              y: -6,
+              scale: 1.02,
+              transition: { duration: 0.3, ease: "easeOut" },
+            }
           : undefined
       }
     >
       {/* Animated gradient border glow — visible on hover */}
       {hoverEffect && (
         <div
-          className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           style={{
-            background: `linear-gradient(135deg, ${gradientFrom}, ${gradientTo}, ${gradientFrom})`,
-            backgroundSize: "200% 200%",
+            background: `linear-gradient(135deg, ${gradientFrom}, ${gradientTo}, #8B5CF6)`,
           }}
         />
       )}
 
       {/* Inner card with glass effect */}
       <div
-        className="relative h-full w-full rounded-2xl backdrop-blur-xl border border-white/[0.08] overflow-hidden transition-shadow duration-500 group-hover:shadow-[0_8px_40px_-12px_rgba(79,70,229,0.3)]"
-        style={{ backgroundColor: "rgba(15, 23, 42, 0.6)" }}
+        className="relative h-full w-full rounded-2xl backdrop-blur-xl border border-white/10 overflow-hidden transition-all duration-300 group-hover:border-white/20 group-hover:shadow-[0_16px_40px_-12px_rgba(79,70,229,0.3)]"
+        style={{ backgroundColor: "rgba(255, 255, 255, 0.03)" }}
       >
+        {/* Subtle inner top highlight for glass sheen */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+
         {/* Subtle inner radial glow on hover */}
         {hoverEffect && (
           <div
-            className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+            className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             style={{
-              background: `radial-gradient(600px circle at 50% 50%, ${gradientFrom}15, transparent 40%)`,
+              background: `radial-gradient(500px circle at 50% 0%, rgba(79, 70, 229, 0.12), transparent 70%)`,
             }}
           />
         )}
 
-        {children}
+        <div className="relative z-10 h-full w-full">{children}</div>
       </div>
     </motion.div>
   );

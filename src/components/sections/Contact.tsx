@@ -20,13 +20,13 @@ import { personal } from '@/data';
 const contactItems = [
   {
     icon: <FaEnvelope className="text-xl text-[#4F46E5]" />,
-    label: 'Email',
+    label: 'Email Address',
     value: personal.email,
     href: `mailto:${personal.email}`,
   },
   {
     icon: <FaPhoneAlt className="text-xl text-[#00E5FF]" />,
-    label: 'Phone',
+    label: 'Phone Number',
     value: personal.phone,
     href: `tel:${personal.phone.replace(/\s/g, '')}`,
   },
@@ -65,43 +65,43 @@ export function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className="w-full relative py-24 lg:py-32 overflow-hidden"
-      style={{ background: '#050816' }}
+      className="w-full relative py-[72px] md:py-[96px] lg:py-[120px] overflow-hidden"
     >
-      <div className="absolute top-0 left-0 w-96 h-96 bg-[#4F46E5] rounded-full blur-3xl opacity-[0.05]" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#8B5CF6] rounded-full blur-3xl opacity-[0.05]" />
-
-      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 xl:px-10 relative z-10">
+      <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10 2xl:px-16 relative z-10">
         <ScrollReveal>
-          <SectionHeading title="Get in Touch" subtitle="Let's work together" />
+          <SectionHeading
+            title="Let's Connect"
+            subtitle="Start a Conversation"
+            align="center"
+          />
         </ScrollReveal>
 
-        {/* Desktop 50/50: Left Column Contact Information | Right Column Form */}
+        {/* Desktop 40% / 60% Layout: grid-cols-1 lg:grid-cols-10 gap-10 */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.6 }}
-          className="mt-14 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch"
+          className="grid grid-cols-1 lg:grid-cols-10 gap-10 items-stretch"
         >
-          {/* Left Column - Contact Info */}
-          <div className="space-y-6 flex flex-col justify-between">
+          {/* Left Column (40% - lg:col-span-4) - Contact Info Cards */}
+          <div className="lg:col-span-4 flex flex-col justify-between gap-6 h-full">
             {contactItems.map((item, i) => (
-              <ScrollReveal key={item.label} delay={i * 0.1} className="w-full">
+              <ScrollReveal key={item.label} delay={i * 0.1}>
                 <a
                   href={item.href}
-                  className="block group w-full"
+                  className="block group h-full"
                   target={item.href.startsWith('http') ? '_blank' : '_self'}
                   rel="noopener noreferrer"
                 >
-                  <GlassCard className="p-6 flex items-center gap-5 border border-white/[0.06] group-hover:border-[#4F46E5]/40 transition-all duration-300 w-full">
-                    <div className="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <GlassCard className="p-7 flex items-center gap-5 h-full">
+                    <div className="w-14 h-14 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                       {item.icon}
                     </div>
                     <div>
-                      <div className="text-xs uppercase tracking-widest text-[#94A3B8] font-semibold mb-1">
+                      <div className="text-[13px] uppercase tracking-widest text-[#94A3B8] font-semibold mb-1">
                         {item.label}
                       </div>
-                      <div className="text-white font-medium text-base group-hover:text-[#00E5FF] transition-colors">
+                      <div className="text-white font-bold text-[18px] group-hover:text-[#00E5FF] transition-colors">
                         {item.value}
                       </div>
                     </div>
@@ -111,17 +111,20 @@ export function Contact() {
             ))}
           </div>
 
-          {/* Right Column - Interactive Form */}
-          <ScrollReveal delay={0.25} className="h-full">
-            <GlassCard className="p-8 border border-white/[0.08] h-full flex flex-col justify-between">
-              <h3 className="text-xl font-bold text-white mb-6">
-                Send a Message
-              </h3>
+          {/* Right Column (60% - lg:col-span-6) - Form */}
+          <div className="lg:col-span-6 h-full">
+            <GlassCard className="p-8 h-full flex flex-col justify-between">
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-6">
+                  Send a Direct Message
+                </h3>
 
-              <form onSubmit={handleSubmit} className="space-y-5 flex-1 flex flex-col justify-between">
-                <div className="space-y-5">
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-5 w-full"
+                >
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-[#94A3B8] mb-2">
+                    <label className="block text-[13px] font-semibold uppercase tracking-wider text-[#94A3B8] mb-2">
                       Your Name
                     </label>
                     <input
@@ -132,12 +135,12 @@ export function Contact() {
                         setFormState({ ...formState, name: e.target.value })
                       }
                       placeholder="Enter your name"
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white placeholder-[#64748B] text-sm focus:outline-none focus:border-[#4F46E5] transition-colors"
+                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#4F46E5] transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-[#94A3B8] mb-2">
+                    <label className="block text-[13px] font-semibold uppercase tracking-wider text-[#94A3B8] mb-2">
                       Email Address
                     </label>
                     <input
@@ -148,33 +151,31 @@ export function Contact() {
                         setFormState({ ...formState, email: e.target.value })
                       }
                       placeholder="Enter your email"
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white placeholder-[#64748B] text-sm focus:outline-none focus:border-[#4F46E5] transition-colors"
+                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#4F46E5] transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-[#94A3B8] mb-2">
+                    <label className="block text-[13px] font-semibold uppercase tracking-wider text-[#94A3B8] mb-2">
                       Message
                     </label>
                     <textarea
-                      rows={4}
+                      rows={5}
                       required
                       value={formState.message}
                       onChange={(e) =>
                         setFormState({ ...formState, message: e.target.value })
                       }
                       placeholder="Tell me about your project or opportunity..."
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white placeholder-[#64748B] text-sm focus:outline-none focus:border-[#4F46E5] transition-colors resize-none"
+                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#4F46E5] transition-colors resize-none"
                     />
                   </div>
-                </div>
 
-                <div className="pt-4">
-                  <MagneticButton className="w-full">
-                    <button
+                  <div className="pt-4">
+                    <MagneticButton
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full inline-flex items-center justify-center gap-2.5 py-4 rounded-xl font-semibold text-white text-sm transition-all duration-300 hover:shadow-[0_0_30px_rgba(79,70,229,0.4)] disabled:opacity-50"
+                      className="w-full inline-flex items-center justify-center gap-3 py-4 rounded-full font-bold text-white text-base transition-all duration-300 hover:shadow-[0_0_35px_rgba(79,70,229,0.5)] disabled:opacity-50 border border-white/10"
                       style={{
                         background: 'linear-gradient(135deg, #4F46E5, #8B5CF6)',
                       }}
@@ -183,21 +184,21 @@ export function Contact() {
                         <span>Sending...</span>
                       ) : isSubmitted ? (
                         <>
-                          <FaCheckCircle className="text-base" />
+                          <FaCheckCircle className="text-lg" />
                           <span>Message Sent!</span>
                         </>
                       ) : (
                         <>
-                          <FaPaperPlane className="text-sm" />
+                          <FaPaperPlane className="text-base" />
                           <span>Send Message</span>
                         </>
                       )}
-                    </button>
-                  </MagneticButton>
-                </div>
-              </form>
+                    </MagneticButton>
+                  </div>
+                </form>
+              </div>
             </GlassCard>
-          </ScrollReveal>
+          </div>
         </motion.div>
       </div>
     </section>

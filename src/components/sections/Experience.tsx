@@ -1,88 +1,126 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { FaCalendarAlt, FaMapMarkerAlt, FaBriefcase } from 'react-icons/fa';
+import { motion, useInView, type Variants } from 'framer-motion';
+import { FaBriefcase, FaCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
 import { GlassCard, SectionHeading, ScrollReveal } from '@/components/ui';
 import { experience } from '@/data';
-import type { Experience as ExperienceItem } from '@/types';
+import type { Experience as ExperienceType } from '@/types';
 
-function TimelineDot({ inView, delay }: { inView: boolean; delay: number }) {
+const cardVariants: Variants = {
+  hidden: (isLeft: boolean) => ({
+    opacity: 0,
+    x: isLeft ? -30 : 30,
+  }),
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
+
+function TimelineDot({
+  inView,
+  delay = 0,
+}: {
+  inView: boolean;
+  delay?: number;
+}) {
   return (
-    <motion.div
-      initial={{ scale: 0 }}
-      animate={inView ? { scale: 1 } : { scale: 0 }}
-      transition={{ duration: 0.4, delay, ease: 'backOut' }}
-      className="relative flex items-center justify-center w-12 h-12 rounded-full border-2 border-[#00E5FF] shadow-[0_0_15px_rgba(0,229,255,0.4)]"
-      style={{ background: '#050816' }}
-    >
-      <div
-        className="w-4 h-4 rounded-full"
+    <div className="relative flex items-center justify-center">
+      {/* Outer Glow Pulse */}
+      <motion.div
+        className="absolute w-10 h-10 rounded-full"
         style={{
-          background: 'linear-gradient(135deg, #4F46E5, #00E5FF)',
+          background:
+            'radial-gradient(circle, rgba(0, 229, 255, 0.4) 0%, transparent 70%)',
+        }}
+        initial={{ scale: 0 }}
+        animate={inView ? { scale: [1, 1.4, 1] } : { scale: 0 }}
+        transition={{
+          duration: 2.5,
+          repeat: Infinity,
+          delay,
+          ease: 'easeInOut',
         }}
       />
-    </motion.div>
+
+      {/* Outer Ring */}
+      <motion.div
+        className="w-6 h-6 rounded-full border-2 border-[#00E5FF] bg-[#050816] flex items-center justify-center z-10"
+        initial={{ scale: 0 }}
+        animate={inView ? { scale: 1 } : { scale: 0 }}
+        transition={{ duration: 0.4, delay, ease: 'backOut' }}
+      >
+        <div className="w-2.5 h-2.5 rounded-full bg-[#4F46E5]" />
+      </motion.div>
+    </div>
   );
 }
 
-function ExperienceCard({ exp }: { exp: ExperienceItem }) {
+function ExperienceCard({ exp }: { exp: ExperienceType }) {
+  const periodText = exp.duration || `${exp.startDate || ''} - ${exp.endDate || ''}`;
+  const points = exp.responsibilities || [];
+  const techList = exp.technologies ?? exp.techStack ?? [];
+
   return (
-    <GlassCard className="p-6 md:p-8 hover:border-[#4F46E5]/40 transition-all duration-500 group w-full">
-      {/* Header row */}
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-        <span
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold text-[#00E5FF] border border-[#00E5FF]/30"
-          style={{ background: 'rgba(0, 229, 255, 0.08)' }}
-        >
-          <FaCalendarAlt className="text-[10px]" />
-          {exp.startDate} – {exp.endDate}
-        </span>
-
-        <span className="text-xs text-[#94A3B8] flex items-center gap-1">
-          <FaMapMarkerAlt className="text-[#4F46E5]" />
-          {exp.location}
-        </span>
-      </div>
-
-      {/* Role & Company */}
-      <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#00E5FF] transition-colors">
-        {exp.role}
-      </h3>
-      <p className="text-sm font-semibold text-[#8B5CF6] mb-4 flex items-center gap-2">
-        <FaBriefcase className="text-xs" />
-        {exp.company}
-      </p>
-
-      {/* Description */}
-      <p className="text-[#94A3B8] text-sm leading-relaxed mb-5">
-        {exp.description}
-      </p>
-
-      {/* Responsibilities bullet points */}
-      <ul className="space-y-2 mb-6">
-        {(exp.responsibilities ?? []).map((item, i) => (
-          <li
-            key={i}
-            className="text-xs md:text-sm text-[#E2E8F0] flex items-start gap-2.5"
-          >
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#00E5FF] mt-1.5 flex-shrink-0" />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-
-      {/* Technologies pills */}
-      <div className="flex flex-wrap gap-2 pt-2 border-t border-white/[0.06]">
-        {(exp.technologies ?? exp.techStack ?? []).map((tech) => (
-          <span
-            key={tech}
-            className="px-2.5 py-1 rounded-md text-xs font-medium text-[#94A3B8] bg-white/[0.03] border border-white/[0.06]"
-          >
-            {tech}
+    <GlassCard className="p-8 min-h-[220px] flex flex-col justify-between group">
+      <div>
+        {/* Top Header: Role & Period */}
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <span className="inline-flex items-center gap-1.5 text-[13px] font-semibold uppercase tracking-widest text-[#00E5FF] px-3.5 py-1 rounded-full bg-[#00E5FF]/10 border border-[#00E5FF]/20">
+            <FaCalendarAlt className="text-xs" />
+            {periodText}
           </span>
-        ))}
+          {exp.location && (
+            <span className="inline-flex items-center gap-1.5 text-[13px] text-[#94A3B8]">
+              <FaMapMarkerAlt className="text-xs text-[#8B5CF6]" />
+              {exp.location}
+            </span>
+          )}
+        </div>
+
+        {/* Role Title */}
+        <h3 className="text-xl md:text-2xl font-bold text-white mb-1.5 group-hover:text-[#00E5FF] transition-colors">
+          {exp.role}
+        </h3>
+
+        {/* Company Name */}
+        <div className="flex items-center gap-2 mb-5">
+          <FaBriefcase className="text-sm text-[#4F46E5]" />
+          <span className="text-base font-semibold text-[#E2E8F0]">
+            {exp.company}
+          </span>
+        </div>
+
+        {/* Responsibilities List */}
+        <ul className="space-y-3 mb-6">
+          {points.map((resp, i) => (
+            <li
+              key={i}
+              className="flex items-start gap-3 text-[16px] text-[#94A3B8] leading-relaxed"
+            >
+              <span className="inline-block w-2 h-2 rounded-full bg-[#00E5FF] mt-2 flex-shrink-0" />
+              <span>{resp}</span>
+            </li>
+          ))}
+        </ul>
       </div>
+
+      {/* Tech Stack Pills */}
+      {techList.length > 0 && (
+        <div className="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+          {techList.map((tech) => (
+            <span
+              key={tech}
+              className="text-[13px] font-medium px-3 py-1 rounded-full border border-white/10 text-[#E2E8F0]"
+              style={{ background: 'rgba(255, 255, 255, 0.03)' }}
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      )}
     </GlassCard>
   );
 }
@@ -91,55 +129,29 @@ export function Experience() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
 
-  const cardVariants = {
-    hidden: (isLeft: boolean) => ({
-      opacity: 0,
-      x: isLeft ? -40 : 40,
-    }),
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
-    },
-  };
-
   return (
     <section
       ref={sectionRef}
       id="experience"
-      className="w-full relative py-24 lg:py-32 overflow-hidden"
-      style={{ background: '#050816' }}
+      className="w-full relative py-[72px] md:py-[96px] lg:py-[120px] overflow-hidden"
     >
-      {/* Background Glow */}
-      <div
-        className="absolute top-1/3 left-10 w-96 h-96 rounded-full blur-3xl opacity-10 pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, #4F46E5 0%, transparent 70%)',
-        }}
-      />
-      <div
-        className="absolute bottom-10 right-10 w-96 h-96 rounded-full blur-3xl opacity-10 pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, #8B5CF6 0%, transparent 70%)',
-        }}
-      />
-
-      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 xl:px-10 relative z-10">
+      <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10 2xl:px-16 relative z-10">
         <ScrollReveal>
           <SectionHeading
-            title="Professional Experience"
-            subtitle="My career timeline"
+            title="Career Journey"
+            subtitle="Professional Experience"
+            align="center"
           />
         </ScrollReveal>
 
-        {/* Timeline Container Full Width */}
+        {/* Timeline Container */}
         <motion.div
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="w-full relative mt-16"
+          className="relative max-w-[1140px] mx-auto"
         >
-          {/* Vertical connecting line */}
-          <div className="absolute left-6 lg:left-1/2 top-0 bottom-0 w-px lg:-translate-x-px">
+          {/* Vertical connecting line — left on mobile, center on desktop */}
+          <div className="absolute left-6 lg:left-1/2 lg:-translate-x-px top-0 bottom-0 w-px">
             <motion.div
               className="w-full h-full"
               style={{
@@ -152,51 +164,57 @@ export function Experience() {
             />
           </div>
 
-          {/* Timeline items: width 100%, max-w-none, alternate left/right on desktop (approx 46%), single column mobile/tablet */}
-          <div className="space-y-12 lg:space-y-16 w-full">
+          {/* Timeline items — flex flex-col gap-[100px] */}
+          <div className="flex flex-col gap-[100px]">
             {experience.map((exp, index) => {
               const isLeft = index % 2 === 0;
               return (
                 <div
                   key={exp.id}
-                  className="relative flex items-start gap-6 lg:gap-0 w-full"
+                  className="relative"
                 >
-                  {/* Desktop: left side content (around 46% width) */}
-                  <div
-                    className={`hidden lg:flex lg:w-[46%] ${
-                      isLeft ? 'justify-end pr-8' : 'justify-start pl-8 order-3'
-                    }`}
-                  >
-                    <motion.div
-                      custom={isLeft}
-                      variants={cardVariants}
-                      className="w-full max-w-none"
-                    >
-                      <ExperienceCard exp={exp} />
-                    </motion.div>
-                  </div>
-
-                  {/* Timeline dot */}
-                  <div className="flex-shrink-0 z-10 lg:absolute lg:left-1/2 lg:-translate-x-1/2">
+                  {/* Center Dot */}
+                  <div className="absolute left-6 lg:left-1/2 -translate-x-1/2 z-10 top-8">
                     <TimelineDot inView={isInView} delay={index * 0.2 + 0.3} />
                   </div>
 
-                  {/* Desktop: spacer for the opposite side */}
-                  <div
-                    className={`hidden lg:block lg:w-[46%] ${
-                      isLeft ? 'order-3' : ''
-                    }`}
-                  />
-
-                  {/* Mobile & Tablet: card always on the right of the dot */}
-                  <div className="w-full max-w-none flex-1 lg:hidden">
+                  {/* Mobile & Tablet */}
+                  <div className="pl-16 lg:hidden">
                     <motion.div
                       custom={false}
                       variants={cardVariants}
-                      className="w-full"
                     >
                       <ExperienceCard exp={exp} />
                     </motion.div>
+                  </div>
+
+                  {/* Desktop: Centered alternating LEFT / RIGHT with 480-520px cards */}
+                  <div className="hidden lg:grid lg:grid-cols-2 items-start">
+                    {/* Left cell */}
+                    <div className="flex justify-end pr-14">
+                      {isLeft && (
+                        <motion.div
+                          custom={true}
+                          variants={cardVariants}
+                          className="w-full max-w-[500px]"
+                        >
+                          <ExperienceCard exp={exp} />
+                        </motion.div>
+                      )}
+                    </div>
+
+                    {/* Right cell */}
+                    <div className="flex justify-start pl-14">
+                      {!isLeft && (
+                        <motion.div
+                          custom={false}
+                          variants={cardVariants}
+                          className="w-full max-w-[500px]"
+                        >
+                          <ExperienceCard exp={exp} />
+                        </motion.div>
+                      )}
+                    </div>
                   </div>
                 </div>
               );
