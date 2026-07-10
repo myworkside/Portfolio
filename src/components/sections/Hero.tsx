@@ -43,30 +43,19 @@ export function Hero() {
         animate={isInView ? 'visible' : 'hidden'}
         className="mx-auto w-full max-w-[1440px] px-8 relative z-10 flex flex-col items-center text-center"
       >
-        {/* Top Floating Glass Badge Subtitle */}
-        <motion.div variants={itemVariants} className="mb-8">
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md text-[14px] font-medium text-[#E2E8F0] shadow-sm">
-            <span className="flex h-2 w-2 rounded-full bg-[#00E5FF] animate-pulse" />
-            <span className="text-[#94A3B8]">Senior Android & Software Architect</span>
-            <span className="text-white/20">|</span>
-            <span className="text-[#00E5FF]">Available for Projects</span>
-          </div>
-        </motion.div>
-
-        {/* Main Heading — 64–72px Desktop */}
+        {/* Main Heading */}
         <motion.h1
           variants={itemVariants}
-          className="text-[40px] sm:text-[56px] lg:text-[72px] font-extrabold tracking-tight mb-6 leading-[1.08] w-full mx-auto"
+          className="text-[32px] sm:text-[48px] lg:text-[60px] font-extrabold tracking-tight mb-6 leading-[1.12] w-full mx-auto"
         >
-          <span>Engineering Ultra-Responsive </span>
           <span
-            className="bg-clip-text text-transparent block sm:inline"
+            className="bg-clip-text text-transparent block"
             style={{
               backgroundImage:
                 'linear-gradient(135deg, #4F46E5 0%, #00E5FF 50%, #8B5CF6 100%)',
             }}
           >
-            Mobile & Web Platforms
+            Android Developer • Web Developer • Creative Technologist
           </span>
         </motion.h1>
 

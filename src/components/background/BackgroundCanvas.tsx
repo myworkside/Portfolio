@@ -4,9 +4,8 @@ import React, { useSyncExternalStore } from "react";
 import { Canvas } from "@react-three/fiber";
 import GalaxyBackground from "./GalaxyBackground";
 import Nebula from "./Nebula";
-import StarField from "./StarField";
-import Constellation from "./Constellation";
-import Particles from "./Particles";
+import Aurora from "./Aurora";
+import GeometryScene from "./GeometryScene";
 import ShootingStars from "./ShootingStars";
 import MouseGlow from "./MouseGlow";
 import NoiseLayer from "./NoiseLayer";
@@ -59,7 +58,7 @@ export default function BackgroundCanvas() {
         </>
       )}
 
-      {/* ── 10-Layer Luxury Interactive Universe Background ── */}
+      {/* ── Procedural Generative Geometry & Universe Background ── */}
       <div
         className="pointer-events-none fixed inset-0 -z-50 overflow-hidden select-none"
         aria-hidden="true"
@@ -70,14 +69,17 @@ export default function BackgroundCanvas() {
         {/* Layer 2: Animated Nebula Clouds (5%–10% opacity) */}
         <Nebula />
 
+        {/* Layer 9: Soft Animated Space Aurora */}
+        <Aurora />
+
         {/* Layer 8: Smooth Cinematic Shooting Stars */}
         {isClient && !prefersReducedMotion && <ShootingStars />}
 
-        {/* Layer 3, 4, 5, 7: GPU 3D Interactive Space Canvas */}
+        {/* Full-Screen WebGL Procedural Geometry Scene */}
         {isClient && (
           <div className="absolute inset-0">
             <Canvas
-              camera={{ position: [0, 0, 5], fov: 60 }}
+              camera={{ position: [0, 0, 6], fov: 60 }}
               dpr={[1, 2]}
               gl={{
                 antialias: false,
@@ -85,14 +87,7 @@ export default function BackgroundCanvas() {
                 powerPreference: "high-performance",
               }}
             >
-              <ambientLight intensity={0.5} />
-              <StarField />
-              {!prefersReducedMotion && (
-                <>
-                  <Constellation />
-                  <Particles />
-                </>
-              )}
+              <GeometryScene />
             </Canvas>
           </div>
         )}
