@@ -123,30 +123,19 @@ export default function Navbar() {
                     href={href}
                     onClick={(e) => handleNavClick(e, href)}
                     className={cn(
-                      "group relative py-2 text-sm font-medium transition-colors duration-300 whitespace-nowrap",
+                      "relative py-2 text-sm font-medium whitespace-nowrap",
                       isActive
                         ? "text-white"
-                        : "text-[#94A3B8] hover:text-white"
+                        : "text-[#94A3B8]"
                     )}
                   >
                     {label}
-                    {/* Hover Animated Underline */}
-                    {!isActive && (
-                      <span
-                        className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 rounded-full transition-all duration-300 ease-out group-hover:w-full opacity-0 group-hover:opacity-100"
-                        style={{
-                          background: "linear-gradient(90deg, #4F46E5, #00E5FF)",
-                          boxShadow: "0 0 10px rgba(0, 229, 255, 0.6)",
-                        }}
-                      />
-                    )}
                     {isActive && (
                       <motion.div
                         layoutId="activeNavIndicator"
                         className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-6 rounded-full"
                         style={{
                           background: "linear-gradient(90deg, #4F46E5, #00E5FF)",
-                          boxShadow: "0 0 12px rgba(0, 229, 255, 0.7)",
                         }}
                       />
                     )}
@@ -160,7 +149,7 @@ export default function Navbar() {
               <a
                 href="#contact"
                 onClick={handleCtaClick}
-                className="group relative overflow-hidden rounded-full px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-[0_0_25px_rgba(79,70,229,0.5)] whitespace-nowrap border border-white/10"
+                className="relative overflow-hidden rounded-full px-6 py-2.5 text-sm font-semibold text-white whitespace-nowrap border border-white/10"
                 style={{
                   background: "linear-gradient(135deg, #4F46E5, #8B5CF6)",
                 }}
@@ -174,7 +163,7 @@ export default function Navbar() {
             {/* Mobile Menu Toggle Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="relative z-[70] flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white lg:hidden hover:bg-white/[0.06] transition-colors"
+              className="relative z-[70] flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white lg:hidden"
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             >
               <AnimatePresence mode="wait">

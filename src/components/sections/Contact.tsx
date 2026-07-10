@@ -94,14 +94,14 @@ export function Contact() {
                   rel="noopener noreferrer"
                 >
                   <GlassCard className="p-7 flex items-center gap-5 h-full">
-                    <div className="w-14 h-14 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <div className="w-14 h-14 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center flex-shrink-0">
                       {item.icon}
                     </div>
                     <div>
                       <div className="text-[13px] uppercase tracking-widest text-[#94A3B8] font-semibold mb-1">
                         {item.label}
                       </div>
-                      <div className="text-white font-bold text-[18px] group-hover:text-[#00E5FF] transition-colors">
+                      <div className="text-white font-bold text-[18px]">
                         {item.value}
                       </div>
                     </div>
@@ -137,7 +137,7 @@ export function Contact() {
                         setFormState({ ...formState, name: e.target.value })
                       }
                       placeholder="Enter your name"
-                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base hover:border-[#00E5FF]/40 hover:bg-white/[0.05] hover:shadow-[0_0_15px_rgba(0,229,255,0.15)] focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.35)] transition-all duration-300 ease-out"
+                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.35)] transition-all duration-300 ease-out"
                     />
                   </div>
 
@@ -153,7 +153,7 @@ export function Contact() {
                         setFormState({ ...formState, email: e.target.value })
                       }
                       placeholder="Enter your email"
-                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base hover:border-[#00E5FF]/40 hover:bg-white/[0.05] hover:shadow-[0_0_15px_rgba(0,229,255,0.15)] focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.35)] transition-all duration-300 ease-out"
+                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.35)] transition-all duration-300 ease-out"
                     />
                   </div>
 
@@ -169,7 +169,7 @@ export function Contact() {
                         setFormState({ ...formState, message: e.target.value })
                       }
                       placeholder="Tell me about your project or opportunity..."
-                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base hover:border-[#00E5FF]/40 hover:bg-white/[0.05] hover:shadow-[0_0_15px_rgba(0,229,255,0.15)] focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.35)] transition-all duration-300 ease-out resize-none"
+                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.35)] transition-all duration-300 ease-out resize-none"
                     />
                   </div>
 
@@ -177,7 +177,7 @@ export function Contact() {
                     <MagneticButton
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full inline-flex items-center justify-center gap-3 py-4 rounded-full font-bold text-white text-base transition-all duration-300 hover:shadow-[0_0_35px_rgba(79,70,229,0.5)] disabled:opacity-50 border border-white/10"
+                      className="w-full inline-flex items-center justify-center gap-3 py-4 rounded-full font-bold text-white text-base disabled:opacity-50 border border-white/10"
                       style={{
                         background: 'linear-gradient(135deg, #4F46E5, #8B5CF6)',
                       }}

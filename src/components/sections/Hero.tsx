@@ -96,7 +96,7 @@ export function Hero() {
           <div>
             <MagneticButton
               href="#projects"
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 min-h-[52px] rounded-full font-semibold text-white text-sm transition-all duration-300 hover:shadow-[0_0_35px_rgba(79,70,229,0.5)] border border-white/10"
+              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 min-h-[52px] rounded-full font-semibold text-white text-sm border border-white/10"
               style={{
                 background: 'linear-gradient(135deg, #4F46E5, #8B5CF6)',
               }}
@@ -109,7 +109,7 @@ export function Hero() {
           <div>
             <MagneticButton
               href={personal.resumeUrl}
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 min-h-[52px] rounded-full font-semibold text-[#E2E8F0] text-sm border border-white/10 backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white/[0.05]"
+              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 min-h-[52px] rounded-full font-semibold text-[#E2E8F0] text-sm border border-white/10 backdrop-blur-md"
               style={{ background: 'rgba(255, 255, 255, 0.03)' }}
             >
               <FaDownload className="text-sm" />
@@ -129,7 +129,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-white/10 text-[#94A3B8] backdrop-blur-md transition-all duration-300 hover:text-white hover:border-[#4F46E5]/50 hover:bg-white/[0.05]"
+                className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-white/10 text-[#94A3B8] backdrop-blur-md"
                 style={{ background: 'rgba(255, 255, 255, 0.03)' }}
               >
                 <Icon className="text-lg" />
@@ -146,7 +146,7 @@ export function Hero() {
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="relative group rounded-2xl p-6 text-center backdrop-blur-xl border border-white/10 shadow-xl transition-all duration-300 hover:border-white/20 hover:-translate-y-1.5 h-full flex flex-col justify-center"
+              className="relative rounded-2xl p-6 text-center backdrop-blur-xl border border-white/10 shadow-xl h-full flex flex-col justify-center"
               style={{ background: 'rgba(255, 255, 255, 0.03)' }}
             >
               <div className="text-[32px] md:text-[36px] font-extrabold text-white mb-1">

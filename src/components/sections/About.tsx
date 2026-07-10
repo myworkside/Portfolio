@@ -243,7 +243,7 @@ export function About() {
                   ].map((strength) => (
                     <span
                       key={strength}
-                      className="text-[14px] font-medium px-4 py-2 rounded-full text-[#E2E8F0] border border-white/10 transition-colors hover:border-[#00E5FF]/40"
+                      className="text-[14px] font-medium px-4 py-2 rounded-full text-[#E2E8F0] border border-white/10"
                       style={{ background: 'rgba(255, 255, 255, 0.03)' }}
                     >
                       {strength}

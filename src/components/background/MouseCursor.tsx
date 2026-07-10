@@ -16,7 +16,6 @@ export default function MouseCursor() {
   const glowPosRef = useRef({ x: -9999, y: -9999 });
   const frameRef = useRef<number>(0);
 
-  const [isHovering, setIsHovering] = useState(false);
   const [ripples, setRipples] = useState<Ripple[]>([]);
 
   useEffect(() => {
@@ -25,21 +24,6 @@ export default function MouseCursor() {
 
     const handleMouseMove = (e: MouseEvent) => {
       targetRef.current = { x: e.clientX, y: e.clientY };
-
-      // Check if hovering interactive element or card
-      const target = e.target as HTMLElement | null;
-      if (target) {
-        const interactive =
-          target.tagName === "A" ||
-          target.tagName === "BUTTON" ||
-          target.tagName === "INPUT" ||
-          target.tagName === "TEXTAREA" ||
-          target.closest("a") !== null ||
-          target.closest("button") !== null ||
-          target.closest(".cursor-pointer") !== null ||
-          target.getAttribute("role") === "button";
-        setIsHovering(Boolean(interactive));
-      }
     };
 
     const handleMouseLeave = () => {
@@ -99,13 +83,9 @@ export default function MouseCursor() {
       {/* ── 1. Inner 16px Glowing Circular Dot ── */}
       <div
         ref={dotRef}
-        className={`pointer-events-none fixed top-0 left-0 z-50 h-4 w-4 rounded-full transition-transform duration-75 will-change-transform ${
-          isHovering ? "scale-125 bg-[#00E5FF]" : "bg-white"
-        }`}
+        className="pointer-events-none fixed top-0 left-0 z-50 h-4 w-4 rounded-full bg-white transition-transform duration-75 will-change-transform"
         style={{
-          boxShadow: isHovering
-            ? "0 0 16px #00E5FF, 0 0 32px #4F46E5"
-            : "0 0 10px rgba(255, 255, 255, 0.8)",
+          boxShadow: "0 0 10px rgba(255, 255, 255, 0.8)",
         }}
         aria-hidden="true"
       />
@@ -113,11 +93,7 @@ export default function MouseCursor() {
       {/* ── 2. Outer 40px Blue / Purple / Cyan Easing Glow Ring ── */}
       <div
         ref={glowRef}
-        className={`pointer-events-none fixed top-0 left-0 z-50 h-10 w-10 rounded-full border border-[#00E5FF]/40 transition-all duration-300 will-change-transform ${
-          isHovering
-            ? "scale-150 border-[#00E5FF] bg-[#4F46E5]/15"
-            : "bg-[#8B5CF6]/10"
-        }`}
+        className="pointer-events-none fixed top-0 left-0 z-50 h-10 w-10 rounded-full border border-[#00E5FF]/40 bg-[#8B5CF6]/10 transition-all duration-300 will-change-transform"
         style={{
           boxShadow:
             "0 0 25px rgba(0, 229, 255, 0.35), inset 0 0 12px rgba(139, 92, 246, 0.3)",

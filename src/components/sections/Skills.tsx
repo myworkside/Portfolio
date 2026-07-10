@@ -116,10 +116,10 @@ export function Skills() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`relative px-6 py-3 rounded-full text-[15px] font-medium transition-all duration-300 ${
+                className={`relative px-6 py-3 rounded-full text-[15px] font-medium ${
                   activeCategory === cat
                     ? 'text-white shadow-[0_0_20px_rgba(79,70,229,0.4)]'
-                    : 'text-[#94A3B8] hover:text-white border border-white/10 hover:border-white/25'
+                    : 'text-[#94A3B8] border border-white/10'
                 }`}
                 style={
                   activeCategory === cat
@@ -162,21 +162,21 @@ export function Skills() {
                     className="w-full"
                   >
                     {/* Equal height 180px, padding p-7 */}
-                    <GlassCard className="p-7 h-[180px] flex flex-col justify-between group w-full">
+                    <GlassCard className="p-7 h-[180px] flex flex-col justify-between w-full">
                       {/* Top: Icon + Name */}
                       <div className="flex items-center gap-4">
                         <div
-                          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ease-out group-hover:scale-110 group-hover:rotate-6 border border-white/10 group-hover:border-[#00E5FF]/40 group-hover:shadow-[0_0_16px_rgba(0,229,255,0.35)]"
+                          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 border border-white/10"
                           style={{
                             background: `${skill.color}15`,
                           }}
                         >
                           <Icon
-                            className="text-2xl transition-colors duration-300 group-hover:text-[#00E5FF]"
+                            className="text-2xl"
                             style={{ color: skill.color }}
                           />
                         </div>
-                        <h3 className="text-white font-bold text-[18px] group-hover:text-[#00E5FF] transition-colors line-clamp-1">
+                        <h3 className="text-white font-bold text-[18px] line-clamp-1">
                           {skill.name}
                         </h3>
                       </div>
@@ -184,16 +184,16 @@ export function Skills() {
                       {/* Progress Bar Perfectly Aligned */}
                       <div>
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-[13px] uppercase tracking-wider text-[#94A3B8] font-semibold group-hover:text-white transition-colors duration-300">
+                          <span className="text-[13px] uppercase tracking-wider text-[#94A3B8] font-semibold">
                             Proficiency
                           </span>
-                          <span className="text-sm font-bold text-[#00E5FF] group-hover:drop-shadow-[0_0_8px_#00E5FF] transition-all duration-300">
+                          <span className="text-sm font-bold text-[#00E5FF]">
                             {skill.proficiency ?? 80}%
                           </span>
                         </div>
                         <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden">
                           <motion.div
-                            className="h-full rounded-full transition-all duration-300 ease-out group-hover:brightness-125 group-hover:shadow-[0_0_14px_rgba(0,229,255,0.85)]"
+                            className="h-full rounded-full"
                             style={{
                               background:
                                 'linear-gradient(90deg, #4F46E5, #00E5FF)',

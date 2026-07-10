@@ -64,7 +64,7 @@ function ExperienceCard({ exp }: { exp: ExperienceType }) {
   const techList = exp.technologies ?? exp.techStack ?? [];
 
   return (
-    <GlassCard className="p-8 min-h-[220px] flex flex-col justify-between group border border-white/10 hover:border-[#00E5FF]/60 hover:shadow-[0_0_30px_rgba(0,229,255,0.25)] transition-all duration-300">
+    <GlassCard className="p-8 min-h-[220px] flex flex-col justify-between border border-white/10">
       <div>
         {/* Top Header: Role & Period */}
         <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
@@ -81,7 +81,7 @@ function ExperienceCard({ exp }: { exp: ExperienceType }) {
         </div>
 
         {/* Role Title */}
-        <h3 className="text-xl md:text-2xl font-bold text-white mb-1.5 group-hover:text-[#00E5FF] transition-colors">
+        <h3 className="text-xl md:text-2xl font-bold text-white mb-1.5">
           {exp.role}
         </h3>
 

@@ -1,7 +1,7 @@
 'use client';
 
-import { useRef, type ReactNode, type MouseEvent, type CSSProperties } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { useRef, type ReactNode, type CSSProperties } from 'react';
+import { motion } from 'framer-motion';
 
 type Variant = 'primary' | 'secondary' | 'outline' | 'ghost';
 type Size = 'sm' | 'md' | 'lg';
@@ -41,11 +41,9 @@ const variantStyles: Record<
 > = {
   primary: {
     background: 'linear-gradient(135deg, #4F46E5, #8B5CF6)',
-    boxShadow: '0 0 20px rgba(79, 70, 229, 0.3)',
   },
   secondary: {
     background: 'linear-gradient(135deg, #00E5FF, #4F46E5)',
-    boxShadow: '0 0 20px rgba(0, 229, 255, 0.3)',
   },
   outline: {
     border: '1px solid transparent',
@@ -56,13 +54,6 @@ const variantStyles: Record<
   ghost: {
     color: '#4F46E5',
   },
-};
-
-const hoverShadows: Record<Variant, string> = {
-  primary: '0 0 30px rgba(79, 70, 229, 0.5), 0 0 60px rgba(139, 92, 246, 0.2)',
-  secondary: '0 0 30px rgba(0, 229, 255, 0.5), 0 0 60px rgba(79, 70, 229, 0.2)',
-  outline: '0 0 25px rgba(79, 70, 229, 0.3), 0 0 50px rgba(0, 229, 255, 0.15)',
-  ghost: '0 0 15px rgba(79, 70, 229, 0.15)',
 };
 
 export default function MagneticButton({
@@ -82,31 +73,9 @@ export default function MagneticButton({
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement & HTMLAnchorElement & HTMLButtonElement>(null);
 
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 250, damping: 20 });
-  const springY = useSpring(y, { stiffness: 250, damping: 20 });
-
-  function handleMouseMove(e: MouseEvent) {
-    if (!ref.current || disabled) return;
-    const rect = ref.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const distX = (e.clientX - centerX) * 0.3;
-    const distY = (e.clientY - centerY) * 0.3;
-    x.set(distX);
-    y.set(distY);
-  }
-
-  function handleMouseLeave() {
-    x.set(0);
-    y.set(0);
-  }
-
   const combinedClass = `
     relative inline-flex items-center justify-center
     cursor-pointer select-none no-underline
-    transition-all duration-300 ease-out hover:scale-[1.03]
     ${sizeClasses[size]}
     ${variantClasses[variant]}
     ${className}
@@ -116,8 +85,6 @@ export default function MagneticButton({
   const isButton = Boolean(type) || Boolean(onClick) || disabled !== undefined || as === 'button';
 
   const motionStyles = {
-    x: springX,
-    y: springY,
     ...variantStyles[variant],
     ...style,
   };
@@ -125,24 +92,12 @@ export default function MagneticButton({
   const commonProps = {
     className: combinedClass,
     style: motionStyles,
-    whileHover: disabled
-      ? undefined
-      : {
-          scale: 1.03,
-          boxShadow: hoverShadows[variant],
-          transition: { duration: 0.3 },
-        },
     whileTap: disabled ? undefined : { scale: 0.97 },
-    onMouseMove: disabled ? undefined : handleMouseMove,
-    onMouseLeave: disabled ? undefined : handleMouseLeave,
     'aria-label': ariaLabel,
   };
 
   const innerContent = (
-    <>
-      <span className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 hover:opacity-100 transition-opacity duration-300 bg-white/[0.05]" />
-      <span className="relative z-10 flex items-center justify-center gap-2 w-full">{children}</span>
-    </>
+    <span className="relative z-10 flex items-center justify-center gap-2 w-full">{children}</span>
   );
 
   if (isAnchor && href) {
