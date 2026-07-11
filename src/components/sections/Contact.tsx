@@ -93,12 +93,12 @@ export function Contact() {
                   target={item.href.startsWith('http') ? '_blank' : '_self'}
                   rel="noopener noreferrer"
                 >
-                  <GlassCard className="p-7 flex items-center gap-5 h-full">
+                  <GlassCard className="p-6 sm:p-8 lg:p-[36px] flex items-center gap-5 h-full">
                     <div className="w-14 h-14 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center flex-shrink-0">
                       {item.icon}
                     </div>
                     <div>
-                      <div className="text-[13px] uppercase tracking-widest text-[#94A3B8] font-semibold mb-1">
+                      <div className="text-[13px] uppercase tracking-widest text-[#94A3B8] font-semibold mb-2">
                         {item.label}
                       </div>
                       <div className="text-white font-bold text-[18px]">
@@ -115,89 +115,91 @@ export function Contact() {
           <div className="relative lg:col-span-6 h-full">
             {/* Background Space Glow Behind Form */}
             <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#4F46E5]/30 via-[#8B5CF6]/20 to-[#00E5FF]/30 blur-2xl opacity-60 -z-10 pointer-events-none" />
-            <GlassCard className="p-8 h-full flex flex-col justify-between relative z-10">
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-6">
-                  Send a Direct Message
-                </h3>
+            <GlassCard className="p-6 sm:p-8 lg:p-10 h-full flex flex-col justify-between relative z-10">
+              <div className="flex flex-col h-full justify-between">
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-5 leading-[1.3]">
+                    Send a Direct Message
+                  </h3>
 
-                <form
-                  onSubmit={handleSubmit}
-                  className="space-y-5 w-full"
-                >
-                  <div>
-                    <label className="block text-[13px] font-semibold uppercase tracking-wider text-[#94A3B8] mb-2">
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formState.name}
-                      onChange={(e) =>
-                        setFormState({ ...formState, name: e.target.value })
-                      }
-                      placeholder="Enter your name"
-                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.35)] transition-all duration-300 ease-out"
-                    />
-                  </div>
+                  <form
+                    onSubmit={handleSubmit}
+                    className="space-y-6 w-full"
+                  >
+                    <div>
+                      <label className="block text-[13px] font-semibold uppercase tracking-wider text-[#94A3B8] mb-3">
+                        Your Name
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formState.name}
+                        onChange={(e) =>
+                          setFormState({ ...formState, name: e.target.value })
+                        }
+                        placeholder="Enter your name"
+                        className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.35)] transition-all duration-300 ease-out"
+                      />
+                    </div>
 
-                  <div>
-                    <label className="block text-[13px] font-semibold uppercase tracking-wider text-[#94A3B8] mb-2">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={formState.email}
-                      onChange={(e) =>
-                        setFormState({ ...formState, email: e.target.value })
-                      }
-                      placeholder="Enter your email"
-                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.35)] transition-all duration-300 ease-out"
-                    />
-                  </div>
+                    <div>
+                      <label className="block text-[13px] font-semibold uppercase tracking-wider text-[#94A3B8] mb-3">
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        value={formState.email}
+                        onChange={(e) =>
+                          setFormState({ ...formState, email: e.target.value })
+                        }
+                        placeholder="Enter your email"
+                        className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.35)] transition-all duration-300 ease-out"
+                      />
+                    </div>
 
-                  <div>
-                    <label className="block text-[13px] font-semibold uppercase tracking-wider text-[#94A3B8] mb-2">
-                      Message
-                    </label>
-                    <textarea
-                      rows={5}
-                      required
-                      value={formState.message}
-                      onChange={(e) =>
-                        setFormState({ ...formState, message: e.target.value })
-                      }
-                      placeholder="Tell me about your project or opportunity..."
-                      className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.35)] transition-all duration-300 ease-out resize-none"
-                    />
-                  </div>
+                    <div>
+                      <label className="block text-[13px] font-semibold uppercase tracking-wider text-[#94A3B8] mb-3">
+                        Message
+                      </label>
+                      <textarea
+                        rows={5}
+                        required
+                        value={formState.message}
+                        onChange={(e) =>
+                          setFormState({ ...formState, message: e.target.value })
+                        }
+                        placeholder="Tell me about your project or opportunity..."
+                        className="w-full px-5 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-[#64748B] text-base focus:outline-none focus:border-[#00E5FF] focus:bg-white/[0.06] focus:shadow-[0_0_25px_rgba(0,229,255,0.35)] transition-all duration-300 ease-out resize-none"
+                      />
+                    </div>
 
-                  <div className="pt-4">
-                    <MagneticButton
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full inline-flex items-center justify-center gap-3 py-4 rounded-full font-bold text-white text-base disabled:opacity-50 border border-white/10"
-                      style={{
-                        background: 'linear-gradient(135deg, #4F46E5, #8B5CF6)',
-                      }}
-                    >
-                      {isSubmitting ? (
-                        <span>Sending...</span>
-                      ) : isSubmitted ? (
-                        <>
-                          <FaCheckCircle className="text-lg" />
-                          <span>Message Sent!</span>
-                        </>
-                      ) : (
-                        <>
-                          <FaPaperPlane className="text-base" />
-                          <span>Send Message</span>
-                        </>
-                      )}
-                    </MagneticButton>
-                  </div>
-                </form>
+                    <div className="mt-auto pt-[28px]">
+                      <MagneticButton
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full inline-flex items-center justify-center gap-3 py-4 rounded-full font-bold text-white text-base disabled:opacity-50 border border-white/10"
+                        style={{
+                          background: 'linear-gradient(135deg, #4F46E5, #8B5CF6)',
+                        }}
+                      >
+                        {isSubmitting ? (
+                          <span>Sending...</span>
+                        ) : isSubmitted ? (
+                          <>
+                            <FaCheckCircle className="text-lg" />
+                            <span>Message Sent!</span>
+                          </>
+                        ) : (
+                          <>
+                            <FaPaperPlane className="text-base" />
+                            <span>Send Message</span>
+                          </>
+                        )}
+                      </MagneticButton>
+                    </div>
+                  </form>
+                </div>
               </div>
             </GlassCard>
           </div>

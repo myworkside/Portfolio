@@ -58,8 +58,8 @@ export function Projects() {
               variants={cardVariants}
               className="w-full h-full"
             >
-              <GlassCard className="h-full flex flex-col overflow-hidden group">
-                {/* Showcase Top (55%) — Visual Architectural Showcase Area */}
+              <GlassCard className="h-full flex flex-col overflow-hidden group border border-white/10">
+                {/* Showcase Top — Visual Architectural Showcase Area */}
                 <div
                   className="relative h-56 sm:h-64 w-full flex-shrink-0 overflow-hidden border-b border-white/10"
                   style={{
@@ -67,35 +67,37 @@ export function Projects() {
                   }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-transparent to-transparent opacity-85" />
-                  <div className="absolute bottom-4 left-7 right-7 flex items-center justify-between">
-                    <span className="text-[13px] font-bold uppercase tracking-widest text-[#00E5FF] px-3 py-1 rounded-md border border-[#00E5FF]/30 bg-[#00E5FF]/10">
-                      Featured Work
-                    </span>
-                    <span className="text-[13px] text-[#94A3B8] font-mono">
-                      {project.id.toUpperCase()}
-                    </span>
-                  </div>
                 </div>
 
-                {/* Content Bottom (45%) */}
-                <div className="p-8 flex flex-col flex-1 justify-between">
+                {/* Content Bottom with 40px desktop padding */}
+                <div className="p-6 sm:p-8 lg:p-10 flex flex-col flex-1 justify-between">
                   <div>
+                    {/* Badge */}
+                    <div className="flex items-center justify-between mb-5">
+                      <span className="text-[13px] font-bold uppercase tracking-widest text-[#00E5FF] px-3.5 py-1.5 rounded-full border border-[#00E5FF]/30 bg-[#00E5FF]/10">
+                        Featured Work
+                      </span>
+                      <span className="text-[13px] text-[#94A3B8] font-mono">
+                        {project.id.toUpperCase()}
+                      </span>
+                    </div>
+
                     {/* Title */}
-                    <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-5 leading-[1.3]">
                       {project.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-[#94A3B8] text-[16px] leading-relaxed mb-6">
+                    <p className="text-[#94A3B8] text-[16px] leading-[1.85] mt-[18px] mb-[18px]">
                       {project.description}
                     </p>
 
-                    {/* Tech Stack Pills */}
-                    <div className="flex flex-wrap gap-2 mb-8">
+                    {/* Tech Stack Pills with 12px gap and 28px top margin */}
+                    <div className="flex flex-wrap gap-3 mt-[28px] mb-8">
                       {(project.technologies ?? project.techStack ?? project.topics ?? []).map((tag) => (
                         <span
                           key={tag}
-                          className="text-[13px] font-medium px-3 py-1 rounded-full border border-white/10 text-[#E2E8F0]"
+                          className="text-[13px] font-medium px-3.5 py-1.5 rounded-full border border-white/10 text-[#E2E8F0]"
                           style={{ background: 'rgba(255, 255, 255, 0.03)' }}
                         >
                           {tag}
@@ -104,14 +106,14 @@ export function Projects() {
                     </div>
                   </div>
 
-                  {/* Buttons aligned bottom left */}
-                  <div className="flex items-center gap-4 pt-5 border-t border-white/10">
+                  {/* Buttons with mt-auto and 28px top padding */}
+                  <div className="flex items-center gap-4 mt-auto pt-[28px] border-t border-white/10">
                     {project.githubUrl && (
                       <a
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-white/[0.06] border border-white/15"
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white bg-white/[0.06] border border-white/15 hover:bg-white/[0.1] transition-colors"
                       >
                         <FaGithub className="text-base" />
                         Source Code
@@ -123,7 +125,7 @@ export function Projects() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white shadow-md shadow-[#4F46E5]/20 border border-white/15"
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white shadow-md shadow-[#4F46E5]/20 border border-white/15 hover:opacity-95 transition-opacity"
                         style={{
                           background: 'linear-gradient(135deg, #4F46E5, #8B5CF6)',
                         }}

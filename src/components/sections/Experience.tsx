@@ -64,11 +64,11 @@ function ExperienceCard({ exp }: { exp: ExperienceType }) {
   const techList = exp.technologies ?? exp.techStack ?? [];
 
   return (
-    <GlassCard className="p-8 min-h-[220px] flex flex-col justify-between border border-white/10">
+    <GlassCard className="p-6 sm:p-8 lg:p-10 min-h-[220px] flex flex-col justify-between border border-white/10">
       <div>
-        {/* Top Header: Role & Period */}
-        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-          <span className="inline-flex items-center gap-1.5 text-[13px] font-semibold uppercase tracking-widest text-[#00E5FF] px-3.5 py-1 rounded-full bg-[#00E5FF]/10 border border-[#00E5FF]/20">
+        {/* Date / Period */}
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-5">
+          <span className="inline-flex items-center gap-1.5 text-[13px] font-semibold uppercase tracking-widest text-[#00E5FF] px-3.5 py-1.5 rounded-full bg-[#00E5FF]/10 border border-[#00E5FF]/20">
             <FaCalendarAlt className="text-xs" />
             {periodText}
           </span>
@@ -81,39 +81,46 @@ function ExperienceCard({ exp }: { exp: ExperienceType }) {
         </div>
 
         {/* Role Title */}
-        <h3 className="text-xl md:text-2xl font-bold text-white mb-1.5">
+        <h3 className="text-xl md:text-2xl font-bold text-white mb-2 leading-[1.3]">
           {exp.role}
         </h3>
 
         {/* Company Name */}
-        <div className="flex items-center gap-2 mb-5">
+        <div className="flex items-center gap-2.5 mb-5">
           <FaBriefcase className="text-sm text-[#4F46E5]" />
           <span className="text-base font-semibold text-[#E2E8F0]">
             {exp.company}
           </span>
         </div>
 
-        {/* Responsibilities List */}
-        <ul className="space-y-3 mb-6">
+        {/* Description */}
+        {exp.description && (
+          <p className="text-[#94A3B8] text-[15px] leading-[1.85] mb-5">
+            {exp.description}
+          </p>
+        )}
+
+        {/* Responsibilities List with 16px bullet spacing */}
+        <ul className="space-y-4 mb-[18px]">
           {points.map((resp, i) => (
             <li
               key={i}
-              className="flex items-start gap-3 text-[16px] text-[#94A3B8] leading-relaxed"
+              className="flex items-start gap-3.5 text-[16px] text-[#94A3B8] leading-[1.85]"
             >
-              <span className="inline-block w-2 h-2 rounded-full bg-[#00E5FF] mt-2 flex-shrink-0" />
+              <span className="inline-block w-2 h-2 rounded-full bg-[#00E5FF] mt-2.5 flex-shrink-0" />
               <span>{resp}</span>
             </li>
           ))}
         </ul>
       </div>
 
-      {/* Tech Stack Pills */}
+      {/* Tech Stack Pills with 12px tag spacing and 28px top margin */}
       {techList.length > 0 && (
-        <div className="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+        <div className="flex flex-wrap gap-3 mt-[28px] pt-[28px] border-t border-white/10">
           {techList.map((tech) => (
             <span
               key={tech}
-              className="text-[13px] font-medium px-3 py-1 rounded-full border border-white/10 text-[#E2E8F0]"
+              className="text-[13px] font-medium px-3.5 py-1.5 rounded-full border border-white/10 text-[#E2E8F0]"
               style={{ background: 'rgba(255, 255, 255, 0.03)' }}
             >
               {tech}

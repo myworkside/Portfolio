@@ -161,12 +161,12 @@ export function Skills() {
                     }}
                     className="w-full"
                   >
-                    {/* Equal height 180px, padding p-7 */}
-                    <GlassCard className="p-7 h-[180px] flex flex-col justify-between w-full">
-                      {/* Top: Icon + Name */}
-                      <div className="flex items-center gap-4">
+                    {/* Skill Card with generous breathing room and 34px padding */}
+                    <GlassCard className="p-6 sm:p-8 lg:p-[34px] flex flex-col justify-between w-full h-full">
+                      <div>
+                        {/* Icon */}
                         <div
-                          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 border border-white/10"
+                          className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/10 mb-5"
                           style={{
                             background: `${skill.color}15`,
                           }}
@@ -176,22 +176,19 @@ export function Skills() {
                             style={{ color: skill.color }}
                           />
                         </div>
-                        <h3 className="text-white font-bold text-[18px] line-clamp-1">
+
+                        {/* Title */}
+                        <h3 className="text-white font-bold text-[18px] mb-5 leading-[1.3]">
                           {skill.name}
                         </h3>
-                      </div>
 
-                      {/* Progress Bar Perfectly Aligned */}
-                      <div>
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="text-[13px] uppercase tracking-wider text-[#94A3B8] font-semibold">
-                            Proficiency
-                          </span>
-                          <span className="text-sm font-bold text-[#00E5FF]">
-                            {skill.proficiency ?? 80}%
-                          </span>
-                        </div>
-                        <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden">
+                        {/* Progress Label */}
+                        <span className="block text-[13px] uppercase tracking-wider text-[#94A3B8] font-semibold mb-3">
+                          Proficiency
+                        </span>
+
+                        {/* Progress Bar */}
+                        <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden mb-3">
                           <motion.div
                             className="h-full rounded-full"
                             style={{
@@ -210,6 +207,13 @@ export function Skills() {
                               ease: 'easeOut',
                             }}
                           />
+                        </div>
+
+                        {/* Percentage */}
+                        <div className="flex justify-end">
+                          <span className="text-sm font-bold text-[#00E5FF]">
+                            {skill.proficiency ?? 80}%
+                          </span>
                         </div>
                       </div>
                     </GlassCard>
