@@ -58,7 +58,11 @@ export function Projects() {
               variants={cardVariants}
               className="w-full h-full"
             >
-              <GlassCard className="h-full flex flex-col overflow-hidden group border border-white/10">
+              <GlassCard
+                className="h-full flex flex-col overflow-hidden group border border-white/10"
+                geometryVariant="mesh"
+                glowColor={project.color || '#4F46E5'}
+              >
                 {/* Showcase Top — Visual Architectural Showcase Area */}
                 <div
                   className="relative h-56 sm:h-64 w-full flex-shrink-0 overflow-hidden border-b border-white/10"

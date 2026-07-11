@@ -93,7 +93,11 @@ export function Contact() {
                   target={item.href.startsWith('http') ? '_blank' : '_self'}
                   rel="noopener noreferrer"
                 >
-                  <GlassCard className="p-6 sm:p-8 lg:p-[36px] flex items-center gap-5 h-full">
+                  <GlassCard
+                    className="p-6 sm:p-8 lg:p-[36px] flex items-center gap-5 h-full"
+                    geometryVariant="waves"
+                    glowColor="#00E5FF"
+                  >
                     <div className="w-14 h-14 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center flex-shrink-0">
                       {item.icon}
                     </div>
@@ -115,7 +119,11 @@ export function Contact() {
           <div className="relative lg:col-span-6 h-full">
             {/* Background Space Glow Behind Form */}
             <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#4F46E5]/30 via-[#8B5CF6]/20 to-[#00E5FF]/30 blur-2xl opacity-60 -z-10 pointer-events-none" />
-            <GlassCard className="p-6 sm:p-8 lg:p-10 h-full flex flex-col justify-between relative z-10">
+            <GlassCard
+              className="p-6 sm:p-8 lg:p-10 h-full flex flex-col justify-between relative z-10"
+              geometryVariant="waves"
+              glowColor="#8B5CF6"
+            >
               <div className="flex flex-col h-full justify-between">
                 <div>
                   <h3 className="text-2xl font-bold text-white mb-5 leading-[1.3]">

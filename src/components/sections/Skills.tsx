@@ -162,7 +162,11 @@ export function Skills() {
                     className="w-full"
                   >
                     {/* Skill Card with generous breathing room and 34px padding */}
-                    <GlassCard className="p-6 sm:p-8 lg:p-[34px] flex flex-col justify-between w-full h-full">
+                    <GlassCard
+                      className="p-6 sm:p-8 lg:p-[34px] flex flex-col justify-between w-full h-full"
+                      geometryVariant="circuit"
+                      glowColor={skill.color}
+                    >
                       <div>
                         {/* Icon */}
                         <div

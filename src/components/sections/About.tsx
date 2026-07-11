@@ -80,6 +80,8 @@ export function About() {
                   <GlassCard
                     key={idx}
                     className="p-6 sm:p-8 lg:p-10 border border-white/10 h-full flex flex-col justify-between"
+                    geometryVariant="network"
+                    glowColor="#00E5FF"
                   >
                     <div>
                       <div className="flex items-center gap-2.5 mb-2.5">
@@ -103,7 +105,11 @@ export function About() {
             {/* Education & Languages side-by-side equal cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch">
               {/* Education Card */}
-              <GlassCard className="p-6 sm:p-8 lg:p-10 h-full flex flex-col justify-between">
+              <GlassCard
+                className="p-6 sm:p-8 lg:p-10 h-full flex flex-col justify-between"
+                geometryVariant="network"
+                glowColor="#4F46E5"
+              >
                 <div>
                   <h3 className="text-[14px] uppercase tracking-widest text-[#4F46E5] font-bold mb-5 leading-[1.3]">
                     Education
@@ -129,7 +135,11 @@ export function About() {
               </GlassCard>
 
               {/* Languages Card */}
-              <GlassCard className="p-6 sm:p-8 lg:p-10 h-full flex flex-col justify-between">
+              <GlassCard
+                className="p-6 sm:p-8 lg:p-10 h-full flex flex-col justify-between"
+                geometryVariant="network"
+                glowColor="#00E5FF"
+              >
                 <div>
                   <h3 className="text-[14px] uppercase tracking-widest text-[#00E5FF] font-bold mb-5 leading-[1.3]">
                     Languages
@@ -165,7 +175,11 @@ export function About() {
           <motion.div variants={itemVariants} className="lg:col-span-7 flex flex-col justify-between space-y-8">
             {/* Profile Card */}
             <ScrollReveal delay={0.1}>
-              <div className="relative rounded-[22px] p-6 sm:p-8 lg:p-10 border border-white/10 backdrop-blur-xl shadow-xl flex flex-col sm:flex-row items-center gap-8" style={{ background: 'rgba(255, 255, 255, 0.03)' }}>
+              <GlassCard
+                className="p-6 sm:p-8 lg:p-10 flex flex-col sm:flex-row items-center gap-8"
+                geometryVariant="network"
+                glowColor="#8B5CF6"
+              >
                 <div className="relative w-24 h-24 rounded-2xl overflow-hidden flex-shrink-0 border border-white/10 bg-[#0B1220] flex items-center justify-center shadow-lg shadow-black/40">
                   <div
                     className="w-full h-full flex items-center justify-center text-3xl font-extrabold text-white"
@@ -192,13 +206,17 @@ export function About() {
                     Based in {personal.location}
                   </p>
                 </div>
-              </div>
+              </GlassCard>
             </ScrollReveal>
 
             {/* Equal Height Side-by-Side Mission & Vision Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch">
               <ScrollReveal delay={0.15} className="h-full">
-                <GlassCard className="p-6 sm:p-8 lg:p-10 min-h-[300px] h-full flex flex-col justify-between">
+                <GlassCard
+                  className="p-6 sm:p-8 lg:p-10 min-h-[300px] h-full flex flex-col justify-between"
+                  geometryVariant="network"
+                  glowColor="#4F46E5"
+                >
                   <div>
                     <h3 className="text-[14px] uppercase tracking-widest text-[#4F46E5] font-bold mb-5 leading-[1.3]">
                       Mission
@@ -211,7 +229,11 @@ export function About() {
               </ScrollReveal>
 
               <ScrollReveal delay={0.2} className="h-full">
-                <GlassCard className="p-6 sm:p-8 lg:p-10 min-h-[300px] h-full flex flex-col justify-between">
+                <GlassCard
+                  className="p-6 sm:p-8 lg:p-10 min-h-[300px] h-full flex flex-col justify-between"
+                  geometryVariant="network"
+                  glowColor="#00E5FF"
+                >
                   <div>
                     <h3 className="text-[14px] uppercase tracking-widest text-[#00E5FF] font-bold mb-5 leading-[1.3]">
                       Vision
@@ -226,7 +248,11 @@ export function About() {
 
             {/* Professional Strengths Card */}
             <ScrollReveal delay={0.25}>
-              <GlassCard className="p-6 sm:p-8 lg:p-10">
+              <GlassCard
+                className="p-6 sm:p-8 lg:p-10"
+                geometryVariant="network"
+                glowColor="#8B5CF6"
+              >
                 <h3 className="text-[14px] uppercase tracking-widest text-[#8B5CF6] font-bold mb-5 leading-[1.3]">
                   Strength Tags
                 </h3>

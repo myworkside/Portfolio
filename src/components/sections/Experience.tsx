@@ -64,7 +64,11 @@ function ExperienceCard({ exp }: { exp: ExperienceType }) {
   const techList = exp.technologies ?? exp.techStack ?? [];
 
   return (
-    <GlassCard className="p-6 sm:p-8 lg:p-10 min-h-[220px] flex flex-col justify-between border border-white/10">
+    <GlassCard
+      className="p-6 sm:p-8 lg:p-10 min-h-[220px] flex flex-col justify-between border border-white/10"
+      geometryVariant="orbit"
+      glowColor="#00E5FF"
+    >
       <div>
         {/* Date / Period */}
         <div className="flex flex-wrap items-center justify-between gap-2 mb-5">
